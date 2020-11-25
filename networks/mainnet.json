@@ -1,0 +1,37 @@
+{
+  "title": "ARK Explorer",
+  "server": "https://explorer.ark.io/api",
+  "alias": "Main",
+  "activeDelegates": 51,
+  "rewardOffset": 75600,
+  "currencies": {
+    "AUD": "A$",
+    "BRL": "R$",
+    "BTC": "Ƀ",
+    "CAD": "C$",
+    "CHF": "CHF",
+    "CNY": "¥",
+    "ETH": "Ξ",
+    "EUR": "€",
+    "GBP": "£",
+    "JPY": "¥",
+    "KRW": "₩",
+    "LTC": "Ł",
+    "NZD": "N$",
+    "RUB": "₽",
+    "USD": "$"
+  },
+  "defaults": {
+    "token": "ARK",
+    "symbol": "Ѧ",
+    "currency": {
+      "name": "USD",
+      "symbol": "$"
+    },
+    "priceChartOptions": {
+      "enabled": true,
+      "period": "day",
+      "type": "price"
+    }
+  }
+}

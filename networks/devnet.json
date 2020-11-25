@@ -1,0 +1,18 @@
+{
+  "title": "Protokol Public Devnet",
+  "server": "http://135.181.83.62:4003/api",
+  "alias": "Development",
+  "activeDelegates": 51,
+  "rewardOffset": 10800,
+  "currencies": [],
+  "defaults": {
+    "token": "TARK",
+    "symbol": "TѦ",
+    "currency": null,
+    "priceChartOptions": {
+      "enabled": false,
+      "period": "day",
+      "type": "price"
+    }
+  }
+}
