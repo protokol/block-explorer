@@ -1,6 +1,6 @@
 {
   "title": "Protokol Public Devnet",
-  "server": "http://135.181.83.62:4003/api",
+  "server": "https://devnet-explorer.protokol.sh/api",
   "alias": "Development",
   "activeDelegates": 51,
   "rewardOffset": 10800,
