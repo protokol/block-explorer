@@ -166,6 +166,19 @@ export default {
       TOKEN: "Token",
       COLLECTION_ID: "Collection ID",
       TOKEN_ATTRIBUTES: "Token Attributes",
+      SPECIFIC_COLLECTION: {
+        NASCAR_TEAM: {
+          COLLECTION_NAME: "Nascar team asset",
+          TEAM_NAME: "Team Name",
+          TEAM_LOGO: "Team Logo",
+          DESCRIPTION: "Description",
+          CAR_TYPE: "Car Type",
+          DRIVERS: "Drivers",
+          TEAM_OWNER: "Team Owner",
+          HEADQUARTERS: "Headquarters",
+          WEBSITE: "Website",
+        },
+      },
     },
     NFT_TRANSFER: {
       TRANSFER: "Transfer",

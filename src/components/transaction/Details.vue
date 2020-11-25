@@ -264,12 +264,58 @@
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.COLLECTION_ID`) }}</div>
           <LinkTransaction :id="transaction.asset.nftToken.collectionId" :truncate-id="false" />
         </div>
-        <div class="list-row-border-b">
-          <div>
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
-            <vue-json-pretty style="margin-top: 16px;" :data="transaction.asset.nftToken.attributes"> </vue-json-pretty>
+        <template v-if="collectionName === 'Nascar Team'">
+          <br/>
+          <h3>{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.COLLECTION_NAME`)}}</h3>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_NAME`)}}</div>
+            <div>{{ transaction.asset.nftToken.attributes.teamName }}</div>
           </div>
-        </div>
+          <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImage">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_LOGO`)}}</div>
+            <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImage)" alt="" />
+          </div>
+          <div class="list-row-border-b">
+            <div>
+              <div class="mr-4 mb-2">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DESCRIPTION`)}}</div>
+              <div>{{ transaction.asset.nftToken.attributes.description }}</div>
+            </div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.CAR_TYPE`)}}</div>
+            <div>{{ transaction.asset.nftToken.attributes.carType }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div>
+              <div class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`)}}</div>
+              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" class="mb-4">
+                <div>{{driver.name}}</div>
+                <div>Number {{driver.number}}</div>
+                <img v-bind:src="getImage(driver.ipfsHashImage)" alt="" v-if="driver.ipfsHashImage"/>
+              </div>
+            </div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_OWNER`)}}</div>
+            <div>{{ transaction.asset.nftToken.attributes.teamOwner }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.HEADQUARTERS`)}}</div>
+            <div>{{ transaction.asset.nftToken.attributes.headquarters }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.WEBSITE`)}}</div>
+            <a v-bind:href="transaction.asset.nftToken.attributes.website">{{ transaction.asset.nftToken.attributes.website }}</a>
+          </div>
+        </template>
+        <template v-else>
+          <div class="list-row-border-b">
+            <div>
+              <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.TOKEN_ATTRIBUTES`) }}</div>
+              <vue-json-pretty style="margin-top: 16px;" :data="transaction.asset.nftToken.attributes"> </vue-json-pretty>
+            </div>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -475,7 +521,7 @@ import {
   NFTBaseTransactionTypes,
   TypeGroupTransaction,
 } from "@/enums";
-import { CryptoCompareService, LockService, TransactionService } from "@/services";
+import { ApiService, CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
 
@@ -498,6 +544,8 @@ export default class TransactionDetails extends Vue {
   private multipaymentAmount: BigNumber | null = null;
   private timelockStatus: TranslateResult | null = null;
   private timelockLink: string | null = null;
+
+  private collectionName = "";
 
   transactionTypeKey(typeGroup: number, type: number): string {
     for (const transaction of transactionTypes) {
@@ -622,6 +670,7 @@ export default class TransactionDetails extends Vue {
     this.updatePrice();
     this.handleMultipayment();
     this.getTimelockStatus();
+    this.getCollection(this.transaction.asset.nftToken.collectionId);
   }
 
   private async updatePrice() {
@@ -659,6 +708,15 @@ export default class TransactionDetails extends Vue {
     } else {
       this.timelockStatus = this.$t("TRANSACTION.TIMELOCK.UNKNOWN");
     }
+  }
+
+  private async getCollection(id: string) {
+    const collection = await ApiService.get(`nft/collections/${id}`);
+    this.collectionName = collection.data.name;
+  }
+
+  private getImage(ipfsHash: string): string {
+    return `https://cloudflare-ipfs.com/ipfs/${ipfsHash}`;
   }
 }
 </script>
