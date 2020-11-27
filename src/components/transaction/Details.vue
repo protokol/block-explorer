@@ -266,28 +266,28 @@
         </div>
         <template v-if="collectionName === 'Nascar Team'">
           <br/>
-          <h3>{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.COLLECTION_NAME`)}}</h3>
+          <h3 class="mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.COLLECTION_NAME`)}}</h3>
           <div class="list-row-border-b">
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_NAME`)}}</div>
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_NAME`)}}</h4>
             <div>{{ transaction.asset.nftToken.attributes.teamName }}</div>
           </div>
           <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImage">
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_LOGO`)}}</div>
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_LOGO`)}}</h4>
             <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImage)" alt="" />
           </div>
           <div class="list-row-border-b">
             <div>
-              <div class="mr-4 mb-2">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DESCRIPTION`)}}</div>
+              <h4 class="mr-4 mb-2">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DESCRIPTION`)}}</h4>
               <div>{{ transaction.asset.nftToken.attributes.description }}</div>
             </div>
           </div>
           <div class="list-row-border-b">
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.CAR_TYPE`)}}</div>
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.CAR_TYPE`)}}</h4>
             <div>{{ transaction.asset.nftToken.attributes.carType }}</div>
           </div>
           <div class="list-row-border-b">
             <div>
-              <div class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`)}}</div>
+              <h4 class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`)}}</h4>
               <div v-for="driver in transaction.asset.nftToken.attributes.drivers" class="mb-4">
                 <div>{{driver.name}}</div>
                 <div>Number {{driver.number}}</div>
@@ -296,15 +296,15 @@
             </div>
           </div>
           <div class="list-row-border-b">
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_OWNER`)}}</div>
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.TEAM_OWNER`)}}</h4>
             <div>{{ transaction.asset.nftToken.attributes.teamOwner }}</div>
           </div>
           <div class="list-row-border-b">
-            <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.HEADQUARTERS`)}}</div>
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.HEADQUARTERS`)}}</h4>
             <div>{{ transaction.asset.nftToken.attributes.headquarters }}</div>
           </div>
           <div class="list-row-border-b">
-            <div class="mr-4">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.WEBSITE`)}}</div>
+            <h4 class="mr-4">{{$t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.WEBSITE`)}}</h4>
             <a v-bind:href="transaction.asset.nftToken.attributes.website">{{ transaction.asset.nftToken.attributes.website }}</a>
           </div>
         </template>
