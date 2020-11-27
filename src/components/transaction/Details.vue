@@ -308,6 +308,28 @@
             <a v-bind:href="transaction.asset.nftToken.attributes.website">{{ transaction.asset.nftToken.attributes.website }}</a>
           </div>
         </template>
+
+        <template v-else-if="collectionName === 'Nascar Hero Cards'">
+          <br/>
+          <h3 class="mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.COLLECTION_NAME`)}}</h3>
+          <div class="list-row-border-b">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.LOCATION`)}}</h4>
+            <div>{{ transaction.asset.nftToken.attributes.issuedLocation }}</div>
+          </div>
+          <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImage">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.HERO_CARD`)}}</h4>
+            <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImage)" alt="" />
+          </div>
+          <div class="list-row-border-b">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.DATE`)}}</h4>
+            <div>{{ transaction.asset.nftToken.attributes.issuedDate }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.IS_SIGNED`)}}</h4>
+            <div>{{ transaction.asset.nftToken.attributes.signed }}</div>
+          </div>
+        </template>
+
         <template v-else>
           <div class="list-row-border-b">
             <div>

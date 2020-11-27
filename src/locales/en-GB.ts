@@ -141,7 +141,7 @@ export default {
       RECEIVED: "Received",
       // NFT Base types
       NFT_REGISTER_COLLECTION: "NFT Register Collection",
-      NFT_CREATE: "NFT Create",
+      NFT_CREATE: "NFT Create Asset",
       NFT_TRANSFER: "NFT Transfer",
       NFT_BURN: "NFT Burn",
       // NFT Exchange types
@@ -177,6 +177,13 @@ export default {
           TEAM_OWNER: "Team Owner",
           HEADQUARTERS: "Headquarters",
           WEBSITE: "Website",
+        },
+        NASCAR_HERO_CARD: {
+          COLLECTION_NAME: "Nascar Hero Card asset",
+          LOCATION: "Location",
+          HERO_CARD: "Hero card",
+          DATE: "Date",
+          IS_SIGNED: "Is card signed",
         },
       },
     },
