@@ -316,9 +316,13 @@
             <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.LOCATION`)}}</h4>
             <div>{{ transaction.asset.nftToken.attributes.issuedLocation }}</div>
           </div>
-          <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImage">
-            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.HERO_CARD`)}}</h4>
-            <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImage)" alt="" />
+          <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImageFront">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.HERO_CARD_FRONT`)}}</h4>
+            <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImageFront)" alt="" />
+          </div>
+          <div class="list-row-border-b" v-if="transaction.asset.nftToken.attributes.ipfsHashImageBack">
+            <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.HERO_CARD_BACK`)}}</h4>
+            <img v-bind:src="getImage(transaction.asset.nftToken.attributes.ipfsHashImageBack)" alt="" />
           </div>
           <div class="list-row-border-b">
             <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_HERO_CARD.DATE`)}}</h4>

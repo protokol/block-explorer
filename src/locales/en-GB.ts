@@ -181,7 +181,8 @@ export default {
         NASCAR_HERO_CARD: {
           COLLECTION_NAME: "Nascar Hero Card asset",
           LOCATION: "Location",
-          HERO_CARD: "Hero card",
+          HERO_CARD_FRONT: "Hero card front",
+          HERO_CARD_BACK: "Hero card back",
           DATE: "Date",
           IS_SIGNED: "Is card signed",
         },
