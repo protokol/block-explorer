@@ -153,6 +153,11 @@ export default {
       // Guardian types
       GUARDIAN_SET_USER_PERMISSIONS: "User Permissions",
       GUARDIAN_SET_GROUP_PERMISSIONS: "Group Permissions",
+      // EBSI types
+      NOTARIZATION: "Notarization",
+    },
+    NOTARIZATION: {
+      HASH: "Notarization hash"
     },
     NFT_REGISTER_COLLECTION: {
       COLLECTION: "Collection",

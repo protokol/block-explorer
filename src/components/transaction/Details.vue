@@ -152,6 +152,11 @@
             <LinkBlock v-if="transaction.blockId" :id="transaction.blockId">{{ transaction.blockId }}</LinkBlock>
           </div>
         </div>
+
+        <div v-if="isNotarization(transaction.type, transaction.typeGroup)" class="list-row">
+          <div class="mr-4">{{ $t("TRANSACTION.NOTARIZATION.HASH") }}</div>
+          <div>{{ transaction.asset.notarization.hash }}</div>
+        </div>
       </div>
     </section>
 
@@ -545,7 +550,7 @@ import { TranslateResult } from "vue-i18n";
 import { mapGetters } from "vuex";
 import { ITransaction, ITransactionType } from "@/interfaces";
 import {
-  CoreTransaction,
+  CoreTransaction, EBSITransactionTypes,
   GuardianPermissionKind,
   MagistrateTransaction,
   NFTBaseTransactionTypes,
@@ -610,6 +615,9 @@ export default class TransactionDetails extends Vue {
     return NFTBaseTransactionTypes;
   }
 
+  get EBSITransactions() {
+    return EBSITransactionTypes;
+  }
   get typeGroupTransaction() {
     return TypeGroupTransaction;
   }

@@ -137,7 +137,7 @@
     <span v-else-if="isNFTAcceptTrade(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_ACCEPT_TRADE") }}</span>
     <span v-else-if="isUserPermissions(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.GUARDIAN_SET_USER_PERMISSIONS") }}</span>
     <span v-else-if="isGroupPermissions(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.GUARDIAN_SET_GROUP_PERMISSIONS") }}</span>
-
+    <span v-else-if="isNotarization(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NOTARIZATION") }}</span>
     <span v-else-if="isUndefinedUpdate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.UNDEFINED_UPDATE") }}</span>
     <!-- By default we simply link to a recipient as we don't know this type / typegroup combination -->
     <div v-else>

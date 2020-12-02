@@ -46,6 +46,7 @@ export enum TypeGroupTransaction {
   NFT_BASE = 9000,
   NFT_EXCHANGE = 9001,
   GUARDIAN = 9002,
+  EBSI = 9003,
 }
 
 export enum NFTBaseTransactionTypes {
@@ -71,6 +72,10 @@ export enum GuardianTransactionTypes {
 export enum GuardianPermissionKind {
   Deny,
   Allow,
+}
+
+export enum EBSITransactionTypes {
+  NOTARIZATION = 0,
 }
 
 export enum ForgingStatus {

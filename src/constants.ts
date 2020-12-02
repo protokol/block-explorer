@@ -6,13 +6,22 @@ import {
   MagistrateTransactionEntityAction,
   MagistrateTransactionEntityType,
   MagistrateTransactionEntitySubType,
-  NFTBaseTransactionTypes, NFTExchangeTransactionTypes, GuardianTransactionTypes,
+  NFTBaseTransactionTypes,
+  NFTExchangeTransactionTypes,
+  GuardianTransactionTypes,
+  EBSITransactionTypes,
 } from "@/enums";
 
 export const URI_QRCODE_SCHEME_PREFIX = "ark:";
 
 export const transactionTypes: ITransactionType[] = [
   { key: "ALL", type: -1 },
+  // Ebsi transactions
+  {
+    key: "NOTARIZATION",
+    type: EBSITransactionTypes.NOTARIZATION,
+    typeGroup: TypeGroupTransaction.EBSI,
+  },
   // NFTBase transactions
   {
     key: "NFT_REGISTER_COLLECTION",

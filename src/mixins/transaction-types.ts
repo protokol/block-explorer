@@ -6,7 +6,7 @@ import {
   MagistrateTransactionEntitySubType,
   MagistrateTransactionEntityAction,
   NFTBaseTransactionTypes,
-  NFTExchangeTransactionTypes, GuardianTransactionTypes,
+  NFTExchangeTransactionTypes, GuardianTransactionTypes, EBSITransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
@@ -238,6 +238,11 @@ export default {
     },
     isGroupPermissions(type: number, typeGroup: number, asset: Record<string, any>): boolean {
       return this.isGuardianTypeGroup(typeGroup) && type === GuardianTransactionTypes.GUARDIAN_SET_GROUP_PERMISSIONS;
+    },
+
+    //Ebsi Types
+    isNotarization(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return typeGroup === TypeGroupTransaction.EBSI && type === EBSITransactionTypes.NOTARIZATION;
     },
 
     // Unknown type
