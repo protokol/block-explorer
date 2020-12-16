@@ -6,7 +6,9 @@ import {
   MagistrateTransactionEntitySubType,
   MagistrateTransactionEntityAction,
   NFTBaseTransactionTypes,
-  NFTExchangeTransactionTypes, GuardianTransactionTypes, EBSITransactionTypes,
+  NFTExchangeTransactionTypes,
+  GuardianTransactionTypes,
+  EBSITransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
