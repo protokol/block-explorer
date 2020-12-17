@@ -60,7 +60,7 @@ export default class HeaderDefault extends Vue {
   private menuVisible: boolean;
 
   get showCurrency(): boolean {
-    return this.networkDefaults.priceChartOptions.enabled;
+    return this.networkDefaults.priceChartOptions ? this.networkDefaults.priceChartOptions.enabled : false;
   }
 
   public mounted() {

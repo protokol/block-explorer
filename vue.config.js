@@ -16,7 +16,9 @@ args.port = Number(process.env.PORT);
 args.baseUrl = minimist(process.argv.slice(2)).base || "/";
 args.network = minimist(process.argv.slice(2)).network || "mainnet";
 args.networkConfig = require(path.resolve(__dirname, `networks/${args.network}.json`));
-args.routerMode = minimist(process.argv.slice(2)).history ? "history" : "hash";
+// args.routerMode = minimist(process.argv.slice(2)).history ? "history" : "hash";
+args.routerMode = "history";
+
 
 const argsPrint = [];
 for (const argKey in args) {

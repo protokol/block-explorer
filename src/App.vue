@@ -36,6 +36,7 @@ import { knownWalletsUrls } from "@/config";
 import { mapGetters } from "vuex";
 import axios from "axios";
 import moment from "moment";
+import * as url from "url";
 
 @Component({
   computed: {
@@ -61,8 +62,33 @@ export default class App extends Vue {
 
   public async created() {
     MigrationService.executeMigrations();
-
     const network = require(`../networks/${process.env.VUE_APP_EXPLORER_CONFIG}`);
+
+    try {
+      const server = (await axios.get(`${window.location.protocol}//${window.location.host}/config.json`)).data.server;
+      if (server !== undefined) {
+        network.server = server;
+      }
+      // eslint-disable-next-line no-empty
+    } catch {}
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const ip = urlParams.get("ip");
+    let protocol = urlParams.get("protocol");
+    if (window.location.protocol === "http:" && protocol === "https") {
+      protocol = "https:";
+    } else {
+      protocol = "http:";
+    }
+    if (ip) {
+      let url = `${protocol}//${ip}`;
+      const port = urlParams.get("port");
+      if (port) {
+        url += `:${port}`;
+      }
+      url += `/api`;
+      network.server = url;
+    }
 
     Managers.configManager.setFromPreset(process.env.VUE_APP_EXPLORER_CONFIG || ("devnet" as any));
 

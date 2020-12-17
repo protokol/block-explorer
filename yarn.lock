@@ -1172,13 +1172,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fullhuman/postcss-purgecss@npm:^2.1.2, @fullhuman/postcss-purgecss@npm:^2.2.0":
+"@fullhuman/postcss-purgecss@npm:^2.1.2":
   version: 2.2.0
   resolution: "@fullhuman/postcss-purgecss@npm:2.2.0"
   dependencies:
     postcss: 7.0.28
     purgecss: ^2.2.0
   checksum: 3/6f8f6bebe10fe247580ad4f5c1baff295ce1d24730d24084223b9ee789bbdd111722bfa2564cfd9aa8558789ed7bd62963bc1de6c5dfd00296ae5c343bf3c330
+  languageName: node
+  linkType: hard
+
+"@fullhuman/postcss-purgecss@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "@fullhuman/postcss-purgecss@npm:3.1.3"
+  dependencies:
+    purgecss: ^3.1.3
+  checksum: 3/9e304fa7da1d4b7ee03dd16408c343a4a91eaf79a4cdb24a71b33987d1466c864c563b774f4195d82b55f3ba9e03d38947d9de72df61cc1f83caaec64886de52
   languageName: node
   linkType: hard
 
@@ -3103,7 +3112,7 @@ __metadata:
   resolution: "ark-explorer@workspace:."
   dependencies:
     "@arkecosystem/crypto": ^2.6.49
-    "@fullhuman/postcss-purgecss": ^2.2.0
+    "@fullhuman/postcss-purgecss": ^3.1.3
     "@kazupon/vue-i18n-loader": ^0.5.0
     "@types/jest": ^25.2.1
     "@types/lodash": ^4.14.150
@@ -3124,7 +3133,7 @@ __metadata:
     "@vue/test-utils": ^1.0.2
     "@yarnpkg/pnpify": ^2.0.0-rc.22
     animate.css: ^4.1.0
-    axios: ^0.19.2
+    axios: ^0.21.0
     babel-core: 7.0.0-bridge.0
     bad-words: ^3.0.3
     bignumber.js: ^9.0.0
@@ -3167,7 +3176,7 @@ __metadata:
     tslint-config-prettier: ^1.18.0
     typescript: ^3.8.3
     typescript-language-server: ^0.4.0
-    v-tooltip: 2.0.2
+    v-tooltip: ^2.0.3
     vue: ^2.6.11
     vue-chartjs: ^3.5.0
     vue-class-component: ^7.2.3
@@ -3394,12 +3403,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.19.2":
-  version: 0.19.2
-  resolution: "axios@npm:0.19.2"
+"axios@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "axios@npm:0.21.0"
   dependencies:
-    follow-redirects: 1.5.10
-  checksum: 3/bad346deea24050f9953ce09bb8015f85a99a7b8f016806adccfab0b8981827d1fbee9c77c0ef7c70cc48392c1af6bbc65e07c3e88221d17282d2d5fd0a191f6
+    follow-redirects: ^1.10.0
+  checksum: 3/4b08ecab39040948c03cae5fa726fdcf8bc299679818179c146e779a922ce887fad9261d82ad57ad1a3aa1fcba3612f14b490fdfa2cd28fa23c190fd48517f5f
   languageName: node
   linkType: hard
 
@@ -4808,6 +4817,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"colorette@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "colorette@npm:1.2.1"
+  checksum: 3/1cc21ad4b84777a424794f78b6bb6a44b614ae17dcea91762199339f8047598e6d981249eeef7ea588c99eaf062be8fcdcd4866c112998922ed854db6dde96f9
+  languageName: node
+  linkType: hard
+
 "colors@npm:^1.1.2":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
@@ -4856,6 +4872,13 @@ __metadata:
   version: 5.1.0
   resolution: "commander@npm:5.1.0"
   checksum: 3/d16141ea7f580945156fb8a06de2834c4647c7d9d3732ebd4534ab8e0b7c64747db301e18f2b840f28ea8fef51f7a8d6178e674b45a21931f0b65ff1c7f476b3
+  languageName: node
+  linkType: hard
+
+"commander@npm:^6.0.0":
+  version: 6.2.1
+  resolution: "commander@npm:6.2.1"
+  checksum: 3/47856aae6f194404122e359d8463e5e1a18f7cbab26722ce69f1379be8514bd49a160ef81a983d3d2091e3240022643354101d1276c797dcdd0b5bfc3c3f04a3
   languageName: node
   linkType: hard
 
@@ -5614,21 +5637,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:=3.1.0, debug@npm:~3.1.0":
-  version: 3.1.0
-  resolution: "debug@npm:3.1.0"
-  dependencies:
-    ms: 2.0.0
-  checksum: 3/1295acd5e0531761255661d325cd0a80ac8c5f6de8942a53bb23c2197ccb97526972de662ed0e5d9393be83f3428a298a6e7185ecb02f0da6282019cd2ffb4a8
-  languageName: node
-  linkType: hard
-
 "debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1":
   version: 4.1.1
   resolution: "debug@npm:4.1.1"
   dependencies:
     ms: ^2.1.1
   checksum: 3/3601a6ce96e4698ed3edf0ee6e67ef0317adfcdae2f66a43b23d1b14e8888b422337429b16dbbcba6801e7bfa6cbb8de3128fbacfb8ae1cd9bd7615ea6baf970
+  languageName: node
+  linkType: hard
+
+"debug@npm:~3.1.0":
+  version: 3.1.0
+  resolution: "debug@npm:3.1.0"
+  dependencies:
+    ms: 2.0.0
+  checksum: 3/1295acd5e0531761255661d325cd0a80ac8c5f6de8942a53bb23c2197ccb97526972de662ed0e5d9393be83f3428a298a6e7185ecb02f0da6282019cd2ffb4a8
   languageName: node
   linkType: hard
 
@@ -7384,21 +7407,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:1.5.10":
-  version: 1.5.10
-  resolution: "follow-redirects@npm:1.5.10"
-  dependencies:
-    debug: =3.1.0
-  checksum: 3/6e58e02c31337b6b41ffc3d5f3d49920b7db428eddcf374537da00ef121fe473983e12d8557f4304287604168d3efcc288d1f009abaf4c9d61e5db0c0cee3c4a
-  languageName: node
-  linkType: hard
-
 "follow-redirects@npm:^1.0.0":
   version: 1.11.0
   resolution: "follow-redirects@npm:1.11.0"
   dependencies:
     debug: ^3.0.0
   checksum: 3/9665078c14c27b4219ba719b508590ca08e8b580f7d85a9b8c8229c9905a8222b6abd408a26ea2b4b4f0820dc6fbde63e8a33d01a6ebdbb9201c7e24615ffa90
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.10.0":
+  version: 1.13.1
+  resolution: "follow-redirects@npm:1.13.1"
+  peerDependencies:
+    debug: "*"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 3/c7c6c905876b939af04a1b27afa70e9c0ab5015d96f5ee49dd80db6952dc8c960b96a229647504468615d8a1a400da9bec9449e2aea9f9c6da6fdca0ba17d4c2
   languageName: node
   linkType: hard
 
@@ -11231,6 +11257,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.1.20":
+  version: 3.1.20
+  resolution: "nanoid@npm:3.1.20"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 3/4788d36edcfec7bb32ddf33ed8f1f46df2867f70e9b1993bb131f7677e04ead2b621e5d614d2736308be18db1d54208d8ab207b4586bd5b052f71fb9d4c0ebea
+  languageName: node
+  linkType: hard
+
 "nanomatch@npm:^1.2.1, nanomatch@npm:^1.2.9":
   version: 1.2.13
   resolution: "nanomatch@npm:1.2.13"
@@ -12398,7 +12433,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"popper.js@npm:^1.15.0":
+"popper.js@npm:^1.16.0":
   version: 1.16.1
   resolution: "popper.js@npm:1.16.1"
   checksum: 3/eb53806fb7680e31c7d1db096f95438a40a7cb869f7ee0e27100c0860f11583a0d322606c6073618e7fe8865f834ec36482901b547256d9a0cf2b22434bca75d
@@ -12918,6 +12953,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "postcss@npm:8.2.1"
+  dependencies:
+    colorette: ^1.2.1
+    nanoid: ^3.1.20
+    source-map: ^0.6.1
+  checksum: 3/aa7ba3d80a4d8e25bc1a3f61461d7f6b60d361fb1301465d0eb973c5f38b347ad0842b02b8cc8801ede46559391d7c640c7313301a829ef9ca77e34be7230854
+  languageName: node
+  linkType: hard
+
 "posthtml-parser@npm:^0.2.0, posthtml-parser@npm:^0.2.1":
   version: 0.2.1
   resolution: "posthtml-parser@npm:0.2.1"
@@ -13312,6 +13358,20 @@ fsevents@~2.1.2:
   bin:
     purgecss: bin/purgecss
   checksum: 3/cd04fc853eb92135de870e7f4479ba1d74f2c0eadf3b281133752880811431fb6d8e03b92fbdee9c75043fb566ceb0296ce525a4b91e1883e321f62f8e597cc4
+  languageName: node
+  linkType: hard
+
+"purgecss@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "purgecss@npm:3.1.3"
+  dependencies:
+    commander: ^6.0.0
+    glob: ^7.0.0
+    postcss: ^8.2.1
+    postcss-selector-parser: ^6.0.2
+  bin:
+    purgecss: bin/purgecss.js
+  checksum: 3/3925b81adfd656041b0285cb42c8119185ccfe059c53f8036f2846c4d14cfa36b1a2f6ab3fb81f28364d92c8a5599ff5ac82cad473e5a1e98d81e8540621cf6a
   languageName: node
   linkType: hard
 
@@ -16211,14 +16271,14 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"v-tooltip@npm:2.0.2":
-  version: 2.0.2
-  resolution: "v-tooltip@npm:2.0.2"
+"v-tooltip@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "v-tooltip@npm:2.0.3"
   dependencies:
-    lodash: ^4.17.11
-    popper.js: ^1.15.0
+    lodash: ^4.17.15
+    popper.js: ^1.16.0
     vue-resize: ^0.4.5
-  checksum: 3/c20162f55833e2b6e528d267929bfc7e16441e7675d84037cb83bfbc478e945b710a7283976282daa5feafd6781ad8672ce6febc3a0ddc28914320ec0ef77e8b
+  checksum: 3/3779e2a60790807e5e0c2a77b28143634ed179c94169e76a8b80392a330030e971516e4321329ad9d15fe916edab6691065b0f3d937a8b0ea3fff09343e7aebe
   languageName: node
   linkType: hard
 
