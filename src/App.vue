@@ -138,7 +138,7 @@ export default class App extends Vue {
     this.$store.dispatch("network/setBlocktime", response.constants.blocktime);
     this.$store.dispatch("network/setHasHtlcEnabled", !!response.constants.htlcEnabled);
 
-    this.$store.dispatch("network/setActiveDelegates", network.activeDelegates);
+    this.$store.dispatch("network/setActiveDelegates", response.constants.activeDelegates);
 
     if (network.alias === "Main") {
       try {
