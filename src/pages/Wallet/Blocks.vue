@@ -1,9 +1,9 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("COMMON.BLOCKS") }}</ContentHeader>
 
     <section class="mb-5">
-      <div class="flex items-center justify-between px-5 py-8 sm:px-10 bg-theme-feature-background xl:rounded-lg">
+      <div class="flex justify-between items-center py-8 px-5 sm:px-10 bg-theme-feature-background xl:rounded-lg">
         <div class="flex-none mr-6">
           <SvgIcon class="block" name="block" view-box="0 0 35 38" />
         </div>

@@ -5,7 +5,7 @@
     </p>
 
     <div class="flex flex-wrap justify-between">
-      <div class="w-full mb-4 lg:w-64 lg:mb-0">
+      <div class="mb-4 w-full lg:w-64 lg:mb-0">
         <InputSelect
           :select-options="selectOptions"
           :label="$t('COMMON.TYPE')"
@@ -16,7 +16,7 @@
         />
       </div>
 
-      <div class="flex w-full mb-4 lg:w-56 lg:mb-0">
+      <div class="flex mb-4 w-full lg:w-56 lg:mb-0">
         <div class="w-1/2 mr-3">
           <InputNumber
             :label="$t('PAGES.ADVANCED_SEARCH.TRANSACTION.AMOUNT_FROM')"
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="flex w-full mb-4 lg:w-56 lg:mb-0">
+      <div class="flex mb-4 w-full lg:w-56 lg:mb-0">
         <div class="w-1/2 mr-3">
           <InputNumber
             :label="$t('PAGES.ADVANCED_SEARCH.TRANSACTION.FEE_FROM')"
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="flex w-full mb-4 lg:w-auto lg:mb-0">
+      <div class="flex mb-4 w-full lg:w-auto lg:mb-0">
         <div class="w-1/2 mr-3">
           <InputDate
             :label="$t('PAGES.ADVANCED_SEARCH.GENERIC.DATE_FROM')"

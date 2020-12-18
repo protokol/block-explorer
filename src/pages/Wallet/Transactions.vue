@@ -1,9 +1,9 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("COMMON.TRANSACTIONS") }}</ContentHeader>
 
     <section class="mb-5">
-      <div class="flex items-center justify-between px-5 py-8 sm:px-10 bg-theme-feature-background xl:rounded-lg">
+      <div class="flex justify-between items-center py-8 px-5 sm:px-10 bg-theme-feature-background xl:rounded-lg">
         <div class="relative flex-none mr-6">
           <SvgIcon class="block" name="transaction" view-box="0 0 43 39" />
           <div
@@ -39,7 +39,7 @@
             </span>
             <ul
               v-show="selectOpen"
-              class="absolute right-0 mt-px overflow-hidden text-sm border rounded bg-theme-content-background shadow-theme"
+              class="overflow-hidden absolute right-0 mt-px text-sm rounded border bg-theme-content-background shadow-theme"
             >
               <li v-for="type in availableTransactionTypes" :key="type">
                 <RouterLink

@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("PAGES.ADVANCED_SEARCH.TITLE") }}</ContentHeader>
 
     <section class="py-5 mb-5 page-section md:py-10">

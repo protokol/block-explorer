@@ -6,7 +6,7 @@
         <p class="mb-6 semibold text-grey">{{ $t("MODAL_SETTINGS.DESCRIPTION") }}</p>
       </div>
 
-      <div v-if="isLoading" class="absolute inset-0 z-10 flex flex-col items-center justify-center">
+      <div v-if="isLoading" class="flex absolute inset-0 z-10 flex-col justify-center items-center">
         <Loader :data="null" />
       </div>
 
@@ -74,7 +74,7 @@
           {{ $t("COMMON.CANCEL") }}
         </button>
         <button
-          class="px-8 py-4 SettingsModal__save__button action-button"
+          class="py-4 px-8 SettingsModal__save__button action-button"
           :disabled="(showDisclaimer && !hasAcceptedTerms) || isLoading"
           @click="save"
         >

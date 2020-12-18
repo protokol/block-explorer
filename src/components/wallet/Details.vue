@@ -3,12 +3,12 @@
     <!-- Desktop -->
     <div class="hidden WalletHeaderDesktop md:flex xl:rounded-lg">
       <button
-        class="flex-none p-3 ml-10 mr-6 transition rounded address-button hover-button-shadow"
+        class="flex-none p-3 mr-6 ml-10 rounded transition address-button hover-button-shadow"
         @click="toggleModal"
       >
         <SvgIcon class="block" name="qr" view-box="0 0 29 29" />
       </button>
-      <div v-if="view === 'public'" class="flex-auto min-w-0 pr-8">
+      <div v-if="view === 'public'" class="flex-auto pr-8 min-w-0">
         <div class="flex items-center mb-2 text-grey">
           <span>{{ $t("WALLET.ADDRESS") }}</span>
           <SvgIcon
@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div v-if="view === 'private' && wallet.publicKey" class="flex-auto min-w-0 pr-8">
+      <div v-if="view === 'private' && wallet.publicKey" class="flex-auto pr-8 min-w-0">
         <div class="mb-2 text-grey">
           {{ $t("WALLET.PUBLIC_KEY") }}
         </div>
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div v-if="view === 'public'" class="flex-none border-r border-grey-dark px-9">
+      <div v-if="view === 'public'" class="flex-none px-9 border-r border-grey-dark">
         <div class="mb-2 text-grey">
           {{ $t("WALLET.BALANCE", { token: networkToken() }) }}
         </div>
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div v-if="view === 'public' && hasLockedBalance" class="flex-none border-r border-grey-dark px-9">
+      <div v-if="view === 'public' && hasLockedBalance" class="flex-none px-9 border-r border-grey-dark">
         <div class="flex items-center mb-2 text-grey">
           {{ $t("WALLET.LOCKED_BALANCE") }}
           <SvgIcon class="ml-2" name="locked-balance" view-box="0 0 16 17" />
@@ -91,7 +91,7 @@
         <button
           :disabled="!wallet.publicKey"
           :class="view === 'public' ? 'bg-blue-darker' : 'bg-transparent text-blue-light'"
-          class="px-3 py-3 text-xs font-normal text-white transition rounded-md hover:text-blue"
+          class="py-3 px-3 text-xs font-normal text-white rounded-md transition hover:text-blue"
           @click="setView('public')"
         >
           <SvgIcon class="block" name="globe" view-box="0 0 17 17" />
@@ -99,7 +99,7 @@
         <button
           v-if="wallet.publicKey"
           :class="view === 'private' ? 'bg-blue-darker' : 'bg-transparent text-blue-light'"
-          class="px-3 py-3 text-xs font-normal text-white transition rounded-md hover:text-blue"
+          class="py-3 px-3 text-xs font-normal text-white rounded-md transition hover:text-blue"
           @click="setView('private')"
         >
           <SvgIcon class="block" name="key" view-box="0 0 13 14" />
@@ -108,7 +108,7 @@
     </div>
 
     <!-- Mobile -->
-    <div v-if="wallet.address" class="px-5 py-10 overflow-hidden sm:px-10 bg-theme-feature-background md:hidden">
+    <div v-if="wallet.address" class="overflow-hidden py-10 px-5 sm:px-10 bg-theme-feature-background md:hidden">
       <div class="flex justify-center mb-6">
         <div class="flex items-center p-2 mx-auto bg-white rounded">
           <QrCode :value="wallet.address" :options="{ size: 160 }" />

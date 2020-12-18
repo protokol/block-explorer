@@ -7,14 +7,14 @@
     <div class="flex w-full sm:hidden">
       <span
         :class="`bg-${backgroundColor} text-${secondaryTextColor}`"
-        class="flex items-center px-6 py-4 text-xs rounded-l"
+        class="flex items-center py-4 px-6 text-xs rounded-l"
       >
         {{ $t("COMMON.TYPE") }}
       </span>
 
       <span
         :class="`border-${backgroundColor} text-${primaryTextColor}`"
-        class="flex items-center justify-between flex-1 p-4 border rounded-r cursor-pointer"
+        class="flex flex-1 justify-between items-center p-4 rounded-r border cursor-pointer"
         @click="toggleDropdown"
       >
         <span class="font-bold">

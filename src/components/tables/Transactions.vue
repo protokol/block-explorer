@@ -52,10 +52,10 @@
         </div>
 
         <div v-else-if="data.column.field === 'confirmations'">
-          <div class="flex items-center justify-end whitespace-no-wrap">
+          <div class="flex justify-end items-center whitespace-no-wrap">
             <div
               v-if="data.row.confirmations <= activeDelegates"
-              class="flex items-center justify-end whitespace-no-wrap text-green"
+              class="flex justify-end items-center whitespace-no-wrap text-green"
             >
               <span class="inline-block mr-2">{{ readableNumber(data.row.confirmations) }}</span>
               <SvgIcon class="flex-none icon" name="became-active" view-box="0 0 16 16" />

@@ -1,9 +1,9 @@
 <template>
-  <div v-if="block" class="max-w-2xl mx-auto md:pt-5">
+  <div v-if="block" class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("COMMON.BLOCK") }}</ContentHeader>
 
     <template v-if="blockNotFound">
-      <section class="px-6 py-5 page-section md:py-10">
+      <section class="py-5 px-6 page-section md:py-10">
         <div class="my-10 text-center">
           <NotFound :is-loading="isLoading" :data-id="block.id" data-type="block" @reload="onReload" />
         </div>

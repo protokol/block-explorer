@@ -21,7 +21,7 @@
       :placeholder="placeholder"
       :class="{ 'text-grey': nightMode }"
       type="search"
-      class="flex-auto w-full py-4 pl-4 mr-2 bg-transparent search-input"
+      class="flex-auto py-4 pl-4 mr-2 w-full bg-transparent search-input"
       @keyup.enter="search"
     />
 

@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="flex w-full mb-4 lg:w-auto lg:mb-0">
+      <div class="flex mb-4 w-full lg:w-auto lg:mb-0">
         <div class="w-1/2 mr-3">
           <InputDate
             :label="$t('PAGES.ADVANCED_SEARCH.GENERIC.DATE_FROM')"
@@ -62,7 +62,7 @@
     </div>
 
     <div class="flex flex-wrap justify-between mb-4">
-      <div class="w-full mb-4 md:mb-0">
+      <div class="mb-4 w-full md:mb-0">
         <InputText
           :label="$t('BLOCK.GENERATED_BY')"
           name="generatorPublicKey"

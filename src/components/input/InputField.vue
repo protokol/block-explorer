@@ -11,13 +11,13 @@
     class="InputField"
   >
     <div
-      class="relative inline-flex items-end w-full mb-1 appearance-none InputField__wrapper"
+      class="inline-flex relative items-end mb-1 w-full appearance-none InputField__wrapper"
       :class="type !== 'textarea' ? 'h-12' : ''"
     >
       <slot :inputClass="inputClass" />
       <label
         v-show="label"
-        class="absolute truncate pointer-events-none text-grey"
+        class="absolute pointer-events-none truncate text-grey"
         :class="type !== 'textarea' ? 'InputField__label' : 'InputField__label__textarea'"
         >{{ label }}</label
       >

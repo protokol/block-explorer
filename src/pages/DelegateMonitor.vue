@@ -1,11 +1,11 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("PAGES.DELEGATE_MONITOR.TITLE") }}</ContentHeader>
 
     <MonitorHeader />
 
     <section class="py-5 page-section md:py-10">
-      <nav class="flex items-end mx-5 mb-4 overflow-x-auto border-b sm:mx-10">
+      <nav class="flex overflow-x-auto items-end mx-5 mb-4 border-b sm:mx-10">
         <div :class="activeTab === 'active' ? 'active-tab' : 'inactive-tab'" @click="activeTab = 'active'">
           {{ $t("PAGES.DELEGATE_MONITOR.ACTIVE") }}
         </div>

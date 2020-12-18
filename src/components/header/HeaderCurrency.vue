@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center px-2 py-3 text-sm md:px-4 md:py-6 mt-2px">
+  <div class="flex items-center py-3 px-2 text-sm md:px-4 md:py-6 mt-2px">
     <SvgIcon class="flex-none md:mr-2 text-link-color" :name="`currencies/${currencyName}`" view-box="0 0 22 16" />
     <span class="hidden whitespace-no-wrap text-theme-text-content md:inline-block">
       {{ networkToken() }}/{{ currencyName }}: {{ rawCurrency(currencyRate, currencyName) }}

@@ -1,9 +1,9 @@
 <template>
-  <div v-if="transaction" class="max-w-2xl mx-auto md:pt-5">
+  <div v-if="transaction" class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("COMMON.TRANSACTION") }}</ContentHeader>
 
     <template v-if="transactionNotFound">
-      <section class="px-6 py-5 page-section md:py-10">
+      <section class="py-5 px-6 page-section md:py-10">
         <div class="my-10 text-center">
           <NotFound :is-loading="isLoading" :data-id="transaction.id" data-type="transaction" @reload="onReload" />
         </div>
@@ -12,7 +12,7 @@
 
     <template v-else>
       <section class="mb-5">
-        <div class="flex items-center justify-between px-5 py-8 sm:px-10 bg-theme-feature-background xl:rounded-lg">
+        <div class="flex justify-between items-center py-8 px-5 sm:px-10 bg-theme-feature-background xl:rounded-lg">
           <div class="relative flex-none mr-6">
             <SvgIcon class="block" name="transaction" view-box="0 0 43 39" />
             <div

@@ -2,7 +2,7 @@
   <Portal to="modal">
     <transition name="modal" appear>
       <div class="modal-mask" @click="emitOutsideClick()">
-        <div class="absolute inset-0 flex items-center justify-center">
+        <div class="flex absolute inset-0 justify-center items-center">
           <div
             :class="containerClasses"
             class="relative p-6 mx-4 rounded modal-container bg-theme-page-background text-theme-text-content shadow-theme sm:mx-auto sm:p-10"

@@ -2,18 +2,18 @@
   <header v-click-outside="closeHeader" class="mb-5 AppHeader min-h-50px md:min-h-80px sm:mb-10 xl:rounded-md">
     <RouterLink
       :to="{ name: 'home' }"
-      class="flex items-center justify-center flex-none text-2xl logo-container w-50px md:w-80px h-50px md:h-80px bg-theme-accents xl:rounded-l-md"
+      class="flex flex-none justify-center items-center text-2xl logo-container w-50px md:w-80px h-50px md:h-80px bg-theme-accents xl:rounded-l-md"
     >
       <img class="logo max-w-25px md:max-w-38px" src="@/assets/images/protokol-logo-primary.svg" />
     </RouterLink>
 
-    <div class="relative hidden w-full xl:flex">
+    <div class="hidden relative w-full xl:flex">
       <HeaderSearch v-if="headerType === 'search'" />
       <HeaderDefault v-else />
       <HeaderMenuDesktop v-if="menuVisible" :entries="menuEntries" />
     </div>
 
-    <div class="relative flex w-full xl:hidden">
+    <div class="flex relative w-full xl:hidden">
       <HeaderSearch v-if="headerType === 'search'" />
       <HeaderDefault v-else />
     </div>

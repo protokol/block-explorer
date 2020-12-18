@@ -1,8 +1,8 @@
 <template>
   <section
-    class="flex flex-col items-center px-5 py-8 mb-5 bg-theme-feature-background xl:rounded-lg md:flex-row sm:px-10"
+    class="flex flex-col items-center py-8 px-5 mb-5 bg-theme-feature-background xl:rounded-lg md:flex-row sm:px-10"
   >
-    <div class="flex items-center flex-auto w-full mb-5 truncate md:w-auto md:mb-0 md:mr-10">
+    <div class="flex flex-auto items-center mb-5 w-full truncate md:w-auto md:mb-0 md:mr-10">
       <SvgIcon class="mr-6" name="block" view-box="0 0 35 38" />
       <div class="flex-auto min-w-0">
         <div class="mb-2 text-grey">

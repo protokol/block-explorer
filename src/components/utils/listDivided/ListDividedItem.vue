@@ -1,5 +1,5 @@
 <template>
-  <li class="flex flex-col w-full py-4 border-b border-dashed ListDividedItem border-theme-line-separator">
+  <li class="flex flex-col py-4 w-full border-b border-dashed ListDividedItem border-theme-line-separator">
     <div class="flex justify-between">
       <div class="flex flex-col ListDividedItem__container__label">
         <span :class="itemLabelClass" class="ListDividedItem__label">{{ label }}</span>

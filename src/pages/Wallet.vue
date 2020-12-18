@@ -1,5 +1,5 @@
 <template>
-  <div v-if="wallet" class="max-w-2xl mx-auto md:pt-5">
+  <div v-if="wallet" class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("WALLET.SUMMARY") }}</ContentHeader>
 
     <WalletDetails :wallet="wallet" />

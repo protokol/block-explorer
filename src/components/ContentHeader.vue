@@ -5,7 +5,7 @@
         <slot />
       </h1>
       <div
-        class="items-center hidden px-3 py-3 mb-5 text-xs rounded-md sm:flex text-theme-text-tertiary sm:px-8 xl:px-6 md:mb-6 bg-stat-background"
+        class="hidden items-center py-3 px-3 mb-5 text-xs rounded-md sm:flex text-theme-text-tertiary sm:px-8 xl:px-6 md:mb-6 bg-stat-background"
       >
         <div class="pr-6">{{ $t("COMMON.HEIGHT") }}: {{ readableNumber(height) }}</div>
         <div class="pr-6">{{ $t("HEADER.NETWORK") }}: {{ $t(`HEADER.${alias.replace(" ", "_").toUpperCase()}`) }}</div>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div
-      class="flex items-center justify-between px-5 py-3 text-xs sm:hidden text-theme-text-tertiary sm:px-8 xl:px-6 bg-stat-background"
+      class="flex justify-between items-center py-3 px-5 text-xs sm:hidden text-theme-text-tertiary sm:px-8 xl:px-6 bg-stat-background"
     >
       <div class="mr-2">
         <span>{{ $t("COMMON.HEIGHT") }}:</span>

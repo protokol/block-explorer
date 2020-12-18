@@ -1,5 +1,5 @@
 <template>
-  <div class="items-center hidden lg:flex">
+  <div class="hidden items-center lg:flex">
     <div class="flex-none mr-6 text-blue">
       <SvgIcon class="block" name="group" view-box="0 0 47 38" />
     </div>

@@ -2,7 +2,7 @@
   <div class="PriceChart">
     <div
       v-if="hasError || isLoading"
-      class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white"
+      class="flex absolute inset-0 z-10 flex-col justify-center items-center text-white"
     >
       <p v-if="hasError" class="mb-4">{{ $t("MARKET_CHART.ERROR") }}</p>
       <button :disabled="isLoading" class="items-center mt-4 pager-button" @click="renderChart(1000)">
@@ -12,7 +12,7 @@
     </div>
 
     <div :key="componentKey" :class="{ blur: hasError || isLoading }">
-      <div class="flex items-center justify-between px-10 pt-8 pb-4">
+      <div class="flex justify-between items-center px-10 pt-8 pb-4">
         <div class="relative">
           <button
             v-click-outside="closeDropdown"
@@ -25,7 +25,7 @@
 
           <ul
             v-show="isOpen"
-            class="absolute left-0 mt-px overflow-hidden text-sm border rounded bg-theme-content-background shadow-theme"
+            class="overflow-hidden absolute left-0 mt-px text-sm rounded border bg-theme-content-background shadow-theme"
           >
             <li v-for="type in ['price', 'volume']" :key="type">
               <span class="dropdown-button" @click="setType(type)"

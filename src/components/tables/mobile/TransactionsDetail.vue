@@ -67,10 +67,10 @@
           <div class="mr-4">
             {{ $t("COMMON.CONFIRMATIONS") }}
           </div>
-          <div class="flex items-center justify-end">
+          <div class="flex justify-end items-center">
             <div
               v-if="transaction.confirmations <= activeDelegates"
-              class="flex items-center justify-end whitespace-no-wrap text-green"
+              class="flex justify-end items-center whitespace-no-wrap text-green"
             >
               <span class="inline-block mr-2">{{ readableNumber(transaction.confirmations) }}</span>
               <SvgIcon class="flex-none icon" name="became-active" view-box="0 0 16 16" />

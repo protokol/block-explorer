@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader
       >{{ $t("WALLET.DELEGATE.VOTERS") }} <span v-if="delegate">- {{ delegate.username }}</span></ContentHeader
     >

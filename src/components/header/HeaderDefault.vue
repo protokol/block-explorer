@@ -11,12 +11,12 @@
         <SvgIcon class="flex-none mr-3" name="menu" view-box="0 0 15 13" />
         <span class="semibold">{{ $t("HEADER.MENU") }}</span>
       </button>
-      <span class="mx-2 my-4 border-r md:mx-4 lg:mx-6" />
-      <div class="flex items-center justify-center flex-auto">
+      <span class="my-4 mx-2 border-r md:mx-4 lg:mx-6" />
+      <div class="flex flex-auto justify-center items-center">
         <label for="search" class="hidden">{{ $t("SEARCH.PLACEHOLDER.SHORT") }}</label>
         <input
           :placeholder="placeholder"
-          class="flex-auto hidden w-full py-2 bg-transparent search-input sm:block sm:mr-2 md:py-4 sm:pl-4"
+          class="hidden flex-auto py-2 w-full bg-transparent search-input sm:block sm:mr-2 md:py-4 sm:pl-4"
           @focus="$store.dispatch('ui/setHeaderType', 'search')"
         />
         <label
@@ -28,10 +28,10 @@
         </label>
       </div>
 
-      <span v-if="showCurrency" class="block mx-2 my-4 border-r md:mx-4 lg:mx-6" />
+      <span v-if="showCurrency" class="block my-4 mx-2 border-r md:mx-4 lg:mx-6" />
       <HeaderCurrency v-if="showCurrency" />
 
-      <span class="block mx-2 my-4 border-r md:mx-4 lg:mx-6" />
+      <span class="block my-4 mx-2 border-r md:mx-4 lg:mx-6" />
       <HeaderSettings />
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <Modal v-if="address" @close="emitClose">
-    <div :class="{ 'max-w-sm': !isCollapsed }" class="px-10 py-2 text-center">
+    <div :class="{ 'max-w-sm': !isCollapsed }" class="py-2 px-10 text-center">
       <p class="mb-4 text-3xl semibold">
         {{ $t("WALLET.QR_CODE") }}
       </p>
@@ -8,7 +8,7 @@
         {{ $t(`WALLET.SCAN_FOR_${isCollapsed ? "ADDRESS" : "URI"}`) }}
       </p>
 
-      <div class="flex items-center justify-between">
+      <div class="flex justify-between items-center">
         <QrCode class="rounded" :value="qrValue" :options="{ size: 160 }" />
         <div v-if="!isCollapsed" class="ml-8">
           <InputNumber :label="$t('TRANSACTION.AMOUNT')" name="amount" @input="onInputChange" />
@@ -18,7 +18,7 @@
 
       <div v-if="!isCollapsed" class="flex items-center mt-4">
         <span
-          class="block px-4 py-2 mx-auto mr-2 overflow-x-auto font-mono text-white whitespace-no-wrap rounded bg-theme-feature-background"
+          class="block overflow-x-auto py-2 px-4 mx-auto mr-2 font-mono text-white rounded whitespace-no-wrap bg-theme-feature-background"
           >{{ qrValue }}</span
         >
         <Clipboard :value="qrValue" />

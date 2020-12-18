@@ -1,6 +1,6 @@
 <template>
-  <div class="hidden px-10 ml-10 border-l border-r xl:block border-grey-dark">
-    <div class="min-w-0 mb-2 text-grey">
+  <div class="hidden px-10 ml-10 border-r border-l xl:block border-grey-dark">
+    <div class="mb-2 min-w-0 text-grey">
       {{ $t("PAGES.DELEGATE_MONITOR.HEADER.TOTAL_FORGED", { token: networkToken() }) }}
     </div>
     <div class="text-lg text-white truncate">

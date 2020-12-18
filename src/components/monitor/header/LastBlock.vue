@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between flex-auto lg:ml-10">
+  <div class="flex flex-auto justify-between lg:ml-10">
     <div>
-      <div class="min-w-0 mb-2 text-grey">
+      <div class="mb-2 min-w-0 text-grey">
         {{ $t("PAGES.DELEGATE_MONITOR.HEADER.LAST_BLOCK") }}
       </div>
       <div v-if="block && block.id" class="text-lg truncate">
@@ -10,7 +10,7 @@
     </div>
 
     <div class="hidden md:block">
-      <div class="min-w-0 mb-2 text-grey">
+      <div class="mb-2 min-w-0 text-grey">
         {{ $t("PAGES.DELEGATE_MONITOR.HEADER.FORGED") }}
       </div>
       <div class="text-lg text-white truncate">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="w-32">
-      <div class="min-w-0 mb-2 text-grey">
+      <div class="mb-2 min-w-0 text-grey">
         {{ $t("COMMON.DELEGATE") }}
       </div>
       <div class="text-lg text-white truncate semibold">

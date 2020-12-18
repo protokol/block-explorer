@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto md:pt-5">
+  <div class="mx-auto max-w-2xl md:pt-5">
     <ContentHeader>{{ $t("PAGES.HOME.HEADER") }}</ContentHeader>
 
     <section v-if="isChartEnabled" class="hidden mb-5 md:block bg-theme-feature-background xl:rounded-lg">
@@ -10,7 +10,7 @@
       <div class="flex flex-col items-center mx-5 mb-4 sm:flex-row sm:mx-0 sm:mb-8">
         <nav
           :class="dataView === 'transactions' ? 'mb-8 sm:mb-4' : 'mb-4'"
-          class="flex items-end w-full mx-5 border-b sm:mx-10"
+          class="flex items-end mx-5 w-full border-b sm:mx-10"
         >
           <div :class="dataView === 'transactions' ? 'active-tab' : 'inactive-tab'" @click="dataView = 'transactions'">
             {{ $t("PAGES.HOME.LATEST_TRANSACTIONS") }}
