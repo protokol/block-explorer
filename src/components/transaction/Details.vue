@@ -762,7 +762,7 @@ export default class TransactionDetails extends Vue {
   }
 
   private getRandomId(): string {
-    return uuid.v5();
+    return uuid.v1();
   }
 }
 </script>
