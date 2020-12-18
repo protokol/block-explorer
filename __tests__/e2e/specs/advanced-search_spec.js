@@ -1,6 +1,6 @@
 describe("Advanced Search", () => {
   beforeEach(() => {
-    cy.visit("/advanced-search");
+    cy.visit("/advanced-search/1");
   });
 
   it("should show the transaction search form", () => {
