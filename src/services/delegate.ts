@@ -67,7 +67,7 @@ class DelegateService {
   }
 
   public async voterCountV2(query: string): Promise<number> {
-    const response = (await ApiService.get(`delegates/${query}/voters`));
+    const response = await ApiService.get(`delegates/${query}/voters`);
     return response.meta.totalCount;
   }
 

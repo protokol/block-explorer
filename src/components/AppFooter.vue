@@ -3,11 +3,9 @@
     <div class="mb-4 text-center lg:mb-0 md:text-left">
       <span class="block mb-4 text-center md:inline-block md:mb-0">
         &copy;
-        <a :href="brandData.footer.protokolUrl" target="_blank">{{ brandData.footer.protokolText }}</a> |
-         &copy;
+        <a :href="brandData.footer.protokolUrl" target="_blank">{{ brandData.footer.protokolText }}</a> | &copy;
         <a :href="brandData.footer.arkUrl" target="_blank">{{ brandData.footer.arkText }}</a>
-        | {{ year }}.
-        {{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span
+        | {{ year }}. {{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span
       >
       <div class="block md:inline-block">
         <span class="hidden px-1 md:inline-block">|</span>
