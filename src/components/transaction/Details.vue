@@ -533,7 +533,7 @@
         <div v-if="transaction.asset.setUserPermissions.deny" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
           <div>
-            <div v-for="value in transaction.asset.setUserPermissions.deny">
+            <div v-for="value in transaction.asset.setUserPermissions.deny" :key="`${value}${getRandomId()}`">
               {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
             </div>
           </div>
