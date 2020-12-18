@@ -294,7 +294,11 @@
           <div class="list-row-border-b">
             <div>
               <h4 class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`) }}</h4>
-              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" :key="`${driver.number}${getRandomId()}`" class="mb-4">
+              <div
+                v-for="driver in transaction.asset.nftToken.attributes.drivers"
+                :key="`${driver.number}${getRandomId()}`"
+                class="mb-4"
+              >
                 <div>{{ driver.name }}</div>
                 <div>Number {{ driver.number }}</div>
                 <img v-if="driver.ipfsHashImage" :src="getImage(driver.ipfsHashImage)" alt="" />

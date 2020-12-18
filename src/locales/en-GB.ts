@@ -157,7 +157,7 @@ export default {
       NOTARIZATION: "Notarization",
     },
     NOTARIZATION: {
-      HASH: "Notarization hash"
+      HASH: "Notarization hash",
     },
     NFT_REGISTER_COLLECTION: {
       COLLECTION: "Collection",
@@ -244,7 +244,7 @@ export default {
       WALLET: "Wallet",
       GROUPS: "Group names",
       ALLOWED_TRANSACTIONS: "Allowed transactions",
-      DENIED_TRANSACTIONS: "Denied transactions"
+      DENIED_TRANSACTIONS: "Denied transactions",
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
