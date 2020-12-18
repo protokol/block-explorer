@@ -36,7 +36,6 @@ import { knownWalletsUrls } from "@/config";
 import { mapGetters } from "vuex";
 import axios from "axios";
 import moment from "moment";
-import * as url from "url";
 
 @Component({
   computed: {
@@ -60,17 +59,25 @@ export default class App extends Vue {
   private nightMode: boolean;
   private hasBlurFilter = false;
 
+  private server: string = null;
+
+  public async beforeCreate() {
+    try {
+      const server = (await axios.get(`${window.location.protocol}//${window.location.host}/config.json`)).data.server;
+      if (server !== undefined) {
+        this.server = server;
+      }
+      // eslint-disable-next-line no-empty
+    } catch {}
+  }
+
   public async created() {
     MigrationService.executeMigrations();
     const network = require(`../networks/${process.env.VUE_APP_EXPLORER_CONFIG}`);
 
-    try {
-      const server = (await axios.get(`${window.location.protocol}//${window.location.host}/config.json`)).data.server;
-      if (server !== undefined) {
-        network.server = server;
-      }
-      // eslint-disable-next-line no-empty
-    } catch {}
+    if (this.server) {
+      network.server = this.server;
+    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const ip = urlParams.get("ip");
