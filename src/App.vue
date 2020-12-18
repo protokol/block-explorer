@@ -81,7 +81,7 @@ export default class App extends Vue {
       network.server = url;
     }
 
-    Managers.configManager.setFromPreset(process.env.VUE_APP_EXPLORER_CONFIG || ("devnet" as any));
+    // Managers.configManager.setFromPreset(process.env.VUE_APP_EXPLORER_CONFIG || ("devnet" as any));
 
     const nightMode = localStorage.getItem("nightMode");
 
