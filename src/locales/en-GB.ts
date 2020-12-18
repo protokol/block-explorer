@@ -4,8 +4,8 @@ export default {
     BLOCK: "Block",
     BLOCKS: "Blocks",
     CONFIRMATIONS: "Confirmations",
-    DELEGATE: "Delegate",
-    DELEGATES: "Delegates",
+    DELEGATE: "Validator",
+    DELEGATES: "Validators",
     EXPIRATION: "Expiration",
     FEE: "Fee",
     HEIGHT: "Height",
@@ -237,7 +237,7 @@ export default {
       DEFAULT: "Is group set to default",
       PRIORITY: "Group priority",
       ALLOWED_TRANSACTIONS: "Allowed transactions",
-      DENIED_TRANSACTIONS: "Denied transactions"
+      DENIED_TRANSACTIONS: "Denied transactions",
     },
     GUARDIAN_SET_USER_PERMISSIONS: {
       USER_PERMISSIONS: "User permissions",
@@ -332,7 +332,7 @@ export default {
       TITLE: "Delegates",
     },
     DELEGATE_MONITOR: {
-      TITLE: "Delegate Monitor",
+      TITLE: "Validator Monitor",
       HEADER: {
         LAST_BLOCK: "Last block",
         FORGED: "Forged",
