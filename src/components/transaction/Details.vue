@@ -294,7 +294,7 @@
           <div class="list-row-border-b">
             <div>
               <h4 class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`) }}</h4>
-              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" class="mb-4">
+              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" :key="`${driver.number}${getRandomId()}`" class="mb-4">
                 <div>{{ driver.name }}</div>
                 <div>Number {{ driver.number }}</div>
                 <img v-if="driver.ipfsHashImage" :src="getImage(driver.ipfsHashImage)" alt="" />
@@ -550,7 +550,8 @@ import { TranslateResult } from "vue-i18n";
 import { mapGetters } from "vuex";
 import { ITransaction, ITransactionType } from "@/interfaces";
 import {
-  CoreTransaction, EBSITransactionTypes,
+  CoreTransaction,
+  EBSITransactionTypes,
   GuardianPermissionKind,
   MagistrateTransaction,
   NFTBaseTransactionTypes,
@@ -559,6 +560,7 @@ import {
 import { ApiService, CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
+import { uuid } from "vue-uuid";
 
 @Component({
   computed: {
@@ -757,6 +759,10 @@ export default class TransactionDetails extends Vue {
 
   private getImage(ipfsHash: string): string {
     return `https://cloudflare-ipfs.com/ipfs/${ipfsHash}`;
+  }
+
+  private getRandomId(): string {
+    return uuid.v5();
   }
 }
 </script>

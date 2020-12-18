@@ -1890,6 +1890,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^8.0.0":
+  version: 8.3.0
+  resolution: "@types/uuid@npm:8.3.0"
+  checksum: 3/620985aed8fdb4aed153daca5235f4303457a67a4d181efac0021712eabd9edd7e88895f79730c0e651effde7633b1b61e49a81519ac8d4e75019d2ac9b6412f
+  languageName: node
+  linkType: hard
+
 "@types/webpack-env@npm:^1.15.1":
   version: 1.15.2
   resolution: "@types/webpack-env@npm:1.15.2"
@@ -3189,6 +3196,7 @@ __metadata:
     vue-router: ^3.1.6
     vue-spinner: ^1.0.3
     vue-template-compiler: ^2.6.11
+    vue-uuid: ^2.0.2
     vuex: ^3.3.0
     vuex-router-sync: ^5.0.0
   languageName: unknown
@@ -16271,6 +16279,15 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
+"uuid@npm:^8.1.0":
+  version: 8.3.2
+  resolution: "uuid@npm:8.3.2"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 3/aed2bcef341f95635f308fea8831fb9038b18c485fe7e71feb89d2e05602dfecad0cb6f2246fae096d4da425cca6e8a71056f28abd97ad98cf770a2018853248
+  languageName: node
+  linkType: hard
+
 "v-tooltip@npm:2.0.2":
   version: 2.0.2
   resolution: "v-tooltip@npm:2.0.2"
@@ -16621,6 +16638,16 @@ resolve@1.1.7:
   version: 1.9.1
   resolution: "vue-template-es2015-compiler@npm:1.9.1"
   checksum: 3/e25c0d4603cafb76a2d2c2adbd5cc62f419377d23d65118bc19793320c6448ef80ae191a8d6ec88e62fdd7ecb33d54850b232b02110da94a1fcfac3e062e9e83
+  languageName: node
+  linkType: hard
+
+"vue-uuid@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "vue-uuid@npm:2.0.2"
+  dependencies:
+    "@types/uuid": ^8.0.0
+    uuid: ^8.1.0
+  checksum: 3/bc7e1f23973c202d41460cca9afc0266c7da4e84237ef8566b1c55ee7aba4832b1fef91861db9972dd5aec215c689c24d9e1c35e734eb3eb7c9cbdfffc6ef7c5
   languageName: node
   linkType: hard
 
