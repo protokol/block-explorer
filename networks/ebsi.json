@@ -1,8 +1,8 @@
 {
   "title": "Protokol Public Devnet",
-  "server": "https://proto-devnet.protokol.sh/api",
+  "server": "https://ebsi-devnet.protokol.sh/api",
   "alias": "Development",
-  "activeDelegates": 51,
+  "activeDelegates": 5,
   "rewardOffset": 10800,
   "currencies": [],
   "defaults": {
