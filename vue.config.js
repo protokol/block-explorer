@@ -17,7 +17,7 @@ args.baseUrl = minimist(process.argv.slice(2)).base || "/";
 args.network = minimist(process.argv.slice(2)).network || "devnet";
 args.networkConfig = require(path.resolve(__dirname, `networks/${args.network}.json`));
 // args.routerMode = minimist(process.argv.slice(2)).history ? "history" : "hash";
-args.routerMode = "history";
+args.routerMode = "hash";
 
 
 const argsPrint = [];
