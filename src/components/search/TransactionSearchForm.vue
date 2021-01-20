@@ -89,12 +89,12 @@
     <div v-if="type === 1">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Register Collection" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_REGISTER_COLLECTION`) }}
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Name'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_REGISTER_COLLECTION.NAME_LABEL`)"
               name="asset-nftCollection-name"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -104,7 +104,7 @@
 
           <div class="w-full lg:w-1/3">
             <InputNumber
-              :label="'Maximum supply'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_REGISTER_COLLECTION.MAXIMUM_SUPPLY_LABEL`)"
               name="asset-nftCollection-maximumSupply"
               class="my-3"
               @input="onInputChange"
@@ -113,7 +113,7 @@
           </div>
         </div>
         <InputText
-          :label="'Description'"
+          :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_REGISTER_COLLECTION.DESCRIPTION_LABEL`)"
           name="asset-nftCollection-description"
           class="pt-0"
           @input="onInputChange"
@@ -125,12 +125,12 @@
     <div v-else-if="type === 2">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Create Asset" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_CREATE`) }}
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Collection id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_CREATE_ASSET.COLLECTION_ID_LABEL`)"
               name="asset-nftToken-collectionId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -144,12 +144,12 @@
     <div v-else-if="type === 3">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Transfer" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_TRANSFER`) }}
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Asset id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_TRANSFER.ASSET_ID_LABEL`)"
               name="asset-nftTransfer-nftIds"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -158,7 +158,7 @@
           </div>
           <div class="w-full lg:w-1/3">
             <InputText
-              :label="'Recipient Address'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_TRANSFER.RECIPIENT_LABEL`)"
               name="asset-nftTransfer-recipientId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -172,12 +172,12 @@
     <div v-else-if="type === 4">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Burn" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_BURN`) }}
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Asset id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_BURN.ASSET_ID_LABEL`)"
               name="asset-nftBurn-nftId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -191,12 +191,12 @@
     <div v-else-if="type === 5">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Auction" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_AUCTION`) }}
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Asset id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION.ASSET_ID_LABEL`)"
               name="asset-nftAuction-nftIds"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -207,16 +207,32 @@
 
         <div class="flex w-full mb-4 lg:w-auto lg:mb-0">
           <div class="w-1/4">
-            <InputNumber :label="'Start amount from'" name="auction-amountFrom" class="mr-4 my-3" />
+            <InputNumber
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION.AMOUNT_FROM_LABEL`)"
+              name="auction-amountFrom"
+              class="mr-4 my-3"
+            />
           </div>
           <div class="w-1/4 mr-10">
-            <InputNumber :label="'Start amount to'" name="auction-amountTo" class="mr-4 my-3" />
+            <InputNumber
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION.AMOUNT_TO_LABEL`)"
+              name="auction-amountTo"
+              class="mr-4 my-3"
+            />
           </div>
           <div class="w-1/4">
-            <InputNumber :label="'Expiration from'" name="auction-expirationFrom" class="mr-4 my-3" />
+            <InputNumber
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION.EXPIRATION_FROM_LABEL`)"
+              name="auction-expirationFrom"
+              class="mr-4 my-3"
+            />
           </div>
           <div class="w-1/4">
-            <InputNumber :label="'Expiration to'" name="auction-expirationTo" class="mr-4 my-3" />
+            <InputNumber
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION.EXPIRATION_TO_LABEL`)"
+              name="auction-expirationTo"
+              class="mr-4 my-3"
+            />
           </div>
         </div>
       </div>
@@ -225,12 +241,12 @@
     <div v-else-if="type === 6">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Auction Cancel" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_AUCTION_CANCEL`) }}
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Auction id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_AUCTION_CANCEL.AUCTION_ID_LABEL`)"
               name="asset-nftAuctionCancel-auctionId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -244,12 +260,12 @@
     <div v-else-if="type === 7">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Bid" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_BID`) }}
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Auction id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_BID.AUCTION_ID_LABEL`)"
               name="asset-nftBid-auctionId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -259,10 +275,18 @@
           <div class="w-full lg:w-1/3">
             <div class="flex flex-wrap justify-between">
               <div class="w-1/2">
-                <InputNumber :label="'Bid amount from'" name="bid-amountFrom" class="mr-4 my-3" />
+                <InputNumber
+                  :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_BID.AMOUNT_FROM_LABEL`)"
+                  name="bid-amountFrom"
+                  class="mr-4 my-3"
+                />
               </div>
               <div class="w-1/2">
-                <InputNumber :label="'Bid amount to'" name="bid-amountFrom" class="mr-4 my-3" />
+                <InputNumber
+                  :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_BID.AMOUNT_TO_LABEL`)"
+                  name="bid-amountFrom"
+                  class="mr-4 my-3"
+                />
               </div>
             </div>
           </div>
@@ -273,12 +297,12 @@
     <div v-else-if="type === 8">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Bid Cancel" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_BID_CANCEL`) }}
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Bid id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_BID_CANCEL.BID_ID_LABEL`)"
               name="asset-nftBidCancel-bidId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -292,12 +316,12 @@
     <div v-else-if="type === 9">
       <div class="mx-5 mb-5 mb-10 sm:mx-10">
         <p class="mb-2 mt-4 font-bold">
-          {{ "NFT Accept Trade" }}
+          {{ $t(`TRANSACTION.TYPES.NFT_ACCEPT_TRADE`) }}
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Auction id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_ACCEPT_TRADE.AUCTION_ID_LABEL`)"
               name="asset-nftAcceptTrade-auctionId"
               class="mr-8 my-3"
               @input="onInputChange"
@@ -308,7 +332,7 @@
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
             <InputText
-              :label="'Bid id'"
+              :label="$t(`PAGES.ADVANCED_SEARCH.TRANSACTION.NFT.NFT_ACCEPT_TRADE.BID_ID_LABEL`)"
               name="asset-nftAcceptTrade-bidId"
               class="mr-8 my-3"
               @input="onInputChange"

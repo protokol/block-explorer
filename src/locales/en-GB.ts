@@ -157,7 +157,7 @@ export default {
       NOTARIZATION: "Notarization",
     },
     NOTARIZATION: {
-      HASH: "Notarization hash"
+      HASH: "Notarization hash",
     },
     NFT_REGISTER_COLLECTION: {
       COLLECTION: "Collection",
@@ -244,7 +244,7 @@ export default {
       WALLET: "Wallet",
       GROUPS: "Group names",
       ALLOWED_TRANSACTIONS: "Allowed transactions",
-      DENIED_TRANSACTIONS: "Denied transactions"
+      DENIED_TRANSACTIONS: "Denied transactions",
     },
     ASSET: {
       BRIDGECHAINASSETREPOSITORY: "Bridgechain Asset Repository",
@@ -387,6 +387,45 @@ export default {
         AMOUNT_TO: "Amount to",
         FEE_FROM: "Fee from",
         FEE_TO: "Fee to",
+        NFT: {
+          NFT_REGISTER_COLLECTION: {
+            NAME_LABEL: "Name",
+            MAXIMUM_SUPPLY_LABEL: "Maximum supply",
+            DESCRIPTION_LABEL: "Description",
+          },
+          NFT_CREATE_ASSET: {
+            COLLECTION_ID_LABEL: "Collection id",
+          },
+          NFT_TRANSFER: {
+            ASSET_ID_LABEL: "Asset id",
+            RECIPIENT_LABEL: "Recipient address",
+          },
+          NFT_BURN: {
+            ASSET_ID_LABEL: "Asset id",
+          },
+          NFT_AUCTION: {
+            ASSET_ID_LABEL: "Asset id",
+            AMOUNT_FROM_LABEL: "Start amount from",
+            AMOUNT_TO_LABEL: "Start amount to",
+            EXPIRATION_FROM_LABEL: "Expiration from",
+            EXPIRATION_TO_LABEL: "Expiration to",
+          },
+          NFT_AUCTION_CANCEL: {
+            AUCTION_ID_LABEL: "Auction id",
+          },
+          NFT_BID: {
+            AUCTION_ID_LABEL: "Auction id",
+            AMOUNT_FROM_LABEL: "Bid amount from",
+            AMOUNT_TO_LABEL: "Bid amount to",
+          },
+          NFT_BID_CANCEL: {
+            BID_ID_LABEL: "Bid id",
+          },
+          NFT_ACCEPT_TRADE: {
+            AUCTION_ID_LABEL: "Auction id",
+            BID_ID_LABEL: "Bid id",
+          },
+        },
       },
       WALLET: {
         BALANCE_FROM: "Balance from",
