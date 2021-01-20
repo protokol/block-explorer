@@ -93,14 +93,32 @@
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Name'" name="collection-name" class="mr-8 my-3" />
+            <InputText
+              :label="'Name'"
+              name="asset-nftCollection-name"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
 
           <div class="w-full lg:w-1/3">
-            <InputNumber :label="'Maximum supply'" name="collection-maximumSupply" class="my-3" />
+            <InputNumber
+              :label="'Maximum supply'"
+              name="asset-nftCollection-maximumSupply"
+              class="my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
-        <InputText :label="'Description'" name="collection-description" class="pt-0" />
+        <InputText
+          :label="'Description'"
+          name="asset-nftCollection-description"
+          class="pt-0"
+          @input="onInputChange"
+          @keyup.enter.native="onEnterKey"
+        />
       </div>
     </div>
 
@@ -111,7 +129,13 @@
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Collection id'" name="asset-collectionId" class="mr-8 my-3" />
+            <InputText
+              :label="'Collection id'"
+              name="asset-nftToken-collectionId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
@@ -124,10 +148,22 @@
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Asset id'" name="transfer-nftId" class="mr-8 my-3" />
+            <InputText
+              :label="'Asset id'"
+              name="asset-nftTransfer-nftIds"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
           <div class="w-full lg:w-1/3">
-            <InputText :label="'Recipient Address'" name="transfer-recipientAddress" class="mr-8 my-3" />
+            <InputText
+              :label="'Recipient Address'"
+              name="asset-nftTransfer-recipientId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
@@ -140,7 +176,13 @@
         </p>
         <div class="flex flex-wrap justify-between mb-4">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Asset id'" name="burn-nftId" class="mr-8 my-3" />
+            <InputText
+              :label="'Asset id'"
+              name="asset-nftBurn-nftId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
@@ -153,7 +195,13 @@
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Asset id'" name="auction-nftId" class="mr-8 my-3" />
+            <InputText
+              :label="'Asset id'"
+              name="asset-nftAuction-nftIds"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
 
@@ -181,7 +229,13 @@
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Auction id'" name="auctionCancel-auctionId" class="mr-8 my-3" />
+            <InputText
+              :label="'Auction id'"
+              name="asset-nftAuctionCancel-auctionId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
@@ -194,7 +248,13 @@
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Auction id'" name="bid-auctionId" class="mr-8 my-3" />
+            <InputText
+              :label="'Auction id'"
+              name="asset-nftBid-auctionId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
           <div class="w-full lg:w-1/3">
             <div class="flex flex-wrap justify-between">
@@ -217,7 +277,13 @@
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Bid id'" name="bidCancel-bidId" class="mr-8 my-3" />
+            <InputText
+              :label="'Bid id'"
+              name="asset-nftBidCancel-bidId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
@@ -230,17 +296,28 @@
         </p>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Auction id'" name="acceptTrade-auctionId" class="mr-8 my-3" />
+            <InputText
+              :label="'Auction id'"
+              name="asset-nftAcceptTrade-auctionId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
         <div class="flex flex-wrap justify-between">
           <div class="w-full lg:w-2/3">
-            <InputText :label="'Bid id'" name="acceptTrade-bidId" class="mr-8 my-3" />
+            <InputText
+              :label="'Bid id'"
+              name="asset-nftAcceptTrade-bidId"
+              class="mr-8 my-3"
+              @input="onInputChange"
+              @keyup.enter.native="onEnterKey"
+            />
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -267,7 +344,7 @@ export default class TransactionSearchForm extends Vue {
 
   private onInputChange(event: any) {
     const { name, value } = event.target;
-
+    console.log(name);
     this.emitInput({ name, value });
   }
 
