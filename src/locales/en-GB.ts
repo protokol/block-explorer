@@ -192,7 +192,7 @@ export default {
           IS_SIGNED: "Is card signed",
         },
         AREX: {
-          COLLECTION_NAME: "AREX",
+          COLLECTION_NAME: "AREX Defense Handguns",
           NAME: "Name",
           DESCRIPTION: "Description",
           SERIAL_NUMBER: "Serial number",

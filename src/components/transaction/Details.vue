@@ -344,7 +344,7 @@
           </div>
         </template>
 
-        <template v-else-if="collectionName === 'AREX Weapons'">
+        <template v-else-if="collectionName === 'AREX Defense Handguns'">
           <br />
           <h3 class="mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.AREX.COLLECTION_NAME`) }}</h3>
           <div class="list-row-border-b">
