@@ -1182,12 +1182,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fullhuman/postcss-purgecss@npm:^3.1.3":
-  version: 3.1.3
-  resolution: "@fullhuman/postcss-purgecss@npm:3.1.3"
+"@fullhuman/postcss-purgecss@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@fullhuman/postcss-purgecss@npm:4.0.0"
   dependencies:
-    purgecss: ^3.1.3
-  checksum: 3/9e304fa7da1d4b7ee03dd16408c343a4a91eaf79a4cdb24a71b33987d1466c864c563b774f4195d82b55f3ba9e03d38947d9de72df61cc1f83caaec64886de52
+    purgecss: ^4.0.0
+  peerDependencies:
+    postcss: ^8.0.0
+  checksum: 3/73018e446900e68eb1f0577c1f7a339674ad79864f206ddf59c6c5a00c1962886fd09dd940ec7e22479fd4b72ec4980a7e4e8cd8504e5486e4e22ee8ca64bbe7
   languageName: node
   linkType: hard
 
@@ -3112,7 +3114,7 @@ __metadata:
   resolution: "ark-explorer@workspace:."
   dependencies:
     "@arkecosystem/crypto": ^2.6.49
-    "@fullhuman/postcss-purgecss": ^3.1.3
+    "@fullhuman/postcss-purgecss": ^4.0.0
     "@kazupon/vue-i18n-loader": ^0.5.0
     "@types/jest": ^25.2.1
     "@types/lodash": ^4.14.150
@@ -13361,9 +13363,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"purgecss@npm:^3.1.3":
-  version: 3.1.3
-  resolution: "purgecss@npm:3.1.3"
+"purgecss@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "purgecss@npm:4.0.0"
   dependencies:
     commander: ^6.0.0
     glob: ^7.0.0
@@ -13371,7 +13373,7 @@ fsevents@~2.1.2:
     postcss-selector-parser: ^6.0.2
   bin:
     purgecss: bin/purgecss.js
-  checksum: 3/3925b81adfd656041b0285cb42c8119185ccfe059c53f8036f2846c4d14cfa36b1a2f6ab3fb81f28364d92c8a5599ff5ac82cad473e5a1e98d81e8540621cf6a
+  checksum: 3/4eb4439ef236487ab436efc4716a29b8494fe388abba9a8e40a0c7af8597b56726a9e521a3df1bd4a31511b3b6bb264dc0289395b310d1991e4702a53740aa33
   languageName: node
   linkType: hard
 
