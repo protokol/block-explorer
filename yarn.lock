@@ -3177,7 +3177,7 @@ __metadata:
     ts-jest: ^26.0.0
     tslint-config-prettier: ^1.18.0
     typescript: ^3.8.3
-    typescript-language-server: ^0.4.0
+    typescript-language-server: ^0.5.1
     v-tooltip: 2.0.2
     vue: ^2.6.11
     vue-chartjs: ^3.5.0
@@ -15928,9 +15928,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"typescript-language-server@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "typescript-language-server@npm:0.4.0"
+"typescript-language-server@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "typescript-language-server@npm:0.5.1"
   dependencies:
     command-exists: 1.2.6
     commander: ^2.11.0
@@ -15940,8 +15940,8 @@ resolve@1.1.7:
     vscode-languageserver: ^5.3.0-next
     vscode-uri: ^1.0.5
   bin:
-    typescript-language-server: ./lib/cli.js
-  checksum: 3/0685054b368b04f40434cb49a8fd6406aaa7b635f5ae17ad1005e4d991f9de7640c5279f26750527efca47187150d7314bf9198b41653de0f8ca9ade2430375b
+    typescript-language-server: lib/cli.js
+  checksum: 3/1902efbf2ee4abd372b0fb2b278a682c3462da4190e0af0ecd85d2ed8868910c9157b82c418908f6cf2243f78660cd4694fe03c8172186b1ea943b1c52f02ce9
   languageName: node
   linkType: hard
 
