@@ -493,7 +493,7 @@ export default {
     DARK_THEME: "Dark Theme",
     PRICE_CHART: "Price Chart",
     LANGUAGE: "Language",
-    FILTER_BLOCKS: "Filter blocks",
+    FILTER_BLOCKS: "Filter Empty Blocks",
   },
 
   FOOTER: {

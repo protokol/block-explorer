@@ -91,6 +91,10 @@ export default class App extends Vue {
       nightModeBoolean = network.alias === "Development";
     }
 
+    if (localStorage.getItem("filterBlocks") === null) {
+      localStorage.setItem("filterBlocks", true.toString());
+    }
+
     this.$store.dispatch("ui/setNightMode", nightModeBoolean);
     this.$store.dispatch("network/setDefaults", network.defaults);
     this.$store.dispatch("network/setServer", network.server);
