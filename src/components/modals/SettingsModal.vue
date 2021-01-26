@@ -45,6 +45,13 @@
               @input="onSelectChange"
             />
           </ListDividedItem>
+          <ListDividedItem :label="$t('MODAL_SETTINGS.FILTER_BLOCKS')">
+            <ButtonSwitch
+              :is-active="isFilteredBlock"
+              class="mt-2 SettingsModal__toggle__darkTheme"
+              @change="toggleFilterBlocks"
+            />
+          </ListDividedItem>
         </ListDivided>
 
         <div v-if="showDisclaimer" class="text-justify SettingsModal__disclaimer">
@@ -115,6 +122,8 @@ export default class SettingsModal extends Vue {
   private notShowDisclaimer = false;
   private isLoading = false;
 
+  private isFilteredBlock: boolean;
+
   private readonly smartbridgeFilterTypes = {
     unfiltered: "COMMON.UNFILTERED",
     filtered: "COMMON.FILTERED",
@@ -167,6 +176,10 @@ export default class SettingsModal extends Vue {
       this.isAcceptTerms = true;
       this.notShowDisclaimer = true;
     }
+
+    this.isFilteredBlock = localStorage.getItem("filterBlocks") === "true";
+    console.log(localStorage.getItem("filterBlocks"))
+    console.log(this.isFilteredBlock);
   }
 
   private onSelectChange(event: any) {
@@ -210,6 +223,15 @@ export default class SettingsModal extends Vue {
     this.chartMode = !this.chartMode;
   }
 
+  private toggleFilterBlocks() {
+    this.isFilteredBlock = !this.isFilteredBlock;
+  }
+
+  private setIsFilterBlocks(isFiltered: boolean) {
+    localStorage.setItem("filterBlocks", isFiltered.toString());
+    window.dispatchEvent(new CustomEvent("filterBlocks-localstorage-changed", {}));
+  }
+
   private async save() {
     this.isLoading = true;
 
@@ -233,6 +255,8 @@ export default class SettingsModal extends Vue {
     if (this.language !== this.$store.getters["ui/language"]) {
       this.setLanguage(this.language);
     }
+
+    this.setIsFilterBlocks(this.isFilteredBlock);
 
     this.isLoading = false;
     this.emitClose();

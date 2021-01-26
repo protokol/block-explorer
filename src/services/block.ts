@@ -4,10 +4,15 @@ import { paginationLimit } from "@/constants";
 import dotify from "node-dotify";
 
 class BlockService {
-  public async latest(limit: number = paginationLimit): Promise<IBlock[]> {
+  public async latest(limit: number = paginationLimit, onlyFullBlocks = false): Promise<IBlock[]> {
+    let numOfTrxs;
+    if (onlyFullBlocks) {
+      numOfTrxs = { "numberOfTransactions.from": 1 };
+    }
     const response = (await ApiService.get("blocks", {
       params: {
         limit,
+        ...numOfTrxs,
       },
     })) as IApiBlocksWrapper;
 
@@ -30,11 +35,16 @@ class BlockService {
     return response.data;
   }
 
-  public async paginate(page: number, limit = paginationLimit): Promise<IApiBlocksWrapper> {
+  public async paginate(page: number, limit = paginationLimit, onlyFullBlocks = false): Promise<IApiBlocksWrapper> {
+    let numOfTrxs;
+    if (onlyFullBlocks) {
+      numOfTrxs = { "numberOfTransactions.from": 1 };
+    }
     const response = (await ApiService.get("blocks", {
       params: {
         page,
         limit,
+        ...numOfTrxs,
       },
     })) as IApiBlocksWrapper;
 
