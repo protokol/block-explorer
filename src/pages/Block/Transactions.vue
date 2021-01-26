@@ -20,8 +20,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Route } from "vue-router";
-import { ISortParameters, ITransaction } from "@/interfaces";
+import { ISortParameters, ITimestamp, ITransaction } from "@/interfaces";
 import TransactionService from "@/services/transaction";
+import BlockService from "@/services/block";
 
 Component.registerHooks(["beforeRouteEnter", "beforeRouteUpdate"]);
 
@@ -58,10 +59,11 @@ export default class BlockTransactions extends Vue {
   public async beforeRouteEnter(to: Route, from: Route, next: (vm: any) => void) {
     try {
       const { meta, data } = await TransactionService.byBlock(to.params.id, Number(to.params.page));
+      const timestamp = (await BlockService.find(to.params.id)).timestamp;
 
       next((vm: BlockTransactions) => {
         vm.currentPage = Number(to.params.page);
-        vm.setTransactions(data);
+        vm.setTransactions(data, timestamp);
         vm.setMeta(meta);
       });
     } catch (e) {
@@ -75,9 +77,10 @@ export default class BlockTransactions extends Vue {
 
     try {
       const { meta, data } = await TransactionService.byBlock(to.params.id, Number(to.params.page));
+      const timestamp = (await BlockService.find(to.params.id)).timestamp;
 
       this.currentPage = Number(to.params.page);
-      this.setTransactions(data);
+      this.setTransactions(data, timestamp);
       this.setMeta(meta);
       next();
     } catch (e) {
@@ -85,12 +88,12 @@ export default class BlockTransactions extends Vue {
     }
   }
 
-  private setTransactions(transactions: ITransaction[]) {
+  private setTransactions(transactions: ITransaction[], timestamp: ITimestamp) {
     if (!transactions) {
       return;
     }
 
-    this.transactions = transactions.map((transaction) => ({ ...transaction, price: null }));
+    this.transactions = transactions.map((transaction) => ({ ...transaction, timestamp, price: null }));
   }
 
   private setMeta(meta: any) {
