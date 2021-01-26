@@ -178,8 +178,6 @@ export default class SettingsModal extends Vue {
     }
 
     this.isFilteredBlock = localStorage.getItem("filterBlocks") === "true";
-    console.log(localStorage.getItem("filterBlocks"))
-    console.log(this.isFilteredBlock);
   }
 
   private onSelectChange(event: any) {
