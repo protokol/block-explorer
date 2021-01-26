@@ -19,6 +19,7 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { IBlock, ISortParameters } from "@/interfaces";
 import { Route } from "vue-router";
 import BlockService from "@/services/block";
+import { paginationLimit } from "@/constants";
 
 Component.registerHooks(["beforeRouteEnter", "beforeRouteUpdate"]);
 
@@ -48,9 +49,15 @@ export default class BlockPage extends Vue {
     this.changePage();
   }
 
+  public async mounted() {
+    window.addEventListener("filterBlocks-localstorage-changed", this.onFilterChangeEvent);
+  }
+
   public async beforeRouteEnter(to: Route, from: Route, next: (vm: any) => void) {
+    const isFilteredBlock: boolean = localStorage.getItem("filterBlocks") === "true";
+
     try {
-      const { meta, data } = await BlockService.paginate(Number(to.params.page));
+      const { meta, data } = await BlockService.paginate(Number(to.params.page), paginationLimit, isFilteredBlock);
 
       next((vm: BlockPage) => {
         vm.currentPage = Number(to.params.page);
@@ -66,8 +73,10 @@ export default class BlockPage extends Vue {
     this.blocks = null;
     this.meta = null;
 
+    const isFilteredBlock: boolean = localStorage.getItem("filterBlocks") === "true";
+
     try {
-      const { meta, data } = await BlockService.paginate(Number(to.params.page));
+      const { meta, data } = await BlockService.paginate(Number(to.params.page), paginationLimit, isFilteredBlock);
 
       this.currentPage = Number(to.params.page);
       this.setBlocks(data);
@@ -76,6 +85,11 @@ export default class BlockPage extends Vue {
     } catch (e) {
       next({ name: "404" });
     }
+  }
+
+
+  public async unmounted() {
+    window.removeEventListener("filterBlocks-localstorage-changed", () => this.onFilterChangeEvent());
   }
 
   private setBlocks(blocks: IBlock[]) {
@@ -108,6 +122,18 @@ export default class BlockPage extends Vue {
 
   private onSortChange(params: ISortParameters) {
     this.sortParams = params;
+  }
+
+  private async onFilterChangeEvent() {
+    const isFilteredBlock: boolean = localStorage.getItem("filterBlocks") === "true";
+    const { meta, data } = await BlockService.paginate(
+      Number(this.$route.params.page || 0),
+      paginationLimit,
+      isFilteredBlock,
+    );
+
+    this.setBlocks(data);
+    this.setMeta(meta);
   }
 }
 </script>

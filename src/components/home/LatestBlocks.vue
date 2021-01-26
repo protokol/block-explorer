@@ -20,6 +20,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { IBlock, ISortParameters } from "@/interfaces";
 import BlockService from "@/services/block";
+import { paginationLimit } from "@/constants";
 
 @Component
 export default class LatestBlocks extends Vue {
@@ -38,6 +39,11 @@ export default class LatestBlocks extends Vue {
 
   public async mounted() {
     await this.prepareComponent();
+    window.addEventListener("filterBlocks-localstorage-changed", () => this.onFilterChangeEvent());
+  }
+
+  public async unmounted() {
+    window.removeEventListener("filterBlocks-localstorage-changed", () => this.onFilterChangeEvent());
   }
 
   private async prepareComponent() {
@@ -50,12 +56,19 @@ export default class LatestBlocks extends Vue {
   }
 
   private async getBlocks(): Promise<void> {
-    const data = await BlockService.latest();
+    const isFilteredBlock: boolean = localStorage.getItem("filterBlocks") === "true";
+    const data = await BlockService.latest(paginationLimit, isFilteredBlock);
     this.blocks = data!.map((block: IBlock) => ({ ...block, price: null }));
   }
 
   private onSortChange(params: ISortParameters) {
     this.sortParams = params;
+  }
+
+  private async onFilterChangeEvent() {
+    const isFilteredBlock: boolean = localStorage.getItem("filterBlocks") === "true";
+    const data = await BlockService.latest(paginationLimit, isFilteredBlock);
+    this.blocks = data!.map((block: IBlock) => ({ ...block, price: null }));
   }
 }
 </script>
