@@ -1,6 +1,6 @@
 {
   "title": "Protokol Public Devnet",
-  "server": "https://ebsi-devnet.protokol.sh/api",
+  "server": "https://ebsi-devnet.protokol.cloud/api",
   "alias": "Development",
   "activeDelegates": 5,
   "rewardOffset": 10800,

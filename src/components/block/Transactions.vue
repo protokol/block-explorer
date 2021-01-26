@@ -32,6 +32,7 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 import { IBlock, ISortParameters, ITransaction } from "../../interfaces";
 import TransactionService from "@/services/transaction";
+import BlockService from "@/services/block";
 
 @Component({
   computed: {
@@ -84,8 +85,15 @@ export default class BlockTransactions extends Vue {
     }
 
     if (this.block.transactions) {
-      const { data, meta } = await TransactionService.byBlock(this.block.id);
-      this.transactions = data.map((transaction: ITransaction) => ({ ...transaction, price: null }));
+      const transactionsPromise = TransactionService.byBlock(this.block.id);
+      const blockPromise = BlockService.find(this.block.id);
+      const { data, meta } = await transactionsPromise;
+      const currentBlock = await blockPromise;
+      this.transactions = data.map((transaction: ITransaction) => ({
+        ...transaction,
+        timestamp: currentBlock.timestamp,
+        price: null,
+      }));
       this.meta = meta;
     }
   }

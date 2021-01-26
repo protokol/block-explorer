@@ -197,9 +197,14 @@ export default class AdvancedSearchPage extends Vue {
 
     // Create nested object value for to/from type params
     if (input.name.includes("-")) {
-      const [parent, child] = input.name.split("-");
-      processedName = parent;
-      processedInput.value = { ...this.searchParams[parent], [child]: processedInput.value };
+      const params = input.name.split("-");
+      if (params.length < 3) {
+        const [parent, child] = [params[0], params[1]];
+        processedName = parent;
+        processedInput.value = { ...this.searchParams[parent], [child]: processedInput.value };
+      } else {
+        processedName = params.join(".");
+      }
     }
 
     this.searchParams = { ...this.searchParams, [processedName]: processedInput.value };
