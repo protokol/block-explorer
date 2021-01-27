@@ -817,8 +817,6 @@ export default class TransactionDetails extends Vue {
     if (this.transaction.typeGroup === 9000 && this.transaction.type === 1) {
       this.getCollection(this.transaction.asset.nftToken.collectionId);
     }
-    console.log(this.transaction.typeGroup);
-    console.log(this.transaction.type);
 
     if (this.transaction.typeGroup === 9001 && this.transaction.type === 0) {
       this.isAuctionClosed(this.transaction.id);
