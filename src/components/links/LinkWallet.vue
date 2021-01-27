@@ -125,7 +125,7 @@
       $t("TRANSACTION.TYPES.UNDEFINED_RESIGNATION")
     }}</span>
     <span v-else-if="isNFTRegisterCollection(type, typeGroup, asset)">{{
-      $t("TRANSACTION.TYPES.NFT_REGISTER_COLLECTION")
+       asset.nftCollection.name
     }}</span>
     <span v-else-if="isNFTCreate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_CREATE") }}</span>
     <span v-else-if="isNFTTransfer(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NFT_TRANSFER") }}</span>
