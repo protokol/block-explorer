@@ -41,7 +41,7 @@ export default class AppFooter extends Vue {
   }
 
   get versionLink() {
-    return `https://github.com/protokol/explorer/commit/${process.env.VUE_APP_GIT_VERSION}`;
+    return `https://github.com/protokol/block-explorer/commit/${process.env.VUE_APP_GIT_VERSION}`;
   }
 
   get date() {
