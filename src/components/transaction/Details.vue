@@ -312,8 +312,8 @@
           <div class="list-row-border-b">
             <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.WEBSITE`) }}</h4>
             <a :href="transaction.asset.nftToken.attributes.website">{{
-              transaction.asset.nftToken.attributes.website
-            }}</a>
+                transaction.asset.nftToken.attributes.website
+              }}</a>
           </div>
         </template>
 
@@ -466,31 +466,55 @@
       </div>
     </section>
 
-    <section v-if="isNFTAuction(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_AUCTION.AUCTION`) }}</h3>
-      <br />
-      <div class="px-5 sm:px-10">
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.NFT_IDS`) }}</div>
-          <div>
-            <LinkTransaction
-              v-for="value in transaction.asset.nftAuction.nftIds"
-              :id="value"
-              :key="value"
-              :truncate-id="false"
-            />
+    <template v-if="isNFTAuction(transaction.type, transaction.typeGroup)">
+      <section class="py-5 mb-5 page-section md:py-10">
+        <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_AUCTION.AUCTION`) }}</h3>
+        <br />
+        <div class="px-5 sm:px-10">
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.NFT_IDS`) }}</div>
+            <div>
+              <LinkTransaction
+                v-for="value in transaction.asset.nftAuction.nftIds"
+                :id="value"
+                :key="value"
+                :truncate-id="false"
+              />
+            </div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.START_AMOUNT`) }}</div>
+            <div class="overflow-hidden break-all">{{ readableCrypto(transaction.asset.nftAuction.startAmount) }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.EXPIRATION`) }}</div>
+            <div class="overflow-hidden break-all">{{ transaction.asset.nftAuction.expiration.blockHeight }}</div>
+          </div>
+          <div class="list-row-border-b">
+            <div class="mr-4">{{ "Is Active" }}</div>
+            <div class="overflow-hidden break-all">{{ isAuctionActive }}</div>
           </div>
         </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.START_AMOUNT`) }}</div>
-          <div class="overflow-hidden break-all">{{ readableCrypto(transaction.asset.nftAuction.startAmount) }}</div>
+      </section>
+
+      <section v-if="bids.length > 0" class="py-5 mb-5 page-section md:py-10">
+        <h3 class="px-5 sm:px-10 mb-6">{{ $t(`TRANSACTION.NFT_AUCTION.BIDS`) }}</h3>
+        <div v-for="bid in bids" :key="bid.bidId" class="px-5 sm:px-8">
+          <div class="list-row-border-b">
+            <div class="mr-4">
+              <LinkTransaction
+                :id="bid.bidId"
+                :key="bid.bidId"
+                :truncate-id="false"
+              />
+            </div>
+            <div>
+              {{ readableCrypto(bid.bidAmount) }}
+            </div>
+          </div>
         </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.NFT_AUCTION.EXPIRATION`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.nftAuction.expiration.blockHeight }}</div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </template>
 
     <section v-if="isNFTAuctionCancel(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
       <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.NFT_AUCTION_CANCEL.AUCTION_CANCEL`) }}</h3>
@@ -627,7 +651,8 @@ import { TranslateResult } from "vue-i18n";
 import { mapGetters } from "vuex";
 import { ITransaction, ITransactionType } from "@/interfaces";
 import {
-  CoreTransaction, EBSITransactionTypes,
+  CoreTransaction,
+  EBSITransactionTypes,
   GuardianPermissionKind,
   MagistrateTransaction,
   NFTBaseTransactionTypes,
@@ -658,6 +683,9 @@ export default class TransactionDetails extends Vue {
   private timelockLink: string | null = null;
 
   private collectionName = "";
+
+  private isAuctionActive = true;
+  private bids: { bidId: string; bidAmount: number }[] = [];
 
   transactionTypeKey(typeGroup: number, type: number): string {
     for (const transaction of transactionTypes) {
@@ -695,6 +723,7 @@ export default class TransactionDetails extends Vue {
   get EBSITransactions() {
     return EBSITransactionTypes;
   }
+
   get typeGroupTransaction() {
     return TypeGroupTransaction;
   }
@@ -788,6 +817,10 @@ export default class TransactionDetails extends Vue {
     if (this.transaction.typeGroup === 9000 && this.transaction.type === 1) {
       this.getCollection(this.transaction.asset.nftToken.collectionId);
     }
+
+    if (this.transaction.typeGroup === 9001 && this.transaction.type === 0) {
+      this.isAuctionClosed(this.transaction.id);
+    }
   }
 
   private async updatePrice() {
@@ -834,6 +867,19 @@ export default class TransactionDetails extends Vue {
 
   private getImage(ipfsHash: string): string {
     return `https://cloudflare-ipfs.com/ipfs/${ipfsHash}`;
+  }
+
+  private async isAuctionClosed(id: string): Promise<boolean> {
+    try {
+      await ApiService.get(`nft/exchange/auctions/${id}/wallets`);
+      this.isAuctionActive = true;
+    } catch {
+      this.isAuctionActive = false;
+    }
+    const bids = await ApiService.post(`nft/exchange/bids/search`, { auctionId: id });
+    this.bids = bids.data.map((data) => ({ bidId: data.id, bidAmount: data.nftBid.bidAmount }));
+
+    return true;
   }
 }
 </script>

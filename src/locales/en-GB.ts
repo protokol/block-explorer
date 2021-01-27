@@ -228,6 +228,7 @@ export default {
       NFT_IDS: "Tokens",
       START_AMOUNT: "Start Amount",
       EXPIRATION: "Block Time Expiration",
+      BIDS: "Bids",
     },
     NFT_AUCTION_CANCEL: {
       AUCTION_CANCEL: "Canceled Auction",
