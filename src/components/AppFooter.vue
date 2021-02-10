@@ -7,12 +7,13 @@
          &copy;
         <a :href="brandData.footer.arkUrl" target="_blank">{{ brandData.footer.arkText }}</a>
         | {{ year }}.
-        {{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span
+        <span class="md:inline-block">{{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span>
+      </span
       >
       <div class="block md:inline-block">
         <span class="hidden px-1 md:inline-block">|</span>
         <span
-          >{{ $t("FOOTER.VERSION") }}: <a :href="versionLink" target="_blank">{{ version }}</a> |
+        >{{ $t("FOOTER.VERSION") }}: <a :href="versionLink" target="_blank">{{ version }}</a> |
           {{ $t("FOOTER.DATE") }}: {{ date }}</span
         >
       </div>
