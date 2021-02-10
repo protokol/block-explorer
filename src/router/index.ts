@@ -26,6 +26,9 @@ const AdvancedSearchComponent = () => import(/* webpackChunkName: "search" */ "@
 const DelegateComponent = () => import(/* webpackChunkName: "delegates" */ "@/pages/Delegates.vue");
 const NotFoundComponent = () => import(/* webpackChunkName: "404" */ "@/pages/404.vue");
 
+const SubmitTransactionsComponent = () =>
+  import(/* webpackChunkName: "submitTransactions" */ "@/pages/SubmitTransactions.vue");
+
 Vue.use(Router);
 
 function getTitle(title: string): string {
@@ -232,6 +235,12 @@ const router = new Router({
       path: "/topAccounts",
       redirect: (to) => ({ name: "top-wallets", params: { page: 1 } }),
       meta: { title: (route: Route) => getTitle("Top Wallets") },
+    },
+    {
+      path: "/submit/transactions",
+      name: "submit-transactions",
+      component: SubmitTransactionsComponent,
+      meta: { title: (route: Route) => getTitle("Submit Transactions") },
     },
   ],
   scrollBehavior(

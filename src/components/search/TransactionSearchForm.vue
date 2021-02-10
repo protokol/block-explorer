@@ -396,7 +396,6 @@ export default class TransactionSearchForm extends Vue {
 
   private onInputChange(event: any) {
     const { name, value } = event.target;
-    console.log(name);
     this.emitInput({ name, value });
   }
 

@@ -43,6 +43,8 @@ import { HeaderDefault, HeaderSearch, HeaderMenuDesktop, HeaderMenuMobile } from
 
       entries.push({ name: "advanced-search", params: { page: 1 } });
 
+      entries.push({ name: "submit-transactions" });
+
       return entries;
     },
   },

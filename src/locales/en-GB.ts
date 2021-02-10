@@ -350,6 +350,9 @@ export default {
       LATEST_TRANSACTIONS: "Latest transactions",
       LATEST_BLOCKS: "Latest blocks",
     },
+    SUBMIT_TRANSACTIONS: {
+      TITLE: "Submit Transactions",
+    },
     DELEGATES: {
       TITLE: "Delegates",
     },
@@ -501,5 +504,51 @@ export default {
     ALL_RIGHTS_RESERVED: "All rights reserved",
     VERSION: "Version",
     DATE: "Date",
+  },
+
+  SUBMIT_TRANSACTIONS: {
+    PASSPHRASE: "Passphrase",
+    VENDORFIELD: "Vendor field",
+    TRANSFER: {
+      RECIPIENT: "Recipient",
+      AMOUNT: "Amount",
+    },
+    NFT_REGISTER_COLLECTION: {
+      NAME: "Collection name",
+      AMOUNT: "Maximum amount of assets",
+      DESCRIPTION: "Description",
+      SCHEMA: "AJV Json schema",
+      ALLOWED_ISSUERS: "Allowed issuers",
+    },
+    NFT_CREATE: {
+      COLLECTION_ID: "Collection id",
+      ATTRIBUTES: "Attributes",
+    },
+    NFT_TRANSFER: {
+      NFT_IDS: "NFT Ids",
+      RECIPIENT: "Recipient",
+    },
+    NFT_BURN: {
+      NFT_ID: "NFT Id",
+    },
+    NFT_AUCTION: {
+      NFT_IDS: "NFT Ids",
+      START_AMOUNT: "Auction start amount",
+      BLOCK_EXPIRATION: "Auction block expiration",
+    },
+    NFT_AUCTION_CANCEL: {
+      AUCTION_ID: "Auction id",
+    },
+    NFT_BID: {
+      AUCTION_ID: "Auction id",
+      AMOUNT: "Bid amount",
+    },
+    NFT_BID_CANCEL: {
+      BID_ID: "Bid id",
+    },
+    NFT_ACCEPT_TRADE: {
+      AUCTION_ID: "Auction id",
+      BID_ID: "Bid id",
+    },
   },
 };
