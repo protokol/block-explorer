@@ -1515,25 +1515,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@protokol/nft-base-crypto@npm:1.0.0-beta.56":
-  version: 1.0.0-beta.56
-  resolution: "@protokol/nft-base-crypto@npm:1.0.0-beta.56"
+"@protokol/nft-base-crypto@npm:1.0.0-beta.57":
+  version: 1.0.0-beta.57
+  resolution: "@protokol/nft-base-crypto@npm:1.0.0-beta.57"
   dependencies:
     "@arkecosystem/crypto": ^3.0.0-next
     "@protokol/utils": ^1.0.0-beta.37
     bytebuffer: ^5.0.1
-  checksum: 3/9451018791ad9da4a650010b4bbf392fc7aa6a86056d013a89572a92427bffb43d0f0d773f9f27c259f5ad2a799c16e793757f5bf6f301ef801f01570884eceb
+  checksum: 3/1393f087b1323c06a691c161b058c41d76a7ad03231ee000c6de22f33a74dfe4c71f786fcf961d50160e134df0b160e8f6b39e8e563d696a2cd40af551bef7cc
   languageName: node
   linkType: hard
 
-"@protokol/nft-exchange-crypto@npm:1.0.0-beta.56":
-  version: 1.0.0-beta.56
-  resolution: "@protokol/nft-exchange-crypto@npm:1.0.0-beta.56"
+"@protokol/nft-exchange-crypto@npm:1.0.0-beta.57":
+  version: 1.0.0-beta.57
+  resolution: "@protokol/nft-exchange-crypto@npm:1.0.0-beta.57"
   dependencies:
     "@arkecosystem/crypto": ^3.0.0-next
     "@protokol/utils": ^1.0.0-beta.37
     bytebuffer: ^5.0.1
-  checksum: 3/2d43a6dff36ffb59fbd8d26937a12f6d078a02b54ca04ca54408ab65ca1f39b90b778c3119130599521d0b12ab7adf4a19873f804404d06a8f99281bddd47c94
+  checksum: 3/8d991bf654104a4bfae684205d7a9b7b5e7ebcd1c44869140743598d4ba7aaaa93c08a902cf17742c6c500469f83843f995017d01202672d317378aeb6c37f92
   languageName: node
   linkType: hard
 
@@ -3173,8 +3173,8 @@ __metadata:
     "@arkecosystem/crypto": ^3.0.0-next
     "@fullhuman/postcss-purgecss": ^4.0.0
     "@kazupon/vue-i18n-loader": ^0.5.0
-    "@protokol/nft-base-crypto": 1.0.0-beta.56
-    "@protokol/nft-exchange-crypto": 1.0.0-beta.56
+    "@protokol/nft-base-crypto": 1.0.0-beta.57
+    "@protokol/nft-exchange-crypto": 1.0.0-beta.57
     "@types/jest": ^25.2.1
     "@types/lodash": ^4.14.150
     "@types/node-emoji": ^1.8.1
