@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Managers } from "@arkecosystem/crypto";
+import { Managers, Interfaces, Networks, Transactions } from "@arkecosystem/crypto";
 import { Component, Vue } from "vue-property-decorator";
 import AppHeader from "@/components/header/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
@@ -36,6 +36,8 @@ import { knownWalletsUrls } from "@/config";
 import { mapGetters } from "vuex";
 import axios from "axios";
 import moment from "moment";
+import { Transactions as NFTBaseTransactions } from "@protokol/nft-base-crypto";
+import { Transactions as NFTExchangeTransactions } from "@protokol/nft-exchange-crypto";
 
 @Component({
   computed: {
@@ -123,6 +125,23 @@ export default class App extends Vue {
         localStorage.getItem("currencySymbol") || network.defaults.currency.symbol,
       );
     }
+    const cryptoResponse = await NodeService.crypto();
+    Managers.configManager.setConfig({
+      network: cryptoResponse.network,
+      milestones: cryptoResponse.milestones,
+      genesisBlock: cryptoResponse.genesisBlock,
+      exceptions: cryptoResponse.exceptions,
+    });
+    Managers.configManager.setHeight(2);
+    Transactions.TransactionRegistry.registerTransactionType(NFTBaseTransactions.NFTRegisterCollectionTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTBaseTransactions.NFTCreateTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTBaseTransactions.NFTTransferTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTBaseTransactions.NFTBurnTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTExchangeTransactions.NFTAuctionTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTExchangeTransactions.NFTAuctionCancelTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTExchangeTransactions.NFTBidTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTExchangeTransactions.NFTBidCancelTransaction);
+    Transactions.TransactionRegistry.registerTransactionType(NFTExchangeTransactions.NFTAcceptTradeTransaction);
 
     const response = await NodeService.config();
     this.$store.dispatch("network/setAddressPrefix", response.version);

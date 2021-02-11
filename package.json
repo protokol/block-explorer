@@ -26,7 +26,9 @@
     "test:unit": "vue-cli-service test:unit --maxWorkers=2"
   },
   "dependencies": {
-    "@arkecosystem/crypto": "^2.6.49",
+    "@arkecosystem/crypto": "^3.0.0-next",
+    "@protokol/nft-base-crypto": "1.0.0-beta.56",
+    "@protokol/nft-exchange-crypto": "1.0.0-beta.56",
     "@types/nprogress": "^0.2.0",
     "animate.css": "^4.1.0",
     "axios": "^0.21.0",
@@ -45,6 +47,7 @@
     "nprogress": "^0.2.0",
     "portal-vue": "^2.1.7",
     "qrious": "^4.0.2",
+    "v-jsoneditor": "^1.4.2",
     "v-tooltip": "2.0.2",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
