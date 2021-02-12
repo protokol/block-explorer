@@ -55,12 +55,13 @@ describe("Services > Wallet", () => {
   });
 
   it("should return all wallets that vote for '020431436cf94f3c6a6ba566fe9e42678db8486590c732ca6c3803a10a86f50b92'", async () => {
+    await store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
     const { data } = await WalletService.search({
-      attributes: { vote: "020431436cf94f3c6a6ba566fe9e42678db8486590c732ca6c3803a10a86f50b92" },
+      attributes: { vote: "02b1d2ea7c265db66087789f571fceb8cc2b2d89e296ad966efb8ed51855f2ae0b" },
     });
-    expect(data).toHaveLength(25);
+    expect(data).toHaveLength(0);
     data.forEach((wallet) => {
-      expect(wallet.vote).toBe("020431436cf94f3c6a6ba566fe9e42678db8486590c732ca6c3803a10a86f50b92");
+      expect(wallet.vote).toBe("02b1d2ea7c265db66087789f571fceb8cc2b2d89e296ad966efb8ed51855f2ae0b");
       expect(Object.keys(wallet).sort()).toEqual(expect.arrayContaining(walletPropertyArray));
     });
   });
