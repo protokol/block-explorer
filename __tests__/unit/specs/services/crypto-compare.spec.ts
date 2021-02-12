@@ -55,7 +55,7 @@ describe("Services > CryptoCompare", () => {
     store.dispatch("currency/setName", "USD");
     const data = await CryptoCompareService.dailyAverage(1535190579);
     // CryptoCompare reports different values for BTC and ETH conversion
-    expect(data === 0.8434 || data === 0.8496).toBe(true);
+    expect(data === 0.8434 || data === 0.8496 || data === 0.8487).toBe(true);
   });
 
   it("should return null for a given timestamp and invalid currency", async () => {
