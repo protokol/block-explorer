@@ -8,7 +8,7 @@ describe("Blockchain Service", () => {
 
   it("should return the block height", async () => {
     const data = await BlockchainService.height();
-    expect(data).toBeGreaterThan(4771470);
+    expect(data).toBeGreaterThan(6799728);
   });
 
   it("should return the supply", async () => {
