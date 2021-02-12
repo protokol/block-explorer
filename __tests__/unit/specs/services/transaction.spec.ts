@@ -179,6 +179,7 @@ describe("Services > Transaction", () => {
   });
 
   it("should return all transactions with a fee exceeding 25 ARK", async () => {
+    await store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
     const minAmount = 25 * 1e8;
     jest.setTimeout(30000);
     const { data } = await TransactionService.search({
@@ -193,6 +194,7 @@ describe("Services > Transaction", () => {
   });
 
   it("should return all transactions with an amount between 5000 and 6000 ARK", async () => {
+    await store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
     const minAmount = 5000 * 1e8;
     const maxAmount = 6000 * 1e8;
     jest.setTimeout(30000);
@@ -223,7 +225,7 @@ describe("Services > Transaction", () => {
 
 describe("Services > Transaction (2.6)", () => {
   beforeAll(() => {
-    store.dispatch("network/setServer", "https://dexplorer.ark.io/api/v2");
+    store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
   });
 
   it("should return all transactions that have 'test' in their smartbridge field", async () => {
