@@ -17,7 +17,7 @@ const blockPropertyArray = [
 
 describe("Services > Block", () => {
   beforeAll(() => {
-    store.dispatch("network/setServer", "https://explorer.ark.io/api");
+    store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
   });
 
   it("should return the latest blocks", async () => {
@@ -36,7 +36,7 @@ describe("Services > Block", () => {
 
   it("should return the block for the given id", async () => {
     jest.setTimeout(30000);
-    const data = await BlockService.find("12382692495927527414");
+    const data = await BlockService.find("cf252685fbf4863bdbd69b3b54a5ecdf68f355650e250cb72179045be9e21812");
     expect(Object.keys(data).sort()).toEqual(blockPropertyArray);
   });
 
@@ -56,7 +56,7 @@ describe("Services > Block", () => {
 
   it("should return the blocks for given generator address", async () => {
     jest.setTimeout(30000);
-    const { data } = await BlockService.byAddress("AeaqhUKfBtVqNhtMct3piBiWfdhbRwbg4W");
+    const { data } = await BlockService.byAddress("D9YiyRYMBS2ofzqkufjrkB9nHofWgJLM7f");
     expect(data).toHaveLength(25);
     data.forEach((block) => {
       expect(Object.keys(block).sort()).toEqual(blockPropertyArray);
@@ -111,10 +111,10 @@ describe("Services > Block", () => {
   it("should return the block for the given id", async () => {
     jest.setTimeout(30000);
     const { data } = await BlockService.search({
-      id: "2497759a549897ec333ea6d3a22063b54a9a5334e2a7f23417e3dc7d510724ca",
+      id: "cf252685fbf4863bdbd69b3b54a5ecdf68f355650e250cb72179045be9e21812",
     });
     expect(Object.keys(data[0]).sort()).toEqual(blockPropertyArray);
-    expect(data[0].id).toBe("2497759a549897ec333ea6d3a22063b54a9a5334e2a7f23417e3dc7d510724ca");
+    expect(data[0].id).toBe("cf252685fbf4863bdbd69b3b54a5ecdf68f355650e250cb72179045be9e21812");
   });
 
   it("should return all blocks with a total fee exceeding 25 ARK ", async () => {
@@ -146,7 +146,7 @@ describe("Services > Block", () => {
   });
 
   it("should return all blocks generated for a public key", async () => {
-    const publicKey = "020431436cf94f3c6a6ba566fe9e42678db8486590c732ca6c3803a10a86f50b92";
+    const publicKey = "0306950dae7158103814e3828b1ab97a87dbb3680db1b4c6998b8208865b2f9db7";
     jest.setTimeout(30000);
     const { data } = await BlockService.search({
       generatorPublicKey: publicKey,

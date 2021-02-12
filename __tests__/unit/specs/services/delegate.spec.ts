@@ -83,23 +83,28 @@ describe("Services > Delegate", () => {
   });
 
   it("should retrieve the voterCount for a given public key", async () => {
+    await store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
     const count = await DelegateService.voterCount(
       "02b1d2ea7c265db66087789f571fceb8cc2b2d89e296ad966efb8ed51855f2ae0b",
       false,
     );
 
     expect(count).toBeGreaterThanOrEqual(0);
+    await store.dispatch("network/setServer", "https://explorer.ark.io/api");
+
   });
 
   it("should be able to filter out low balance voters", async () => {
+    await store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
     const count = await DelegateService.voterCount(
-      "02b1d2ea7c265db66087789f571fceb8cc2b2d89e296ad966efb8ed51855f2ae0b",
+      "033c59dcdc36944cc28f68c1e4b47ac370fe326e53f9adf5f07764d3e8b74b1838",
       false,
     );
     const countFiltered = await DelegateService.voterCount(
-      "02b1d2ea7c265db66087789f571fceb8cc2b2d89e296ad966efb8ed51855f2ae0b",
+      "033c59dcdc36944cc28f68c1e4b47ac370fe326e53f9adf5f07764d3e8b74b1838",
     );
-    expect(count).toBeGreaterThan(countFiltered);
+    expect(count).toBeGreaterThanOrEqual(countFiltered);
+    await store.dispatch("network/setServer", "https://explorer.ark.io/api");
   });
 
   it("should return the delegate when searching by username", async () => {
@@ -140,7 +145,7 @@ describe("Services > Delegate", () => {
 
   it("should retrieve the resigned delegates", async () => {
     // temporary set to devnet so the test passes
-    store.dispatch("network/setServer", "https://dexplorer.ark.io/api");
+    store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
 
     const data = await DelegateService.resigned();
     expect(data).toBeArray();
@@ -151,7 +156,7 @@ describe("Services > Delegate", () => {
 
   it("should retrieve the resigned delegates", async () => {
     // temporary set to devnet so the test passes
-    store.dispatch("network/setServer", "https://dexplorer.ark.io/api");
+    store.dispatch("network/setServer", "http://167.114.43.33:4003/api");
 
     const { data } = await DelegateService.allResigned();
     expect(data.length).toBeGreaterThan(0);
