@@ -39,6 +39,7 @@ describe("Advanced Search", () => {
 
       cy.get("button").contains("Search").click();
 
+      // cy.wait(2000)
       cy.get("tbody tr")
         .first()
         .within(() => {
@@ -53,7 +54,7 @@ describe("Advanced Search", () => {
 
       cy.get("input[name=amount-from]").type("500");
       cy.get("input[name=amount-to]").type("500");
-      cy.get("input[name=fee-from]").type("1");
+      cy.get("input[name=fee-from]").type("1").wait(1000);
       cy.get("input[name=fee-to]").type("1").type("{enter}");
 
       cy.get("tbody tr")
@@ -147,7 +148,7 @@ describe("Advanced Search", () => {
 
       cy.get("select[name=search-type]").select("wallet");
 
-      cy.get("input[name=username]").type("alessio");
+      cy.get("input[name='attributes.delegate.username']").type("alessio");
 
       cy.get("button").contains("Search").click();
 
@@ -163,7 +164,7 @@ describe("Advanced Search", () => {
 
       cy.get("select[name=search-type]").select("wallet");
 
-      cy.get("input[name=vote]").type("alessio");
+      cy.get("input[name='attributes.vote']").type("alessio");
 
       cy.get("button").contains("Search").click();
 

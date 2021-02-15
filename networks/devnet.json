@@ -1,6 +1,6 @@
 {
   "title": "Protokol Public Devnet",
-  "server": "https://proto-devnet.protokol.sh/api",
+  "server": "https://explorer.ark.io/api",
   "alias": "Development",
   "activeDelegates": 51,
   "rewardOffset": 10800,

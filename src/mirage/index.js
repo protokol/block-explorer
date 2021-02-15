@@ -150,7 +150,7 @@ exports.makeServer = function makeServer({ environment = "development" } = {}) {
           response.data = response.data.slice(0, request.queryParams.limit);
         }
 
-        if (request.queryParams.totalFee) {
+        if (request.queryParams["totalFee.from"]) {
           return loadFixture("api/blocks/search/by-total-fee");
         }
 
@@ -324,7 +324,7 @@ exports.makeServer = function makeServer({ environment = "development" } = {}) {
       });
 
       this.get("/transactions", (schema, request) => {
-        if (request.queryParams.amount && request.queryParams.fee) {
+        if (request.queryParams["amount.from"] && request.queryParams["fee.from"]) {
           return loadFixture("api/transactions/search/by-amount-and-fee");
         }
 
@@ -396,12 +396,11 @@ exports.makeServer = function makeServer({ environment = "development" } = {}) {
       });
 
       this.get("/wallets", (schema, request) => {
-        console.log("wuts");
         if (request.queryParams["attributes.vote"]) {
           return loadFixture("api/wallets/search/by-vote");
         }
 
-        if (request.queryParams["attributes.username"]) {
+        if (request.queryParams["attributes.delegate.username"]) {
           return loadFixture("api/wallets/search/by-username");
         }
 
