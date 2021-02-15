@@ -293,9 +293,6 @@
               @input="onInputChange"
               @keyup.enter.native="onEnterKey"
             />
-
-
-
           </div>
 
           <!-- TODO: replace it when from/to ready -->

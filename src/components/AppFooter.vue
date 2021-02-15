@@ -3,17 +3,15 @@
     <div class="mb-4 text-center lg:mb-0 md:text-left">
       <span class="block mb-4 text-center md:inline-block md:mb-0">
         &copy;
-        <a :href="brandData.footer.protokolUrl" target="_blank">{{ brandData.footer.protokolText }}</a> |
-         &copy;
+        <a :href="brandData.footer.protokolUrl" target="_blank">{{ brandData.footer.protokolText }}</a> | &copy;
         <a :href="brandData.footer.arkUrl" target="_blank">{{ brandData.footer.arkText }}</a>
         | {{ year }}.
         <span class="md:inline-block">{{ $t("FOOTER.ALL_RIGHTS_RESERVED") }}</span>
-      </span
-      >
+      </span>
       <div class="block md:inline-block">
         <span class="hidden px-1 md:inline-block">|</span>
         <span
-        >{{ $t("FOOTER.VERSION") }}: <a :href="versionLink" target="_blank">{{ version }}</a> |
+          >{{ $t("FOOTER.VERSION") }}: <a :href="versionLink" target="_blank">{{ version }}</a> |
           {{ $t("FOOTER.DATE") }}: {{ date }}</span
         >
       </div>
