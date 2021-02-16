@@ -2233,16 +2233,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/cli-plugin-e2e-cypress@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "@vue/cli-plugin-e2e-cypress@npm:4.3.1"
+"@vue/cli-plugin-e2e-cypress@npm:^4.5.11":
+  version: 4.5.11
+  resolution: "@vue/cli-plugin-e2e-cypress@npm:4.5.11"
   dependencies:
-    "@vue/cli-shared-utils": ^4.3.1
+    "@vue/cli-shared-utils": ^4.5.11
     cypress: ^3.8.3
     eslint-plugin-cypress: ^2.10.3
   peerDependencies:
     "@vue/cli-service": ^3.0.0 || ^4.0.0-0
-  checksum: 3/9b77ccb50b8b2be4ce0dcbe032a94470a7b57c4957fc2ef7c08192ea0bd3dab842823a5c7473ec98672cff00b22c24e55bbeeabf8e566453f30acb92103126be
+  checksum: 3/bc0aefdb5022a89ab7114f298b9285f76ce7093c9b6280156538ad6e0af74cc875a30dca590257a6f36a2222a2689b71492e01350bc6a8dd37301a4e19f3345f
   languageName: node
   linkType: hard
 
@@ -2429,6 +2429,26 @@ __metadata:
     semver: ^6.1.0
     strip-ansi: ^6.0.0
   checksum: 3/48f85133253d174d2e88b6dca0993abd2295be98e61f2c9b9d6480c0f8db423b67d5323c956449f5b8462c0ed3df13f58a2469ab65fba6e77a8f4b49d3bbdfe0
+  languageName: node
+  linkType: hard
+
+"@vue/cli-shared-utils@npm:^4.5.11":
+  version: 4.5.11
+  resolution: "@vue/cli-shared-utils@npm:4.5.11"
+  dependencies:
+    "@hapi/joi": ^15.0.1
+    chalk: ^2.4.2
+    execa: ^1.0.0
+    launch-editor: ^2.2.1
+    lru-cache: ^5.1.1
+    node-ipc: ^9.1.1
+    open: ^6.3.0
+    ora: ^3.4.0
+    read-pkg: ^5.1.1
+    request: ^2.88.2
+    semver: ^6.1.0
+    strip-ansi: ^6.0.0
+  checksum: 3/7aca35cd67b5d38dab899d726f845875f7e0a6b7a8e8cddd309d3a9c28910614c86a5d4fa2843f65a00ac25b063279d1cb6078ee55147438bbf7d236507da25e
   languageName: node
   linkType: hard
 
@@ -3184,7 +3204,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^2.31.0
     "@typescript-eslint/parser": ^2.31.0
     "@vue/cli-plugin-babel": ^4.3.1
-    "@vue/cli-plugin-e2e-cypress": ^4.3.1
+    "@vue/cli-plugin-e2e-cypress": ^4.5.11
     "@vue/cli-plugin-eslint": ^4.3.1
     "@vue/cli-plugin-typescript": ^4.3.1
     "@vue/cli-plugin-unit-jest": ^4.3.1

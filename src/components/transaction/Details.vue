@@ -294,7 +294,7 @@
           <div class="list-row-border-b">
             <div>
               <h4 class="mr-4 mb-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.DRIVERS`) }}</h4>
-              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" class="mb-4">
+              <div v-for="driver in transaction.asset.nftToken.attributes.drivers" :key="driver" class="mb-4">
                 <div>{{ driver.name }}</div>
                 <div>Number {{ driver.number }}</div>
                 <img v-if="driver.ipfsHashImage" :src="getImage(driver.ipfsHashImage)" alt="" />
@@ -312,8 +312,8 @@
           <div class="list-row-border-b">
             <h4 class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.SPECIFIC_COLLECTION.NASCAR_TEAM.WEBSITE`) }}</h4>
             <a :href="transaction.asset.nftToken.attributes.website">{{
-                transaction.asset.nftToken.attributes.website
-              }}</a>
+              transaction.asset.nftToken.attributes.website
+            }}</a>
           </div>
         </template>
 
@@ -502,11 +502,7 @@
         <div v-for="bid in bids" :key="bid.bidId" class="px-5 sm:px-8">
           <div class="list-row-border-b">
             <div class="mr-4">
-              <LinkTransaction
-                :id="bid.bidId"
-                :key="bid.bidId"
-                :truncate-id="false"
-              />
+              <LinkTransaction :id="bid.bidId" :key="bid.bidId" :truncate-id="false" />
             </div>
             <div>
               {{ readableCrypto(bid.bidAmount) }}
@@ -591,7 +587,7 @@
         <div v-if="transaction.asset.setGroupPermissions.allow" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
           <div>
-            <div v-for="value in transaction.asset.setGroupPermissions.allow">
+            <div v-for="value in transaction.asset.setGroupPermissions.allow" :key="value">
               {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
             </div>
           </div>
@@ -599,7 +595,7 @@
         <div v-if="transaction.asset.setGroupPermissions.deny" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
           <div>
-            <div v-for="value in transaction.asset.setGroupPermissions.deny">
+            <div v-for="value in transaction.asset.setGroupPermissions.deny" :key="value">
               {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
             </div>
           </div>
@@ -626,7 +622,7 @@
         <div v-if="transaction.asset.setUserPermissions.allow" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
           <div>
-            <div v-for="value in transaction.asset.setUserPermissions.allow">
+            <div v-for="value in transaction.asset.setUserPermissions.allow" :key="value">
               {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
             </div>
           </div>
@@ -634,7 +630,7 @@
         <div v-if="transaction.asset.setUserPermissions.deny" class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
           <div>
-            <div v-for="value in transaction.asset.setUserPermissions.deny">
+            <div v-for="value in transaction.asset.setUserPermissions.deny" :key="value">
               {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
             </div>
           </div>

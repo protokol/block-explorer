@@ -11,7 +11,7 @@
             :select-options="selectOptions"
             :label="$t('COMMON.TYPE')"
             :value="transactionType.key"
-            name="Transaction Types"
+            name="transaction-types"
             class="flex-1"
             @input="onTypeChange"
           />
@@ -293,9 +293,6 @@
               @input="onInputChange"
               @keyup.enter.native="onEnterKey"
             />
-
-
-
           </div>
 
           <!-- TODO: replace it when from/to ready -->

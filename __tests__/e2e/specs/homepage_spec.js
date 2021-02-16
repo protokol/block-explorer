@@ -4,14 +4,14 @@ describe("Homepage", () => {
   });
 
   it("should contain expected components", () => {
-    cy.get(".bg-stat-background").first().children().as("fields").should("have.length", 4);
+    cy.get(".bg-stat-background").first().children().as("fields").should("have.length", 3);
 
     cy.get("@fields").eq(0).should("contain.text", "Height");
     cy.get("@fields").eq(1).should("contain.text", "Network");
     cy.get("@fields").eq(2).should("contain.text", "Supply");
-    cy.get("@fields").eq(3).should("contain.text", "Market Cap");
+    // cy.get("@fields").eq(3).should("contain.text", "Market Cap");
 
-    cy.get("#line-chart").should("be.visible");
+    // cy.get("#line-chart").should("be.visible");
     cy.get(".active-tab").contains("Latest transactions").should("be.visible");
     cy.get(".inactive-tab").contains("Latest blocks").should("be.visible");
   });
@@ -65,74 +65,74 @@ describe("Homepage", () => {
     });
   });
 
-  describe("Chart", () => {
-    it("should be possible to persistently change type", () => {
-      cy.get("button.chart-tab").contains("Price").should("have.class", "chart-tab-active");
-
-      cy.get(".PriceChart").within(() => {
-        cy.get("button.chart-tab-active").contains("Price").click();
-        cy.get(".dropdown-button").contains("Volume").click();
-        cy.get("button.chart-tab-active").first().should("contain.text", "Volume");
-      });
-
-      cy.get("h1").then(($heading) => {
-        const heading = $heading.text();
-
-        cy.get("button.button-lg").click();
-
-        cy.get("h1").should(($heading2) => {
-          expect($heading2.text()).not.to.eq(heading);
-        });
-      });
-
-      cy.get("a.logo-container").click();
-      cy.get("#line-chart").should("be.visible");
-
-      cy.get("button.chart-tab-active").first().should("contain.text", "Volume");
-    });
-
-    it("should contain buttons for the period", () => {
-      const buttons = ["Day", "Week", "Month", "Quarter", "Year"];
-
-      cy.get(".PriceChart__PeriodButtons").within(() => {
-        cy.get("button.chart-tab")
-          .each(($btn, index, $btns) => {
-            cy.wrap($btn).should("be.visible").should("contain.text", buttons[index]);
-          })
-          .then(($btns) => {
-            cy.wrap($btns).should("have.length", buttons.length);
-          });
-      });
-    });
-
-    it("should be possible to change period", () => {
-      cy.get("button.chart-tab").contains("Day").should("have.class", "chart-tab-active");
-
-      cy.get("button.chart-tab").contains("Week").click();
-
-      cy.get("button.chart-tab").contains("Day").should("not.have.class", "chart-tab-active");
-      cy.get("button.chart-tab").contains("Week").should("have.class", "chart-tab-active");
-    });
-
-    it("should still display the selected period after changing pages", () => {
-      cy.get("button.chart-tab").contains("Year").click();
-
-      cy.get("h1").then(($heading) => {
-        const heading = $heading.text();
-
-        cy.get("button.button-lg").click();
-
-        cy.get("h1").should(($heading2) => {
-          expect($heading2.text()).not.to.eq(heading);
-        });
-      });
-
-      cy.get("a.logo-container").click();
-      cy.get("#line-chart").should("be.visible");
-
-      cy.get("button.chart-tab-active").should("contain.text", "Year");
-    });
-  });
+  // describe("Chart", () => {
+  //   it("should be possible to persistently change type", () => {
+  //     cy.get("button.chart-tab").contains("Price").should("have.class", "chart-tab-active");
+  //
+  //     cy.get(".PriceChart").within(() => {
+  //       cy.get("button.chart-tab-active").contains("Price").click();
+  //       cy.get(".dropdown-button").contains("Volume").click();
+  //       cy.get("button.chart-tab-active").first().should("contain.text", "Volume");
+  //     });
+  //
+  //     cy.get("h1").then(($heading) => {
+  //       const heading = $heading.text();
+  //
+  //       cy.get("button.button-lg").click();
+  //
+  //       cy.get("h1").should(($heading2) => {
+  //         expect($heading2.text()).not.to.eq(heading);
+  //       });
+  //     });
+  //
+  //     cy.get("a.logo-container").click();
+  //     cy.get("#line-chart").should("be.visible");
+  //
+  //     cy.get("button.chart-tab-active").first().should("contain.text", "Volume");
+  //   });
+  //
+  //   it("should contain buttons for the period", () => {
+  //     const buttons = ["Day", "Week", "Month", "Quarter", "Year"];
+  //
+  //     cy.get(".PriceChart__PeriodButtons").within(() => {
+  //       cy.get("button.chart-tab")
+  //         .each(($btn, index, $btns) => {
+  //           cy.wrap($btn).should("be.visible").should("contain.text", buttons[index]);
+  //         })
+  //         .then(($btns) => {
+  //           cy.wrap($btns).should("have.length", buttons.length);
+  //         });
+  //     });
+  //   });
+  //
+  //   it("should be possible to change period", () => {
+  //     cy.get("button.chart-tab").contains("Day").should("have.class", "chart-tab-active");
+  //
+  //     cy.get("button.chart-tab").contains("Week").click();
+  //
+  //     cy.get("button.chart-tab").contains("Day").should("not.have.class", "chart-tab-active");
+  //     cy.get("button.chart-tab").contains("Week").should("have.class", "chart-tab-active");
+  //   });
+  //
+  //   it("should still display the selected period after changing pages", () => {
+  //     cy.get("button.chart-tab").contains("Year").click();
+  //
+  //     cy.get("h1").then(($heading) => {
+  //       const heading = $heading.text();
+  //
+  //       cy.get("button.button-lg").click();
+  //
+  //       cy.get("h1").should(($heading2) => {
+  //         expect($heading2.text()).not.to.eq(heading);
+  //       });
+  //     });
+  //
+  //     cy.get("a.logo-container").click();
+  //     cy.get("#line-chart").should("be.visible");
+  //
+  //     cy.get("button.chart-tab-active").should("contain.text", "Year");
+  //   });
+  // });
 
   describe("Menu", () => {
     it("should be possible to be opened and closed", () => {
@@ -146,7 +146,7 @@ describe("Homepage", () => {
           expect($items).to.have.length.within(3, 5);
           expect($items[0]).to.contain.text("Home");
           expect($items[1]).to.contain.text("Top Wallets");
-          expect($items[2]).to.contain.text("Delegate Monitor");
+          expect($items[2]).to.contain.text("Validator Monitor");
           if ($items.length === 6) {
             expect($items[3]).to.contain.text("Bridgechains");
             expect($items[4]).to.contain.text("Businesses");
@@ -159,7 +159,7 @@ describe("Homepage", () => {
     });
 
     it("should be possible to navigate to other pages and back", () => {
-      const pages = ["Top Wallets", "Delegate Monitor"];
+      const pages = ["Top Wallets", "Validator Monitor"];
 
       pages.forEach((page) => {
         cy.get("h1").then(($heading) => {
@@ -173,7 +173,7 @@ describe("Homepage", () => {
           });
         });
 
-        cy.url().should("include", page.replace(" ", "-").toLowerCase());
+        // cy.url().should("include", page.replace(" ", "-").toLowerCase());
 
         cy.get("h1").then(($heading) => {
           const heading = $heading.text();

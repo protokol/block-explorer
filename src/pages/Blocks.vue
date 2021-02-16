@@ -87,7 +87,6 @@ export default class BlockPage extends Vue {
     }
   }
 
-
   public async unmounted() {
     window.removeEventListener("filterBlocks-localstorage-changed", () => this.onFilterChangeEvent());
   }

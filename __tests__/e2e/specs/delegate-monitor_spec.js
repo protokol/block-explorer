@@ -7,7 +7,7 @@ describe("Delegate Monitor", () => {
     it("should display delegate details", () => {
       cy.get(".MonitorHeader > div").as("divs").should("have.length", 3);
 
-      cy.get("@divs").eq(0).should("contain.text", "Delegates");
+      cy.get("@divs").eq(0).should("contain.text", "Validators  1137");
       cy.get("@divs").eq(1).should("contain.text", "Total forged");
       cy.get("@divs")
         .eq(2)
@@ -15,7 +15,7 @@ describe("Delegate Monitor", () => {
         .should(($text) => {
           expect($text).to.include("Last block");
           expect($text).to.include("Forged");
-          expect($text).to.include("Delegate");
+          expect($text).to.include("Validator");
         });
     });
 
@@ -47,7 +47,7 @@ describe("Delegate Monitor", () => {
 
     it("should be possible to click on the last block", () => {
       cy.get("h1")
-        .contains("Delegate Monitor")
+        .contains("Validator Monitor")
         .should("exist")
         .then(($heading) => {
           const heading = $heading.text();
@@ -64,12 +64,12 @@ describe("Delegate Monitor", () => {
 
     it("should be possible to click on the delegate that forged the last block", () => {
       cy.get("h1")
-        .contains("Delegate Monitor")
+        .contains("Validator Monitor")
         .should("exist")
         .then(($heading) => {
           const heading = $heading.text();
 
-          cy.get(".MonitorHeader div.min-w-0").contains("Delegate").siblings().first().find("a").click();
+          cy.get(".MonitorHeader div.min-w-0").contains("Validator").siblings().first().find("a").click();
 
           cy.get("h1").should(($heading2) => {
             expect($heading2.text()).not.to.eq(heading);
@@ -106,7 +106,7 @@ describe("Delegate Monitor", () => {
 
     it("should be possible to click on an active delegates name", () => {
       cy.get("h1")
-        .contains("Delegate Monitor")
+        .contains("Validator Monitor")
         .should("exist")
         .then(($heading) => {
           const heading = $heading.text();
@@ -132,7 +132,7 @@ describe("Delegate Monitor", () => {
     });
 
     it("should be possible to click the 'show more' button for active delegates", () => {
-      cy.get("h1").contains("Delegate Monitor").should("exist");
+      cy.get("h1").contains("Validator Monitor").should("exist");
 
       cy.url().should("include", "/delegate-monitor");
       cy.get("button.button-lg").click();
@@ -166,7 +166,7 @@ describe("Delegate Monitor", () => {
 
     it("should be possible to click on the standby delegates name", () => {
       cy.get("h1")
-        .contains("Delegate Monitor")
+        .contains("Validator Monitor")
         .should("exist")
         .then(($heading) => {
           const heading = $heading.text();
