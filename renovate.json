@@ -1,4 +1,3 @@
 {
-//  "extends": ["config:base", ":preserveSemverRanges"]
-  "enabled": false
+  "extends": ["config:base", ":preserveSemverRanges"]
 }
