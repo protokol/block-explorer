@@ -26,7 +26,6 @@ import { ApiService, NFTService } from "@/services";
 import NFTRegisterCollection from "@/components/transaction/nft/base/NFTRegisterCollection.vue";
 import NFTCreate from "@/components/transaction/nft/base/NFTCreate.vue";
 import NFTTransfer from "@/components/transaction/nft/base/NFTTransfer.vue";
-import Fragment from "@/components/utils/Fragment.vue";
 import NFTBurn from "@/components/transaction/nft/base/NFTBurn.vue";
 import NFTAuction from "@/components/transaction/nft/exchange/NFTAuction.vue";
 import NFTAuctionCancel from "@/components/transaction/nft/exchange/NFTAuctionCancel.vue";
@@ -46,7 +45,6 @@ import NFTAcceptTrade from "@/components/transaction/nft/exchange/NFTAcceptTrade
     NFTCreate,
     NFTRegisterCollection,
     VueJsonPretty,
-    Fragment,
   },
 })
 export default class NFTDetails extends Vue {

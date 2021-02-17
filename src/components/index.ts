@@ -52,3 +52,4 @@ Vue.component("Modal", require("@/components/Modal").default);
 Vue.component("SvgIcon", require("@/components/SvgIcon").default);
 
 // NFT
+
