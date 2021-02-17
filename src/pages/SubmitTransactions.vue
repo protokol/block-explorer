@@ -70,6 +70,7 @@
             <div class="w-full lg:w-2/3">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.NAME`)"
+                :value="collectionName"
                 name="registerCollection-name"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -138,6 +139,8 @@
           <div class="flex flex-wrap justify-between">
             <div class="w-full lg:w-2/3">
               <InputText
+                ref="collectionIdAsset"
+                :value="collectionIdAsset"
                 :label="$t(`SUBMIT_TRANSACTIONS.NFT_CREATE.COLLECTION_ID`)"
                 name="create-collectionId"
                 class="mr-8 my-3"
@@ -506,6 +509,7 @@ import { Builders as NFTExchangeBuilders } from "@protokol/nft-exchange-crypto";
 import { ApiService } from "@/services";
 import { ITransactionType } from "@/interfaces";
 import VJsoneditor from "v-jsoneditor";
+import axios from "axios";
 
 @Component({
   computed: {
@@ -527,6 +531,9 @@ export default class SubmitTransactionsPage extends Vue {
   private responseError: string = null;
 
   private jsonEditorOptions = { mode: "code" };
+
+  private collectionName: string = null;
+  private collectionIdAsset: string = null;
 
   private async submit(): Promise<void> {
     try {
@@ -641,7 +648,7 @@ export default class SubmitTransactionsPage extends Vue {
   }
 
   private async onTypeChange(event: any) {
-    this.properties = {};
+    this.properties = { json: {} };
     this.responseError = null;
     this.responseSuccess = null;
 
@@ -656,10 +663,28 @@ export default class SubmitTransactionsPage extends Vue {
       this.selectedTransactionType = 1;
     }
     if (typeGroup === 9000 && type === 0) {
+      const schema = axios.get(
+        "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/collections/nascar-collection.json",
+      );
       this.selectedTransactionType = 2;
+      this.properties["json"] = (await schema).data.jsonSchema;
+
+      this.collectionName = "Nascar driver Collection";
+      this.properties["name"] = this.collectionName;
     }
     if (typeGroup === 9000 && type === 1) {
+      const schema = axios.get(
+        "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/assets/nascar/driver1.json",
+      );
+      const collectionId = this.apiService.post("nft/collections/search", {
+        name: "Nascar driver Collection",
+      });
       this.selectedTransactionType = 3;
+
+      this.properties["json"] = (await schema).data;
+
+      this.collectionIdAsset = (await collectionId).data[0].id;
+      this.properties["collectionId"] = this.collectionIdAsset;
     }
     if (typeGroup === 9000 && type === 3) {
       this.selectedTransactionType = 4;
