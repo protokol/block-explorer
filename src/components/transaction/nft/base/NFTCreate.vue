@@ -178,11 +178,12 @@
 
         <div class="list-row-border-b">
           <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.COLLECTION_NAME`) }}</div>
-          <h4>{{ collectionName }}</h4>
+          <div>{{ collectionName }}</div>
         </div>
 
+        <AREX v-if="collectionName === 'AREX Defense Handguns'" :transaction="transaction" />
 
-
+        <Generic v-else :transaction="transaction" />
       </div>
       <!--        <div class="px-5 sm:px-10">-->
       <!--          <div class="list-row-border-b">-->
@@ -381,9 +382,13 @@ import { ITransaction } from "@/interfaces";
 import VueJsonPretty from "vue-json-pretty";
 import Fragment from "@/components/utils/Fragment.vue";
 import { NFTService } from "@/services";
+import AREX from "@/components/transaction/nft/base/nftCreate/AREX.vue";
+import Generic from "@/components/transaction/nft/base/nftCreate/Generic.vue";
 
 @Component({
   components: {
+    Generic,
+    AREX,
     VueJsonPretty,
     Fragment,
   },
