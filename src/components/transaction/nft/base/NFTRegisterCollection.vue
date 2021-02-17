@@ -47,7 +47,7 @@ import Fragment from "@/components/utils/Fragment.vue";
     Fragment,
   },
 })
-export default class NFTDetails extends Vue {
+export default class NFTRegisterCollection extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
 }
