@@ -243,6 +243,7 @@ export interface INetworkState {
   hasMagistrateEnabled: boolean;
   hasHtlcEnabled: boolean;
   enabledTransactionTypes: ITransactionType[];
+  passphrase: string | null;
 }
 
 export interface IUiState {

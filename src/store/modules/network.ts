@@ -25,6 +25,7 @@ const state: INetworkState = {
   hasMagistrateEnabled: false,
   hasHtlcEnabled: false,
   enabledTransactionTypes: [],
+  passphrase: null,
 };
 
 const actions: ActionTree<INetworkState, {}> = {
@@ -150,6 +151,14 @@ const actions: ActionTree<INetworkState, {}> = {
       value,
     });
   },
+  setPassphrase: ({ commit }, value: string) => {
+    localStorage.setItem("passphrase", value);
+    console.log(localStorage.getItem("passphrase"))
+    commit({
+      type: types.SET_NETWORK_PASSPHRASE,
+      value,
+    });
+  },
 };
 
 const mutations: MutationTree<INetworkState> = {
@@ -213,6 +222,9 @@ const mutations: MutationTree<INetworkState> = {
   [types.SET_NETWORK_ENABLED_TRANSACTION_TYPES](state, payload: IStorePayload) {
     state.enabledTransactionTypes = payload.value;
   },
+  [types.SET_NETWORK_PASSPHRASE](state, payload: IStorePayload) {
+    state.passphrase = payload.value;
+  },
 };
 
 const getters: GetterTree<INetworkState, {}> = {
@@ -236,6 +248,7 @@ const getters: GetterTree<INetworkState, {}> = {
   hasMagistrateEnabled: (state) => state.hasMagistrateEnabled,
   hasHtlcEnabled: (state) => state.hasHtlcEnabled,
   enabledTransactionTypes: (state) => state.enabledTransactionTypes,
+  passphrase: (state) => state.passphrase,
 };
 
 export const network: Module<INetworkState, {}> = {
