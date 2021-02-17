@@ -170,6 +170,7 @@ export default {
     NFT_CREATE: {
       TOKEN: "Token",
       COLLECTION_ID: "Collection ID",
+      COLLECTION_NAME: "Collection Name",
       TOKEN_ATTRIBUTES: "Token Attributes",
       SPECIFIC_COLLECTION: {
         NASCAR_TEAM: {
