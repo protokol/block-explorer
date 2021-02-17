@@ -12,6 +12,7 @@ import RoundService from "./round";
 import SearchService from "./search";
 import TransactionService from "./transaction";
 import WalletService from "./wallet";
+import NFTService from "./nft";
 
 export {
   ApiService,
@@ -28,4 +29,5 @@ export {
   SearchService,
   TransactionService,
   WalletService,
+  NFTService,
 };
