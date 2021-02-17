@@ -34,7 +34,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
 import { NFTBaseTransactionTypes, NFTExchangeTransactionTypes, TypeGroupTransaction } from "@/enums";
 import VueJsonPretty from "vue-json-pretty";
-import { ApiService, NFTService } from "@/services";
 import NFTRegisterCollection from "@/components/transaction/nft/base/NFTRegisterCollection.vue";
 import NFTCreate from "@/components/transaction/nft/base/NFTCreate.vue";
 import NFTTransfer from "@/components/transaction/nft/base/NFTTransfer.vue";
@@ -68,11 +67,5 @@ export default class NFTDetails extends Vue {
 
   private NFTExchange = TypeGroupTransaction.NFT_EXCHANGE;
   private NFTExchangeTransactions = NFTExchangeTransactionTypes;
-
-  private collectionName = "";
-
-  private async getCollection(id: string) {
-    return (await NFTService.getCollection(id)).name;
-  }
 }
 </script>
