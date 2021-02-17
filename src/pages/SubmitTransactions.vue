@@ -54,6 +54,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -124,6 +125,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -168,6 +170,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -204,6 +207,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -250,6 +254,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -304,6 +309,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -340,6 +346,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -384,6 +391,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -420,6 +428,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -466,6 +475,7 @@
             <div class="w-full">
               <InputText
                 :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
+                :value="properties['passphrase']"
                 name="passphrase"
                 class="mr-8 my-3"
                 @input="onInputChange"
@@ -501,8 +511,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import { mapGetters } from "vuex";
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { mapActions, mapGetters } from "vuex";
 import { Transactions, Identities, Utils, Interfaces } from "@arkecosystem/crypto";
 import { Builders } from "@protokol/nft-base-crypto";
 import { Builders as NFTExchangeBuilders } from "@protokol/nft-exchange-crypto";
@@ -514,6 +524,8 @@ import axios from "axios";
 @Component({
   computed: {
     ...mapGetters("ui", ["nightMode"]),
+    ...mapGetters("network", ["passphrase"]),
+    ...mapActions("network", ["setPassphrase"]),
   },
   components: {
     VJsoneditor,
@@ -535,8 +547,19 @@ export default class SubmitTransactionsPage extends Vue {
   private collectionName: string = null;
   private collectionIdAsset: string = null;
 
+  public mounted(): void {
+    this.$store.dispatch("network/setPassphrase", localStorage.getItem("passphrase"));
+  }
+  @Watch("passphrase")
+  public onPassphraseChange(){
+    this.properties["passphrase"] = this.$store.getters["network/passphrase"];
+  }
+
+
   private async submit(): Promise<void> {
     try {
+      this.$store.dispatch("network/setPassphrase", this.properties["passphrase"]);
+
       const address = Identities.Address.fromPassphrase(this.properties["passphrase"]);
       const nonce = await this.fetchNextNonce(address);
       let transaction;
@@ -648,7 +671,7 @@ export default class SubmitTransactionsPage extends Vue {
   }
 
   private async onTypeChange(event: any) {
-    this.properties = { json: {} };
+    this.properties = { json: {}, passphrase: "" };
     this.responseError = null;
     this.responseSuccess = null;
 
@@ -707,6 +730,8 @@ export default class SubmitTransactionsPage extends Vue {
     if (typeGroup === 9001 && type === 4) {
       this.selectedTransactionType = 10;
     }
+
+    this.properties["passphrase"] = this.$store.getters["network/passphrase"];
   }
 
   private onInputChange(event: any) {
