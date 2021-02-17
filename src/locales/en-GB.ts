@@ -498,6 +498,7 @@ export default {
     PRICE_CHART: "Price Chart",
     LANGUAGE: "Language",
     FILTER_BLOCKS: "Filter Empty Blocks",
+    RESET_PASSPHRASE: "Reset Passphrase",
   },
 
   FOOTER: {

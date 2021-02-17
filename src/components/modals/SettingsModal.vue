@@ -52,6 +52,14 @@
               @change="toggleFilterBlocks"
             />
           </ListDividedItem>
+          <ListDividedItem :label="''">
+            <button
+              class="align-middle SettingsModal__cancel__button pager-button"
+              @click="resetPassphrase"
+            >
+              {{ $t('MODAL_SETTINGS.RESET_PASSPHRASE') }}
+            </button>
+          </ListDividedItem>
         </ListDivided>
 
         <div v-if="showDisclaimer" class="text-justify SettingsModal__disclaimer">
@@ -94,7 +102,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import moment from "moment";
 import { I18N } from "@/config";
 import CryptoCompareService from "@/services/crypto-compare";
@@ -107,6 +115,7 @@ import { ListDivided, ListDividedItem } from "@/components/utils/listDivided";
   },
   computed: {
     ...mapGetters("network", { networkCurrencies: "currencies", networkDefaults: "defaults" }),
+    ...mapActions("network", ["setPassphrase"]),
   },
 })
 export default class SettingsModal extends Vue {
@@ -262,6 +271,10 @@ export default class SettingsModal extends Vue {
 
   public emitClose() {
     this.$emit("close");
+  }
+
+  private resetPassphrase() {
+    this.$store.dispatch("network/setPassphrase", "");
   }
 }
 </script>

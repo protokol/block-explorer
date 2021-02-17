@@ -511,7 +511,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { mapActions, mapGetters } from "vuex";
 import { Transactions, Identities, Utils, Interfaces } from "@arkecosystem/crypto";
 import { Builders } from "@protokol/nft-base-crypto";
@@ -550,6 +550,11 @@ export default class SubmitTransactionsPage extends Vue {
   public mounted(): void {
     this.$store.dispatch("network/setPassphrase", localStorage.getItem("passphrase"));
   }
+  @Watch("passphrase")
+  public onPassphraseChange(){
+    this.properties["passphrase"] = this.$store.getters["network/passphrase"];
+  }
+
 
   private async submit(): Promise<void> {
     try {
