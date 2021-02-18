@@ -56,14 +56,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
-import Fragment from "@/components/utils/Fragment.vue";
 import { NFTService } from "@/services";
 
-@Component({
-  components: {
-    Fragment,
-  },
-})
+@Component
 export default class NascarTeam extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
