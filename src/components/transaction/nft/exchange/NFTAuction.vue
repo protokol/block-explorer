@@ -32,13 +32,13 @@
 
     <section v-if="bids.length > 0" class="py-5 mb-5 page-section md:py-10">
       <h3 class="px-5 sm:px-10 mb-6">{{ $t(`TRANSACTION.NFT_AUCTION.BIDS`) }}</h3>
-      <div v-for="bid in bids" :key="bid.bidId" class="px-5 sm:px-8">
+      <div v-for="bid in bids" :key="bid.id" class="px-5 sm:px-8">
         <div class="list-row-border-b">
           <div class="mr-4">
-            <LinkTransaction :id="bid.bidId" :key="bid.bidId" :truncate-id="false" />
+            <LinkTransaction :id="bid.id" :key="bid.bidId" :truncate-id="false" />
           </div>
           <div>
-            {{ readableCrypto(bid.bidAmount) }}
+            {{ readableCrypto(bid.nftBid.bidAmount) }}
           </div>
         </div>
       </div>
@@ -50,6 +50,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
 import Fragment from "@/components/utils/Fragment.vue";
+import { NFTService } from "@/services";
 
 @Component({
   components: {
@@ -59,5 +60,18 @@ import Fragment from "@/components/utils/Fragment.vue";
 export default class NFTAuction extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
+
+  private isAuctionActive = true;
+  private bids: [] = [];
+
+  public async mounted(): Promise<void> {
+    try {
+      await NFTService.getAuctionWallets(this.transaction.id);
+    } catch {
+      this.isAuctionActive = false;
+    }
+
+    this.bids = await NFTService.bidsSearch({ auctionId: this.transaction.id });
+  }
 }
 </script>

@@ -4,7 +4,7 @@ import MiscMixin from "@/mixins/misc";
 import TransactionTypesMixin from "@/mixins/transaction-types";
 import StringsMixin from "@/mixins/strings";
 import VueTestUtils from "@vue/test-utils";
-import NFTTransactionDetails from "@/components/transaction/nft/NFTDetails.vue";
+import NFTDetails from "@/components/transaction/nft/NFTDetails.vue";
 import { CoreTransaction, TypeGroupTransaction } from "@/enums";
 import { useI18n } from "../../../../__utils__/i18n";
 import Vuex from "vuex";
@@ -18,7 +18,7 @@ describe("Components > Transaction > Details > NFT > NFTDetails", () => {
 
   const mountComponent = (config) => {
     return mount(
-      NFTTransactionDetails,
+      NFTDetails,
       merge(
         {
           // stubs: {
@@ -58,7 +58,7 @@ describe("Components > Transaction > Details > NFT > NFTDetails", () => {
   //   strict: true,
   // });
 
-  it("should display the transaction details", () => {
+  it("should display the collections details", () => {
     const wrapper = mountComponent({
       propsData: {
         transaction: {
