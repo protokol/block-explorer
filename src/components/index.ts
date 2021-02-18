@@ -11,7 +11,7 @@ Vue.component("Pagination", require("@/components/utils/pagination/Pagination").
 Vue.component("QrCode", require("@/components/utils/QrCode").default);
 Vue.component("TableWrapper", require("@/components/utils/TableWrapper").default);
 Vue.component("TransactionAmount", require("@/components/utils/TransactionAmount").default);
-Vue.component("Fragment", require("@/components/utils/Fragment.vue").default);
+Vue.component("Fragment", require("@/components/utils/Fragment").default);
 
 // Links
 Vue.component("LinkBlock", require("@/components/links/LinkBlock").default);
