@@ -27,22 +27,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
-import VueJsonPretty from "vue-json-pretty";
 import { NFTService } from "@/services";
-import AREX from "@/components/transaction/nft/base/nftCreate/AREX.vue";
-import Generic from "@/components/transaction/nft/base/nftCreate/Generic.vue";
-import NascarTeam from "@/components/transaction/nft/base/nftCreate/NascarTeam.vue";
-import NascarHeroCards from "@/components/transaction/nft/base/nftCreate/NascarHeroCards.vue";
 
-@Component({
-  components: {
-    NascarHeroCards,
-    NascarTeam,
-    Generic,
-    AREX,
-    VueJsonPretty,
-  },
-})
+@Component
 export default class NFTCreate extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
