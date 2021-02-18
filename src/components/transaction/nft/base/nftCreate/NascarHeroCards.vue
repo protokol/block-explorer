@@ -50,7 +50,7 @@ export default class NascarHeroCards extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
 
-  get nftService(): NFTService {
+  get nftService() {
     return NFTService;
   }
 }

@@ -92,7 +92,7 @@ export default class AREX extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
 
-  get nftService(): NFTService {
+  get nftService() {
     return NFTService;
   }
 }
