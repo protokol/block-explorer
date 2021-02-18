@@ -225,7 +225,13 @@
       </div>
     </section>
 
-    <NFTDetails v-if="transaction.typeGroup === 9000 || transaction.typeGroup === 9001" :transaction="transaction" />
+    <NFTDetails
+      v-if="
+        transaction.typeGroup === typeGroupTransaction.NFT_BASE ||
+        transaction.typeGroup === typeGroupTransaction.NFT_EXCHANGE
+      "
+      :transaction="transaction"
+    />
 
     <section v-if="isGroupPermissions(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
       <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.GROUP_PERMISSIONS`) }}</h3>
@@ -308,19 +314,11 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { BigNumber } from "@/utils/BigNumber";
 import { TranslateResult } from "vue-i18n";
 import { mapGetters } from "vuex";
-import { ITransaction, ITransactionType } from "@/interfaces";
-import {
-  CoreTransaction,
-  EBSITransactionTypes,
-  GuardianPermissionKind,
-  MagistrateTransaction,
-  NFTBaseTransactionTypes,
-  TypeGroupTransaction,
-} from "@/enums";
-import { ApiService, CryptoCompareService, LockService, TransactionService } from "@/services";
+import { ITransaction } from "@/interfaces";
+import { CoreTransaction, MagistrateTransaction, TypeGroupTransaction } from "@/enums";
+import { CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
-import NFTDetails from "@/components/transaction/nft/NFTDetails.vue";
 
 @Component({
   computed: {
@@ -328,7 +326,6 @@ import NFTDetails from "@/components/transaction/nft/NFTDetails.vue";
     ...mapGetters("network", ["height"]),
   },
   components: {
-    NFTDetails,
     VueJsonPretty,
   },
 })
@@ -343,11 +340,6 @@ export default class TransactionDetails extends Vue {
   private timelockStatus: TranslateResult | null = null;
   private timelockLink: string | null = null;
 
-  private collectionName = "";
-
-  private isAuctionActive = true;
-  private bids: { bidId: string; bidAmount: number }[] = [];
-
   transactionTypeKey(typeGroup: number, type: number): string {
     for (const transaction of transactionTypes) {
       if (transaction.typeGroup == typeGroup && transaction.type == type) {
@@ -355,14 +347,6 @@ export default class TransactionDetails extends Vue {
       }
     }
     return null;
-  }
-
-  permissionsKindMessage(allowType: number) {
-    if (allowType === GuardianPermissionKind.Deny) {
-      return this.$t(`TRANSACTION.GUARDIAN_PERMISSION_KIND.DENY`);
-    } else {
-      return this.$t(`TRANSACTION.GUARDIAN_PERMISSION_KIND.ALLOW`);
-    }
   }
 
   get confirmations() {
@@ -375,14 +359,6 @@ export default class TransactionDetails extends Vue {
 
   get magistrateTransaction() {
     return MagistrateTransaction;
-  }
-
-  get nftBaseTransactions() {
-    return NFTBaseTransactionTypes;
-  }
-
-  get EBSITransactions() {
-    return EBSITransactionTypes;
   }
 
   get typeGroupTransaction() {
@@ -475,13 +451,6 @@ export default class TransactionDetails extends Vue {
     this.updatePrice();
     this.handleMultipayment();
     this.getTimelockStatus();
-    if (this.transaction.typeGroup === 9000 && this.transaction.type === 1) {
-      this.getCollection(this.transaction.asset.nftToken.collectionId);
-    }
-
-    if (this.transaction.typeGroup === 9001 && this.transaction.type === 0) {
-      this.isAuctionClosed(this.transaction.id);
-    }
   }
 
   private async updatePrice() {
@@ -519,28 +488,6 @@ export default class TransactionDetails extends Vue {
     } else {
       this.timelockStatus = this.$t("TRANSACTION.TIMELOCK.UNKNOWN");
     }
-  }
-
-  private async getCollection(id: string) {
-    const collection = await ApiService.get(`nft/collections/${id}`);
-    this.collectionName = collection.data.name;
-  }
-
-  private getImage(ipfsHash: string): string {
-    return `https://cloudflare-ipfs.com/ipfs/${ipfsHash}`;
-  }
-
-  private async isAuctionClosed(id: string): Promise<boolean> {
-    try {
-      await ApiService.get(`nft/exchange/auctions/${id}/wallets`);
-      this.isAuctionActive = true;
-    } catch {
-      this.isAuctionActive = false;
-    }
-    const bids = await ApiService.post(`nft/exchange/bids/search`, { auctionId: id });
-    this.bids = bids.data.map((data) => ({ bidId: data.id, bidAmount: data.nftBid.bidAmount }));
-
-    return true;
   }
 }
 </script>
