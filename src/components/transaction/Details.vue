@@ -233,79 +233,7 @@
       :transaction="transaction"
     />
 
-    <section v-if="isGroupPermissions(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.GROUP_PERMISSIONS`) }}</h3>
-      <br />
-      <div class="px-5 sm:px-10">
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.NAME`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.name }}</div>
-        </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.ACTIVE`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.active }}</div>
-        </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.DEFAULT`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.default }}</div>
-        </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.PRIORITY`) }}</div>
-          <div class="overflow-hidden break-all">{{ transaction.asset.setGroupPermissions.priority }}</div>
-        </div>
-        <div v-if="transaction.asset.setGroupPermissions.allow" class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
-          <div>
-            <div v-for="value in transaction.asset.setGroupPermissions.allow" :key="value">
-              {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
-            </div>
-          </div>
-        </div>
-        <div v-if="transaction.asset.setGroupPermissions.deny" class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_GROUP_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
-          <div>
-            <div v-for="value in transaction.asset.setGroupPermissions.deny" :key="value">
-              {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section v-if="isUserPermissions(transaction.type, transaction.typeGroup)" class="py-5 mb-5 page-section md:py-10">
-      <h3 class="px-5 sm:px-10">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.USER_PERMISSIONS`) }}</h3>
-      <br />
-      <div class="px-5 sm:px-10">
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.WALLET`) }}</div>
-          <LinkWallet :trunc="false" :address="addressFromPublicKey(transaction.asset.setUserPermissions.publicKey)" />
-        </div>
-        <div class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.GROUPS`) }}</div>
-          <div>
-            <div v-for="value in transaction.asset.setUserPermissions.groupNames" :key="value">
-              {{ value }}
-            </div>
-          </div>
-        </div>
-        <div v-if="transaction.asset.setUserPermissions.allow" class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.ALLOWED_TRANSACTIONS`) }}</div>
-          <div>
-            <div v-for="value in transaction.asset.setUserPermissions.allow" :key="value">
-              {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
-            </div>
-          </div>
-        </div>
-        <div v-if="transaction.asset.setUserPermissions.deny" class="list-row-border-b">
-          <div class="mr-4">{{ $t(`TRANSACTION.GUARDIAN_SET_USER_PERMISSIONS.DENIED_TRANSACTIONS`) }}</div>
-          <div>
-            <div v-for="value in transaction.asset.setUserPermissions.deny" :key="value">
-              {{ $t(`TRANSACTION.TYPES.${transactionTypeKey(value.transactionTypeGroup, value.transactionType)}`) }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <GuardianDetails v-else-if="transaction.typeGroup === typeGroupTransaction.GUARDIAN" :transaction="transaction" />
   </div>
 </template>
 
@@ -319,6 +247,7 @@ import { CoreTransaction, MagistrateTransaction, TypeGroupTransaction } from "@/
 import { CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
+import GuardianDetails from "@/components/transaction/guardian/GuardianDetails";
 
 @Component({
   computed: {
@@ -327,6 +256,7 @@ import { transactionTypes } from "@/constants";
   },
   components: {
     VueJsonPretty,
+    GuardianDetails,
   },
 })
 export default class TransactionDetails extends Vue {
