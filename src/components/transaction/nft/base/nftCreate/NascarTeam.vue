@@ -68,6 +68,8 @@ export default class NascarTeam extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
 
-  private nftService = NFTService;
+  get nftService(): NFTService {
+    return NFTService;
+  }
 }
 </script>

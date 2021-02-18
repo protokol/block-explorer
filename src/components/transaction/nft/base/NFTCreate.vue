@@ -53,7 +53,6 @@ export default class NFTCreate extends Vue {
 
   public async mounted(): Promise<void> {
     this.collectionName = (await NFTService.getCollection(this.transaction.asset.nftToken.collectionId)).name;
-    console.log(this.collectionName);
   }
 }
 </script>
