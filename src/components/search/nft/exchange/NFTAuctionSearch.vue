@@ -6,5 +6,5 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class NFTBid extends Vue {}
+export default class NFTAuctionSearch extends Vue {}
 </script>

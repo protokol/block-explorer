@@ -6,5 +6,5 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class NFTBidCancel extends Vue {}
+export default class NFTCreateSearch extends Vue {}
 </script>
