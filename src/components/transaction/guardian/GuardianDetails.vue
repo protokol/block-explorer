@@ -15,11 +15,8 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
 import { GuardianTransactionTypes } from "@/enums";
-import GroupPermissions from "@/components/transaction/guardian/GroupPermissions.vue";
-import UserPermissions from "@/components/transaction/guardian/UserPermissions.vue";
-@Component({
-  components: { UserPermissions, GroupPermissions },
-})
+
+@Component
 export default class GuardianDetails extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;

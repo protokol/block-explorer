@@ -247,7 +247,6 @@ import { CoreTransaction, MagistrateTransaction, TypeGroupTransaction } from "@/
 import { CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
-import GuardianDetails from "@/components/transaction/guardian/GuardianDetails.vue";
 
 @Component({
   computed: {
@@ -256,7 +255,6 @@ import GuardianDetails from "@/components/transaction/guardian/GuardianDetails.v
   },
   components: {
     VueJsonPretty,
-    GuardianDetails,
   },
 })
 export default class TransactionDetails extends Vue {

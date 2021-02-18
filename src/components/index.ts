@@ -69,5 +69,3 @@ Vue.component("NFTAuctionCancel", require("@/components/transaction/nft/exchange
 Vue.component("NFTBid", require("@/components/transaction/nft/exchange/NFTBid").default);
 Vue.component("NFTBidCancel", require("@/components/transaction/nft/exchange/NFTBidCancel").default);
 Vue.component("NFTAcceptTrade", require("@/components/transaction/nft/exchange/NFTAcceptTrade").default);
-
-
