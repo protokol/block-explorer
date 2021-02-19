@@ -1,3 +1,3 @@
 import TransactionDetails from "./Details.vue";
 
-export default { TransactionDetails };
+export { TransactionDetails };

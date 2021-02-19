@@ -248,6 +248,7 @@ import { CryptoCompareService, LockService, TransactionService } from "@/service
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
 import { NFTDetails } from "./nft";
+import { GuardianDetails } from "./guardian";
 
 @Component({
   computed: {
@@ -257,6 +258,7 @@ import { NFTDetails } from "./nft";
   components: {
     VueJsonPretty,
     NFTDetails,
+    GuardianDetails,
   },
 })
 export default class TransactionDetails extends Vue {
