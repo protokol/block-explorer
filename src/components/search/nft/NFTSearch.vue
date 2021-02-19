@@ -5,17 +5,20 @@
         v-if="transactionType === getBaseTransactions.NFT_REGISTER_COLLECTION"
         @search="search"
       />
-      <NFTCreateSearch v-else-if="transactionType === getBaseTransactions.NFT_CREATE" />
-      <NFTTransferSearch v-else-if="transactionType === getBaseTransactions.NFT_TRANSFER" />
-      <NFTBurnSearch v-else-if="transactionType === getBaseTransactions.NFT_BURN" />
+      <NFTCreateSearch v-else-if="transactionType === getBaseTransactions.NFT_CREATE" @search="search" />
+      <NFTTransferSearch v-else-if="transactionType === getBaseTransactions.NFT_TRANSFER" @search="search" />
+      <NFTBurnSearch v-else-if="transactionType === getBaseTransactions.NFT_BURN" @search="search" />
     </template>
 
     <template v-else-if="transactionGroup === getExchangeGroup">
-      <NFTAuctionSearch v-if="transactionType === getExchangeTransactions.NFT_AUCTION" />
-      <NFTAuctionCancelSearch v-else-if="transactionType === getExchangeTransactions.NFT_AUCTION_CANCEL" />
-      <NFTBidSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID" />
-      <NFTBidCancelSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID_CANCEL" />
-      <NFTAcceptTradeSearch v-else-if="transactionType === getExchangeTransactions.NFT_ACCEPT_TRADE" />
+      <NFTAuctionSearch v-if="transactionType === getExchangeTransactions.NFT_AUCTION" @search="search" />
+      <NFTAuctionCancelSearch
+        v-else-if="transactionType === getExchangeTransactions.NFT_AUCTION_CANCEL"
+        @search="search"
+      />
+      <NFTBidSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID" @search="search" />
+      <NFTBidCancelSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID_CANCEL" @search="search" />
+      <NFTAcceptTradeSearch v-else-if="transactionType === getExchangeTransactions.NFT_ACCEPT_TRADE" @search="search" />
     </template>
   </Fragment>
 </template>
