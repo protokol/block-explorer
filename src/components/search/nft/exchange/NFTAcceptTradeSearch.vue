@@ -37,7 +37,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class NFTAcceptTradeSearch extends Vue {
   private onInputChange(event: any) {
     const { name, value } = event.target;
-    this.emitInput({ name, value });
+    // this.emitInput({ name, value });
   }
 
   private onEnterKey(event: any) {
