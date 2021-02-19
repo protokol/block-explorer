@@ -29,21 +29,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Mixins } from "vue-property-decorator";
+import { AbstractSearch } from "@/components/search/AbstractSearch";
 
 @Component
-export default class NFTTransferSearch extends Vue {
-  private onInputChange(event: any) {
-    const { name, value } = event.target;
-    this.emitInput({ name, value });
-  }
-
-  private onEnterKey(event: any) {
-    this.$emit("search");
-  }
-
-  private emitInput(value: object) {
-    this.$emit("search", value);
-  }
-}
+export default class NFTTransferSearch extends Mixins(AbstractSearch) {}
 </script>

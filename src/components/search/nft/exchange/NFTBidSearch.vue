@@ -52,21 +52,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Mixins, Vue } from "vue-property-decorator";
+import { AbstractSearch } from "@/components/search/AbstractSearch";
 
 @Component
-export default class NFTBidSearch extends Vue {
-  private onInputChange(event: any) {
-    const { name, value } = event.target;
-    this.emitInput({ name, value });
-  }
-
-  private onEnterKey(event: any) {
-    this.$emit("search");
-  }
-
-  private emitInput(value: object) {
-    this.$emit("search", value);
-  }
-}
+export default class NFTBidSearch extends Mixins(AbstractSearch) {}
 </script>
