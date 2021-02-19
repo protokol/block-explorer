@@ -34,10 +34,28 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
 import { NFTBaseTransactionTypes, NFTExchangeTransactionTypes, TypeGroupTransaction } from "@/enums";
 import VueJsonPretty from "vue-json-pretty";
+import { NFTBurn } from "./base";
+import { NFTTransfer } from "./base";
+import { NFTRegisterCollection } from "./base";
+import { NFTCreate } from "./base";
+import { NFTAcceptTrade } from "./exchange";
+import { NFTAuction } from "./exchange";
+import { NFTAuctionCancel } from "./exchange";
+import { NFTBid } from "./exchange";
+import { NFTBidCancel } from "./exchange";
 
 @Component({
   components: {
     VueJsonPretty,
+    NFTRegisterCollection,
+    NFTAcceptTrade,
+    NFTAuction,
+    NFTAuctionCancel,
+    NFTBid,
+    NFTBidCancel,
+    NFTBurn,
+    NFTCreate,
+    NFTTransfer,
   },
 })
 export default class NFTDetails extends Vue {

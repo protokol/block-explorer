@@ -28,8 +28,20 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { ITransaction } from "@/interfaces";
 import { NFTService } from "@/services";
+import AREX from "./nftCreate/AREX.vue";
+import Generic from "./nftCreate/Generic.vue";
+import NascarHeroCards from "./nftCreate/NascarHeroCards.vue";
+import NascarTeam  from "./nftCreate/NascarTeam.vue";
 
-@Component
+
+@Component({
+  components: {
+    AREX,
+    Generic,
+    NascarHeroCards,
+    NascarTeam,
+  },
+})
 export default class NFTCreate extends Vue {
   @Prop({ required: true })
   public transaction: ITransaction;
