@@ -247,6 +247,7 @@ import { CoreTransaction, MagistrateTransaction, TypeGroupTransaction } from "@/
 import { CryptoCompareService, LockService, TransactionService } from "@/services";
 import VueJsonPretty from "vue-json-pretty";
 import { transactionTypes } from "@/constants";
+import { NFTDetails } from "./nft";
 
 @Component({
   computed: {
@@ -255,6 +256,7 @@ import { transactionTypes } from "@/constants";
   },
   components: {
     VueJsonPretty,
+    NFTDetails,
   },
 })
 export default class TransactionDetails extends Vue {
