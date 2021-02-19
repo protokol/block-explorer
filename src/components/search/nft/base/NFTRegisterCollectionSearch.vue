@@ -41,13 +41,15 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class NFTRegisterCollectionSearch extends Vue {
   private onInputChange(event: any) {
     const { name, value } = event.target;
-    console.log(name);
-    console.log(value);
-    // this.emitInput({ name, value });
+    this.emitInput({ name, value });
   }
 
   private onEnterKey(event: any) {
     this.$emit("search");
+  }
+
+  private emitInput(value: object) {
+    this.$emit("search", value);
   }
 }
 </script>

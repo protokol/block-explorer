@@ -1,7 +1,10 @@
 <template>
   <Fragment>
     <template v-if="transactionGroup === getBaseGroup">
-      <NFTRegisterCollectionSearch v-if="transactionType === getBaseTransactions.NFT_REGISTER_COLLECTION" />
+      <NFTRegisterCollectionSearch
+        v-if="transactionType === getBaseTransactions.NFT_REGISTER_COLLECTION"
+        @search="search"
+      />
       <NFTCreateSearch v-else-if="transactionType === getBaseTransactions.NFT_CREATE" />
       <NFTTransferSearch v-else-if="transactionType === getBaseTransactions.NFT_TRANSFER" />
       <NFTBurnSearch v-else-if="transactionType === getBaseTransactions.NFT_BURN" />
@@ -64,6 +67,14 @@ export default class NFTSearch extends Vue {
 
   get getExchangeTransactions() {
     return NFTExchangeTransactionTypes;
+  }
+
+  private emitInput(value: object) {
+    this.$emit("formChange", value);
+  }
+
+  private async search({ name, value }): Promise<void> {
+    this.emitInput({ name, value });
   }
 }
 </script>

@@ -93,6 +93,7 @@
       "
       :transaction-group="transactionTypeGroup"
       :transaction-type="transactionTypeProp"
+      @formChange="search"
     />
   </div>
 </template>
@@ -152,6 +153,10 @@ export default class TransactionSearchForm extends Vue {
 
   private onEnterKey(event: any) {
     this.$emit("search");
+  }
+
+  private async search({ name, value }): Promise<void> {
+    this.emitInput({ name, value });
   }
 }
 </script>

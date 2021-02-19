@@ -213,12 +213,19 @@ export default class AdvancedSearchPage extends Vue {
 
   private removeFromSearchParams(name: string): void {
     if (name.includes("-")) {
-      const [parent, child] = name.split("-");
-      delete this.searchParams[parent][child];
+      const [parent, child, param3] = name.split("-");
 
-      if (!Object.keys(this.searchParams[parent]).length) {
-        delete this.searchParams[parent];
+      if (param3) {
+        delete this.searchParams[[parent, child, param3].join(".")];
+      } else {
+        delete this.searchParams[parent][child];
       }
+
+      try {
+        if (!Object.keys(this.searchParams[parent]).length) {
+          delete this.searchParams[parent];
+        }
+      } catch {}
 
       return;
     }
