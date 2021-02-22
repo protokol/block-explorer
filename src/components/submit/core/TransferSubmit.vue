@@ -7,7 +7,7 @@
       <div class="w-full lg:w-2/3">
         <InputText
           :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.RECIPIENT`)"
-          name="transfer-recipient"
+          name="recipient"
           class="mr-8 my-3"
           @input="onInputChange"
         />
@@ -16,42 +16,70 @@
       <div class="w-full lg:w-1/3 sm:w-1/2 md:w-1/2">
         <InputNumber
           :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.AMOUNT`)"
-          name="transfer-amount"
+          name="amount"
           class="mr-10 my-2"
           @input="onInputChange"
         />
       </div>
     </div>
-    <div class="flex flex-wrap justify-between mb-4">
-      <div class="w-full">
-        <InputText
-          :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-          name="vendorField"
-          class="mr-8 my-3"
-          @input="onInputChange"
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap justify-between mb-4">
-      <div class="w-full">
-        <InputText
-          :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-          :value="properties['passphrase']"
-          name="passphrase"
-          class="mr-8 my-3"
-          @input="onInputChange"
-        />
-      </div>
-    </div>
+
+    <PassphraseVFSubmit
+      :response-success="responseSuccess"
+      :response-error="responseError"
+      @submit="submitTransaction"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import PassphraseVFSubmit from "@/components/submit/Passphrase-VFSubmit.vue";
+import { ApiService, WalletService } from "@/services";
+import { Identities, Transactions } from "@arkecosystem/crypto";
+
 @Component({
-  components: {},
+  components: {
+    PassphraseVFSubmit,
+  },
 })
 export default class TransferSubmit extends Vue {
+  private recipient = "";
+  private amount: number;
 
+  private responseSuccess: string = null;
+  private responseError: string = null;
+
+  private onInputChange(event: any): void {
+    const { name, value } = event.target;
+
+    if (name === "recipient") {
+      this.recipient = value.toString();
+    } else if (name === "amount") {
+      this.amount = +value;
+    }
+  }
+
+  private async submitTransaction({ passphrase, vendorField }): Promise<void> {
+    try {
+      const nonce = await WalletService.fetchNextNonce(Identities.Address.fromPassphrase(passphrase));
+      const transaction = Transactions.BuilderFactory.transfer()
+        .recipientId(this.recipient)
+        .amount(this.amount.toString())
+        .nonce(nonce)
+        .vendorField(vendorField)
+        .sign(passphrase);
+
+      const broadcastResponse = await ApiService.post("transactions", { transactions: [transaction.getStruct()] });
+
+      this.response = broadcastResponse.data;
+      if (broadcastResponse.data.accept.length > 0) {
+        this.responseSuccess = broadcastResponse.data.accept[0];
+      } else {
+        this.responseError = "Something went wrong";
+      }
+    } catch {
+      this.responseError = "Something went wrong";
+    }
+  }
 }
 </script>
