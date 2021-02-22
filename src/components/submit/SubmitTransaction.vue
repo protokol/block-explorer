@@ -1,52 +1,42 @@
 <template>
   <Fragment>
-    <template v-if="transactionGroup === getBaseGroup">
-      <NFTRegisterCollectionSearch
-        v-if="transactionType === getBaseTransactions.NFT_REGISTER_COLLECTION"
-        @search="search"
-      />
-      <NFTCreateSearch v-else-if="transactionType === getBaseTransactions.NFT_CREATE" @search="search" />
-      <NFTTransferSearch v-else-if="transactionType === getBaseTransactions.NFT_TRANSFER" @search="search" />
-      <NFTBurnSearch v-else-if="transactionType === getBaseTransactions.NFT_BURN" @search="search" />
-    </template>
+    <section class="py-5 mb-5 page-section md:py-10">
+      <div id="transactionForm" class="mx-5 mb-5 mb-10 sm:mx-10">
+        <div class="flex flex-wrap justify-center mb-10">
+          <div class="w-full md:w-1/2">
+            <InputSelect
+              :select-options="selectOptions"
+              :label="$t('COMMON.TYPE')"
+              :value="transactionType.key"
+              name="Transaction Types"
+              class="flex-1"
+              @input="onTypeChange"
+            />
+          </div>
+        </div>
 
-    <template v-else-if="transactionGroup === getExchangeGroup">
-      <NFTAuctionSearch v-if="transactionType === getExchangeTransactions.NFT_AUCTION" @search="search" />
-      <NFTAuctionCancelSearch
-        v-else-if="transactionType === getExchangeTransactions.NFT_AUCTION_CANCEL"
-        @search="search"
-      />
-      <NFTBidSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID" @search="search" />
-      <NFTBidCancelSearch v-else-if="transactionType === getExchangeTransactions.NFT_BID_CANCEL" @search="search" />
-      <NFTAcceptTradeSearch v-else-if="transactionType === getExchangeTransactions.NFT_ACCEPT_TRADE" @search="search" />
-    </template>
+        <CoreSubmit v-if="transactionGroup === getCoreGroup" :transaction-type="transactionType" />
+
+        <NFTSubmit
+          v-else-if="transactionGroup === getBaseGroup || transactionGroup === getExchangeGroup"
+          :transaction-type="transactionType"
+          :transaction-group="transactionGroup"
+        />
+      </div>
+    </section>
   </Fragment>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { NFTBaseTransactionTypes, NFTExchangeTransactionTypes, TypeGroupTransaction } from "@/enums";
-import NFTRegisterCollectionSearch from "@/components/search/nft/base/NFTRegisterCollectionSearch.vue";
-import NFTCreateSearch from "@/components/search/nft/base/NFTCreateSearch.vue";
-import NFTTransferSearch from "@/components/search/nft/base/NFTTransferSearch.vue";
-import NFTBurnSearch from "@/components/search/nft/base/NFTBurnSearch.vue";
-import NFTAuctionSearch from "@/components/search/nft/exchange/NFTAuctionSearch.vue";
-import NFTAuctionCancelSearch from "@/components/search/nft/exchange/NFTAuctionSearch.vue";
-import NFTBidSearch from "@/components/search/nft/exchange/NFTBidSearch.vue";
-import NFTBidCancelSearch from "@/components/search/nft/exchange/NFTBidCancelSearch.vue";
-import NFTAcceptTradeSearch from "@/components/search/nft/exchange/NFTAcceptTradeSearch.vue";
+import { CoreTransaction, NFTBaseTransactionTypes, NFTExchangeTransactionTypes, TypeGroupTransaction } from "@/enums";
+import CoreSubmit from "@/components/submit/core/CoreSubmit.vue";
+import NFTSubmit from "@/components/submit/nft/NFTSubmit.vue";
 
 @Component({
   components: {
-    NFTAuctionSearch,
-    NFTRegisterCollectionSearch,
-    NFTCreateSearch,
-    NFTTransferSearch,
-    NFTBurnSearch,
-    NFTAuctionCancelSearch,
-    NFTBidSearch,
-    NFTBidCancelSearch,
-    NFTAcceptTradeSearch,
+    NFTSubmit,
+    CoreSubmit,
   },
 })
 export default class SubmitTransaction extends Vue {
@@ -55,6 +45,14 @@ export default class SubmitTransaction extends Vue {
 
   @Prop({ required: true })
   private transactionType: number;
+
+  get getCoreGroup() {
+    return TypeGroupTransaction.CORE;
+  }
+
+  get getCoreTransactions() {
+    return CoreTransaction;
+  }
 
   get getBaseGroup() {
     return TypeGroupTransaction.NFT_BASE;
