@@ -153,7 +153,6 @@ const actions: ActionTree<INetworkState, {}> = {
   },
   setPassphrase: ({ commit }, value: string) => {
     localStorage.setItem("passphrase", value);
-    console.log(localStorage.getItem("passphrase"))
     commit({
       type: types.SET_NETWORK_PASSPHRASE,
       value,
