@@ -3,6 +3,7 @@ import { IApiWalletsWrapper, IWallet, IWalletSearchParams } from "../interfaces"
 import { paginationLimit } from "@/constants";
 import dotProp from "dot-prop";
 import dotify from "node-dotify";
+import { Utils } from "@arkecosystem/crypto";
 
 const hydrate = (data: IWallet): IWallet => {
   return {
@@ -58,6 +59,12 @@ class WalletService {
     response.data = hydrateMany(response.data);
 
     return response;
+  }
+
+  public async fetchNextNonce(address: string): Promise<string> {
+    const wallet = await ApiService.get(`wallets/${address}`);
+    const nonce = Utils.BigNumber.make(wallet.data.nonce).plus("1");
+    return nonce.toFixed();
   }
 }
 

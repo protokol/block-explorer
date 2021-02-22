@@ -14,7 +14,7 @@
       <div class="w-full">
         <InputText
           :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-          :value="properties['passphrase']"
+          :value="passphrase"
           name="passphrase"
           class="mr-8 my-3"
           @input="onInputChange"
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <button class="button-lg" @click="submit">
+    <button class="button-lg" @click="clickSubmit">
       Submit Transaction
     </button>
 
@@ -45,5 +45,34 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({
   components: {},
 })
-export default class PassphraseVFSubmit extends Vue {}
+export default class PassphraseVFSubmit extends Vue {
+  @Prop({ required: true })
+  private responseSuccess: string | null;
+
+  @Prop({ required: true })
+  private responseError: string | null;
+
+  private passphrase = "";
+  private vendorField = "";
+
+  public mounted() {
+    this.passphrase = this.$store.getters["network/passphrase"];
+  }
+
+  private onInputChange(event: any): void {
+    const { name, value } = event.target;
+    if (name === "passphrase") {
+      this.passphrase = value.toString();
+    } else if (name === "vendorField") {
+      this.vendorField = value.toString();
+    }
+  }
+
+  public async clickSubmit() {
+    this.$emit("submit", {
+      passphrase: this.passphrase,
+      vendorField: this.vendorField,
+    });
+  }
+}
 </script>
