@@ -173,6 +173,14 @@ export default {
       COLLECTION_NAME: "Collection Name",
       TOKEN_ATTRIBUTES: "Token Attributes",
       SPECIFIC_COLLECTION: {
+        NASCAR_DRIVER: {
+          COLLECTION_NAME: "Nascar driver",
+          NAME: "Driver name",
+          DESCRIPTION: "Description",
+          TEAM: "Team",
+          BIRTH: "Date of birth",
+          CAR: "Car type",
+        },
         NASCAR_TEAM: {
           COLLECTION_NAME: "Nascar team asset",
           TEAM_NAME: "Team Name",

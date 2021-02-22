@@ -17,6 +17,7 @@
         <AREX v-if="collectionName === 'AREX Defense Handguns'" :transaction="transaction" />
         <NascarTeam v-else-if="collectionName === 'Nascar Team'" :transaction="transaction" />
         <NascarHeroCards v-else-if="collectionName === 'Nascar Hero Cards'" :transaction="transaction" />
+        <NascarDriver v-else-if="collectionName === 'Nascar driver Collection'" :transaction="transaction" />
 
         <Generic v-else :transaction="transaction" />
       </div>
@@ -31,11 +32,12 @@ import { NFTService } from "@/services";
 import AREX from "./nftCreate/AREX.vue";
 import Generic from "./nftCreate/Generic.vue";
 import NascarHeroCards from "./nftCreate/NascarHeroCards.vue";
-import NascarTeam  from "./nftCreate/NascarTeam.vue";
-
+import NascarTeam from "./nftCreate/NascarTeam.vue";
+import NascarDriver from "./nftCreate/NascarDriver.vue";
 
 @Component({
   components: {
+    NascarDriver,
     AREX,
     Generic,
     NascarHeroCards,
