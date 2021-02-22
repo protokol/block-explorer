@@ -1,5 +1,5 @@
 <template>
-  <div v-if="selectedTransactionType === 4" class="mx-5 mb-5 mb-10 sm:mx-10">
+  <div class="mx-5 mb-5 mb-10 sm:mx-10">
     <p class="mb-2 mt-4 font-bold">
       {{ $t(`TRANSACTION.TYPES.NFT_BURN`) }}
     </p>
