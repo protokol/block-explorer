@@ -122,7 +122,6 @@ export default class NFTRegisterCollectionSubmit extends Vue {
 
       const broadcastResponse = await ApiService.post("transactions", { transactions: [transaction.getStruct()] });
 
-      this.response = broadcastResponse.data;
       if (broadcastResponse.data.accept.length > 0) {
         this.responseSuccess = broadcastResponse.data.accept[0];
       } else {

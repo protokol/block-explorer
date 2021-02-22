@@ -150,13 +150,5 @@ export default class SubmitTransaction extends Vue {
     //
     // this.properties["passphrase"] = this.$store.getters["network/passphrase"];
   }
-
-  private emitInput(value: object) {
-    this.$emit("formChange", value);
-  }
-
-  private async search({ name, value }): Promise<void> {
-    this.emitInput({ name, value });
-  }
 }
 </script>

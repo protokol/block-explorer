@@ -520,7 +520,6 @@ import { Builders } from "@protokol/nft-base-crypto";
 import { Builders as NFTExchangeBuilders } from "@protokol/nft-exchange-crypto";
 import { ApiService } from "@/services";
 import { ITransactionType } from "@/interfaces";
-import VJsoneditor from "v-jsoneditor";
 import axios from "axios";
 import SubmitTransaction from "@/components/submit/SubmitTransaction.vue";
 
@@ -532,277 +531,276 @@ import SubmitTransaction from "@/components/submit/SubmitTransaction.vue";
   },
   components: {
     SubmitTransaction,
-    VJsoneditor,
   },
 })
 export default class SubmitTransactionsPage extends Vue {
   private nightMode: boolean;
-
-  private transactionType: ITransactionType = { key: "ALL", type: -1 };
-  private selectedTransactionType = -1;
-  private apiService = ApiService;
-
-  private properties: object = {};
-  private responseSuccess: string = null;
-  private responseError: string = null;
-
-  private jsonEditorOptions = { mode: "code" };
-
-  private collectionName: string = null;
-  private collectionIdAsset: string = null;
-
-  public mounted(): void {
-    this.$store.dispatch("network/setPassphrase", localStorage.getItem("passphrase"));
-  }
-  @Watch("passphrase")
-  public onPassphraseChange(){
-    this.properties["passphrase"] = this.$store.getters["network/passphrase"];
-  }
-
-
-  private async submit(): Promise<void> {
-    try {
-      this.$store.dispatch("network/setPassphrase", this.properties["passphrase"]);
-
-      const address = Identities.Address.fromPassphrase(this.properties["passphrase"]);
-      const nonce = await this.fetchNextNonce(address);
-      let transaction;
-      if (this.selectedTransactionType === 1) {
-        transaction = Transactions.BuilderFactory.transfer()
-          .version(2)
-          .recipientId(this.properties["recipient"])
-          .amount(this.properties["amount"]);
-      }
-      if (this.selectedTransactionType === 2) {
-        transaction = new Builders.NFTRegisterCollectionBuilder().NFTRegisterCollectionAsset({
-          name: this.properties["name"],
-          description: this.properties["description"],
-          maximumSupply: this.properties["assetAmount"],
-          jsonSchema: JSON.parse(JSON.stringify(this.properties["json"])),
-          allowedIssuers: this.properties["allowedIssuers"],
-        });
-      }
-      if (this.selectedTransactionType === 3) {
-        transaction = new Builders.NFTCreateBuilder().NFTCreateToken({
-          collectionId: this.properties["collectionId"],
-          attributes: JSON.parse(JSON.stringify(this.properties["json"])),
-        });
-      }
-      if (this.selectedTransactionType === 4) {
-        transaction = new Builders.NFTBurnBuilder().NFTBurnAsset({ nftId: this.properties["nftId"] });
-      }
-      if (this.selectedTransactionType === 5) {
-        transaction = new Builders.NFTTransferBuilder().NFTTransferAsset({
-          nftIds: this.properties["nftIds"],
-          recipientId: this.properties["recipient"],
-        });
-      }
-      if (this.selectedTransactionType === 6) {
-        transaction = new NFTExchangeBuilders.NFTAuctionBuilder().NFTAuctionAsset({
-          nftIds: this.properties["nftIds"],
-          startAmount: this.properties["startAmount"],
-          expiration: {
-            blockHeight: this.properties["expiration"],
-          },
-        });
-      }
-      if (this.selectedTransactionType === 7) {
-        transaction = new NFTExchangeBuilders.NFTAuctionCancelBuilder().NFTAuctionCancelAsset({
-          auctionId: this.properties["auction"],
-        });
-      }
-      if (this.selectedTransactionType === 8) {
-        transaction = new NFTExchangeBuilders.NFTBidBuilder().NFTBidAsset({
-          auctionId: this.properties["auction"],
-          bidAmount: Utils.BigNumber.make(this.properties["amount"]),
-        });
-      }
-      if (this.selectedTransactionType === 9) {
-        transaction = new NFTExchangeBuilders.NFTBidCancelBuilder().NFTBidCancelAsset({
-          bidId: this.properties["bid"],
-        });
-      }
-      if (this.selectedTransactionType === 10) {
-        transaction = new NFTExchangeBuilders.NftAcceptTradeBuilder().NFTAcceptTradeAsset({
-          auctionId: this.properties["auction"],
-          bidId: this.properties["bid"],
-        });
-      }
-
-      transaction.nonce(nonce).vendorField(this.properties["vendorField"]);
-
-      transaction.sign(this.properties["passphrase"]);
-      this.postTransaction(transaction.getStruct());
-    } catch (e) {
-      console.log(e);
-      this.responseError = "Error while constructing transaction";
-    }
-  }
-
-  get selectOptions() {
-    return this.types.map((type) => ({
-      value: type.key,
-      display: this.$t(`TRANSACTION.TYPES.${type.key}`),
-    }));
-  }
-
-  get types() {
-    return this.$store.getters["network/enabledTransactionTypes"];
-  }
-
-  private async fetchNextNonce(address: string): Promise<string> {
-    const wallet = await this.apiService.get(`wallets/${address}`);
-    const nonce = Utils.BigNumber.make(wallet.data.nonce).plus("1");
-    return nonce.toFixed();
-  }
-
-  private async postTransaction(transaction: Interfaces.ITransactionData) {
-    try {
-      const broadcastResponse = await this.apiService.post("transactions", { transactions: [transaction] });
-
-      if (broadcastResponse.data.accept[0]) {
-        this.responseSuccess = broadcastResponse.data.accept[0];
-        this.responseError = null;
-      }
-      if (broadcastResponse.data.invalid[0]) {
-        this.responseError = broadcastResponse.data.invalid[0];
-        this.responseSuccess = null;
-      }
-    } catch {
-      this.responseError = "404 Error";
-      this.responseSuccess = null;
-    }
-  }
-
-  private async onTypeChange(event: any) {
-    this.properties = { json: {}, passphrase: "" };
-    this.responseError = null;
-    this.responseSuccess = null;
-
-    const index: number = this.types.findIndex((transaction) => transaction.key === event.target.value);
-    const { type, typeGroup, asset } = this.types[index];
-    this.selectedTransactionType = 0;
-
-    if (type === -1) {
-      this.selectedTransactionType = -1;
-    }
-    if (typeGroup === 1 && type === 0) {
-      this.selectedTransactionType = 1;
-    }
-    if (typeGroup === 9000 && type === 0) {
-      const schema = axios.get(
-        "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/collections/nascar-collection.json",
-      );
-      this.selectedTransactionType = 2;
-      this.properties["json"] = (await schema).data.jsonSchema;
-
-      this.collectionName = "Nascar driver Collection";
-      this.properties["name"] = this.collectionName;
-    }
-    if (typeGroup === 9000 && type === 1) {
-      const schema = axios.get(
-        "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/assets/nascar/driver1.json",
-      );
-      const collectionId = this.apiService.post("nft/collections/search", {
-        name: "Nascar driver Collection",
-      });
-      this.selectedTransactionType = 3;
-
-      this.properties["json"] = (await schema).data;
-
-      this.collectionIdAsset = (await collectionId).data[0].id;
-      this.properties["collectionId"] = this.collectionIdAsset;
-    }
-    if (typeGroup === 9000 && type === 3) {
-      this.selectedTransactionType = 4;
-    }
-    if (typeGroup === 9000 && type === 2) {
-      this.selectedTransactionType = 5;
-    }
-    if (typeGroup === 9001 && type === 0) {
-      this.selectedTransactionType = 6;
-    }
-    if (typeGroup === 9001 && type === 1) {
-      this.selectedTransactionType = 7;
-    }
-    if (typeGroup === 9001 && type === 2) {
-      this.selectedTransactionType = 8;
-    }
-    if (typeGroup === 9001 && type === 3) {
-      this.selectedTransactionType = 9;
-    }
-    if (typeGroup === 9001 && type === 4) {
-      this.selectedTransactionType = 10;
-    }
-
-    this.properties["passphrase"] = this.$store.getters["network/passphrase"];
-  }
-
-  private onInputChange(event: any) {
-    const { name, value } = event.target;
-    if (name === "transfer-recipient") {
-      this.properties["recipient"] = value.toString();
-    }
-    if (name === "transfer-amount") {
-      this.properties["amount"] = value.toString();
-    }
-    if (name === "vendorField") {
-      this.properties["vendorField"] = value.toString();
-    }
-    if (name === "passphrase") {
-      this.properties["passphrase"] = value.toString();
-    }
-    if (name === "nft-transfer-ids") {
-      this.properties["nftIds"] = value.toString().split(",");
-    }
-    if (name === "nft-transfer-recipient") {
-      this.properties["recipient"] = value.toString();
-    }
-    if (name === "nft-burn-id") {
-      this.properties["nftId"] = value.toString();
-    }
-    if (name === "nft-auction-ids") {
-      this.properties["nftIds"] = value.toString().split(",");
-    }
-    if (name === "nft-auction-startingAmount") {
-      this.properties["startAmount"] = +value;
-    }
-    if (name === "nft-auction-blockExpiration") {
-      this.properties["expiration"] = +value;
-    }
-    if (name === "nft-auctionCancel-auctionId") {
-      this.properties["auction"] = value.toString();
-    }
-    if (name === "nft-bid-auctionId") {
-      this.properties["auction"] = value.toString();
-    }
-    if (name === "nft-bid-amount") {
-      this.properties["amount"] = value.toString();
-    }
-    if (name === "nft-bidCancel-bidId") {
-      this.properties["bid"] = value.toString();
-    }
-    if (name === "nft-acceptTrade-auctionId") {
-      this.properties["auction"] = value.toString();
-    }
-    if (name === "nft-acceptTrade-bidId") {
-      this.properties["bid"] = value.toString();
-    }
-    if (name === "registerCollection-name") {
-      this.properties["name"] = value.toString();
-    }
-    if (name === "registerCollection-amount") {
-      this.properties["assetAmount"] = +value;
-    }
-    if (name === "registerCollection-description") {
-      this.properties["description"] = value.toString();
-    }
-    if (name === "registerCollection-allowedIssuers") {
-      this.properties["allowedIssuers"] = value.toString().split(",");
-    }
-    if (name === "create-collectionId") {
-      this.properties["collectionId"] = value.toString();
-    }
-  }
+  //
+  // private transactionType: ITransactionType = { key: "ALL", type: -1 };
+  // private selectedTransactionType = -1;
+  // private apiService = ApiService;
+  //
+  // private properties: object = {};
+  // private responseSuccess: string = null;
+  // private responseError: string = null;
+  //
+  // private jsonEditorOptions = { mode: "code" };
+  //
+  // private collectionName: string = null;
+  // private collectionIdAsset: string = null;
+  //
+  // public mounted(): void {
+  //   this.$store.dispatch("network/setPassphrase", localStorage.getItem("passphrase"));
+  // }
+  // @Watch("passphrase")
+  // public onPassphraseChange(){
+  //   this.properties["passphrase"] = this.$store.getters["network/passphrase"];
+  // }
+  //
+  //
+  // private async submit(): Promise<void> {
+  //   try {
+  //     this.$store.dispatch("network/setPassphrase", this.properties["passphrase"]);
+  //
+  //     const address = Identities.Address.fromPassphrase(this.properties["passphrase"]);
+  //     const nonce = await this.fetchNextNonce(address);
+  //     let transaction;
+  //     if (this.selectedTransactionType === 1) {
+  //       transaction = Transactions.BuilderFactory.transfer()
+  //         .version(2)
+  //         .recipientId(this.properties["recipient"])
+  //         .amount(this.properties["amount"]);
+  //     }
+  //     if (this.selectedTransactionType === 2) {
+  //       transaction = new Builders.NFTRegisterCollectionBuilder().NFTRegisterCollectionAsset({
+  //         name: this.properties["name"],
+  //         description: this.properties["description"],
+  //         maximumSupply: this.properties["assetAmount"],
+  //         jsonSchema: JSON.parse(JSON.stringify(this.properties["json"])),
+  //         allowedIssuers: this.properties["allowedIssuers"],
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 3) {
+  //       transaction = new Builders.NFTCreateBuilder().NFTCreateToken({
+  //         collectionId: this.properties["collectionId"],
+  //         attributes: JSON.parse(JSON.stringify(this.properties["json"])),
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 4) {
+  //       transaction = new Builders.NFTBurnBuilder().NFTBurnAsset({ nftId: this.properties["nftId"] });
+  //     }
+  //     if (this.selectedTransactionType === 5) {
+  //       transaction = new Builders.NFTTransferBuilder().NFTTransferAsset({
+  //         nftIds: this.properties["nftIds"],
+  //         recipientId: this.properties["recipient"],
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 6) {
+  //       transaction = new NFTExchangeBuilders.NFTAuctionBuilder().NFTAuctionAsset({
+  //         nftIds: this.properties["nftIds"],
+  //         startAmount: this.properties["startAmount"],
+  //         expiration: {
+  //           blockHeight: this.properties["expiration"],
+  //         },
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 7) {
+  //       transaction = new NFTExchangeBuilders.NFTAuctionCancelBuilder().NFTAuctionCancelAsset({
+  //         auctionId: this.properties["auction"],
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 8) {
+  //       transaction = new NFTExchangeBuilders.NFTBidBuilder().NFTBidAsset({
+  //         auctionId: this.properties["auction"],
+  //         bidAmount: Utils.BigNumber.make(this.properties["amount"]),
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 9) {
+  //       transaction = new NFTExchangeBuilders.NFTBidCancelBuilder().NFTBidCancelAsset({
+  //         bidId: this.properties["bid"],
+  //       });
+  //     }
+  //     if (this.selectedTransactionType === 10) {
+  //       transaction = new NFTExchangeBuilders.NftAcceptTradeBuilder().NFTAcceptTradeAsset({
+  //         auctionId: this.properties["auction"],
+  //         bidId: this.properties["bid"],
+  //       });
+  //     }
+  //
+  //     transaction.nonce(nonce).vendorField(this.properties["vendorField"]);
+  //
+  //     transaction.sign(this.properties["passphrase"]);
+  //     this.postTransaction(transaction.getStruct());
+  //   } catch (e) {
+  //     console.log(e);
+  //     this.responseError = "Error while constructing transaction";
+  //   }
+  // }
+  //
+  // get selectOptions() {
+  //   return this.types.map((type) => ({
+  //     value: type.key,
+  //     display: this.$t(`TRANSACTION.TYPES.${type.key}`),
+  //   }));
+  // }
+  //
+  // get types() {
+  //   return this.$store.getters["network/enabledTransactionTypes"];
+  // }
+  //
+  // private async fetchNextNonce(address: string): Promise<string> {
+  //   const wallet = await this.apiService.get(`wallets/${address}`);
+  //   const nonce = Utils.BigNumber.make(wallet.data.nonce).plus("1");
+  //   return nonce.toFixed();
+  // }
+  //
+  // private async postTransaction(transaction: Interfaces.ITransactionData) {
+  //   try {
+  //     const broadcastResponse = await this.apiService.post("transactions", { transactions: [transaction] });
+  //
+  //     if (broadcastResponse.data.accept[0]) {
+  //       this.responseSuccess = broadcastResponse.data.accept[0];
+  //       this.responseError = null;
+  //     }
+  //     if (broadcastResponse.data.invalid[0]) {
+  //       this.responseError = broadcastResponse.data.invalid[0];
+  //       this.responseSuccess = null;
+  //     }
+  //   } catch {
+  //     this.responseError = "404 Error";
+  //     this.responseSuccess = null;
+  //   }
+  // }
+  //
+  // private async onTypeChange(event: any) {
+  //   this.properties = { json: {}, passphrase: "" };
+  //   this.responseError = null;
+  //   this.responseSuccess = null;
+  //
+  //   const index: number = this.types.findIndex((transaction) => transaction.key === event.target.value);
+  //   const { type, typeGroup, asset } = this.types[index];
+  //   this.selectedTransactionType = 0;
+  //
+  //   if (type === -1) {
+  //     this.selectedTransactionType = -1;
+  //   }
+  //   if (typeGroup === 1 && type === 0) {
+  //     this.selectedTransactionType = 1;
+  //   }
+  //   if (typeGroup === 9000 && type === 0) {
+  //     const schema = axios.get(
+  //       "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/collections/nascar-collection.json",
+  //     );
+  //     this.selectedTransactionType = 2;
+  //     this.properties["json"] = (await schema).data.jsonSchema;
+  //
+  //     this.collectionName = "Nascar driver Collection";
+  //     this.properties["name"] = this.collectionName;
+  //   }
+  //   if (typeGroup === 9000 && type === 1) {
+  //     const schema = axios.get(
+  //       "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/assets/nascar/driver1.json",
+  //     );
+  //     const collectionId = this.apiService.post("nft/collections/search", {
+  //       name: "Nascar driver Collection",
+  //     });
+  //     this.selectedTransactionType = 3;
+  //
+  //     this.properties["json"] = (await schema).data;
+  //
+  //     this.collectionIdAsset = (await collectionId).data[0].id;
+  //     this.properties["collectionId"] = this.collectionIdAsset;
+  //   }
+  //   if (typeGroup === 9000 && type === 3) {
+  //     this.selectedTransactionType = 4;
+  //   }
+  //   if (typeGroup === 9000 && type === 2) {
+  //     this.selectedTransactionType = 5;
+  //   }
+  //   if (typeGroup === 9001 && type === 0) {
+  //     this.selectedTransactionType = 6;
+  //   }
+  //   if (typeGroup === 9001 && type === 1) {
+  //     this.selectedTransactionType = 7;
+  //   }
+  //   if (typeGroup === 9001 && type === 2) {
+  //     this.selectedTransactionType = 8;
+  //   }
+  //   if (typeGroup === 9001 && type === 3) {
+  //     this.selectedTransactionType = 9;
+  //   }
+  //   if (typeGroup === 9001 && type === 4) {
+  //     this.selectedTransactionType = 10;
+  //   }
+  //
+  //   this.properties["passphrase"] = this.$store.getters["network/passphrase"];
+  // }
+  //
+  // private onInputChange(event: any) {
+  //   const { name, value } = event.target;
+  //   if (name === "transfer-recipient") {
+  //     this.properties["recipient"] = value.toString();
+  //   }
+  //   if (name === "transfer-amount") {
+  //     this.properties["amount"] = value.toString();
+  //   }
+  //   if (name === "vendorField") {
+  //     this.properties["vendorField"] = value.toString();
+  //   }
+  //   if (name === "passphrase") {
+  //     this.properties["passphrase"] = value.toString();
+  //   }
+  //   if (name === "nft-transfer-ids") {
+  //     this.properties["nftIds"] = value.toString().split(",");
+  //   }
+  //   if (name === "nft-transfer-recipient") {
+  //     this.properties["recipient"] = value.toString();
+  //   }
+  //   if (name === "nft-burn-id") {
+  //     this.properties["nftId"] = value.toString();
+  //   }
+  //   if (name === "nft-auction-ids") {
+  //     this.properties["nftIds"] = value.toString().split(",");
+  //   }
+  //   if (name === "nft-auction-startingAmount") {
+  //     this.properties["startAmount"] = +value;
+  //   }
+  //   if (name === "nft-auction-blockExpiration") {
+  //     this.properties["expiration"] = +value;
+  //   }
+  //   if (name === "nft-auctionCancel-auctionId") {
+  //     this.properties["auction"] = value.toString();
+  //   }
+  //   if (name === "nft-bid-auctionId") {
+  //     this.properties["auction"] = value.toString();
+  //   }
+  //   if (name === "nft-bid-amount") {
+  //     this.properties["amount"] = value.toString();
+  //   }
+  //   if (name === "nft-bidCancel-bidId") {
+  //     this.properties["bid"] = value.toString();
+  //   }
+  //   if (name === "nft-acceptTrade-auctionId") {
+  //     this.properties["auction"] = value.toString();
+  //   }
+  //   if (name === "nft-acceptTrade-bidId") {
+  //     this.properties["bid"] = value.toString();
+  //   }
+  //   if (name === "registerCollection-name") {
+  //     this.properties["name"] = value.toString();
+  //   }
+  //   if (name === "registerCollection-amount") {
+  //     this.properties["assetAmount"] = +value;
+  //   }
+  //   if (name === "registerCollection-description") {
+  //     this.properties["description"] = value.toString();
+  //   }
+  //   if (name === "registerCollection-allowedIssuers") {
+  //     this.properties["allowedIssuers"] = value.toString().split(",");
+  //   }
+  //   if (name === "create-collectionId") {
+  //     this.properties["collectionId"] = value.toString();
+  //   }
+  // }
 }
 </script>
