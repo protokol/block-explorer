@@ -41,8 +41,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { mapActions, mapGetters } from "vuex";
 @Component({
+  computed: {
+    ...mapGetters("ui", ["nightMode"]),
+    ...mapGetters("network", ["passphrase"]),
+    ...mapActions("network", ["setPassphrase"]),
+  },
   components: {},
 })
 export default class PassphraseVFSubmit extends Vue {
@@ -52,17 +58,23 @@ export default class PassphraseVFSubmit extends Vue {
   @Prop({ required: true })
   private responseError: string | null;
 
-  private passphrase = "";
+  private passphraseState = "";
   private vendorField = "";
 
   public mounted() {
-    this.passphrase = this.$store.getters["network/passphrase"];
+    this.passphraseState = this.$store.getters["network/passphrase"];
+  }
+
+  @Watch("passphrase")
+  public onPassphraseChange() {
+    this.passphraseState = this.$store.getters["network/passphrase"];
   }
 
   private onInputChange(event: any): void {
     const { name, value } = event.target;
     if (name === "passphrase") {
-      this.passphrase = value.toString();
+      this.passphraseState = value.toString();
+      this.$store.dispatch("network/setPassphrase", this.passphraseState);
     } else if (name === "vendorField") {
       this.vendorField = value.toString();
     }
@@ -70,7 +82,7 @@ export default class PassphraseVFSubmit extends Vue {
 
   public async clickSubmit() {
     this.$emit("submit", {
-      passphrase: this.passphrase,
+      passphrase: this.passphraseState,
       vendorField: this.vendorField,
     });
   }
