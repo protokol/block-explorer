@@ -225,6 +225,7 @@ export default class AdvancedSearchPage extends Vue {
         if (!Object.keys(this.searchParams[parent]).length) {
           delete this.searchParams[parent];
         }
+        // eslint-disable-next-line no-empty
       } catch {}
 
       return;
