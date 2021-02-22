@@ -2,511 +2,513 @@
   <div class="max-w-2xl mx-auto md:pt-5">
     <ContentHeader>{{ "Submit Transactions" }}</ContentHeader>
 
-    <section class="py-5 mb-5 page-section md:py-10">
-      <div id="transactionForm" class="mx-5 mb-5 mb-10 sm:mx-10">
-        <div class="flex flex-wrap justify-center mb-10">
-          <div class="w-full md:w-1/2">
-            <InputSelect
-              :select-options="selectOptions"
-              :label="$t('COMMON.TYPE')"
-              :value="transactionType.key"
-              name="Transaction Types"
-              class="flex-1"
-              @input="onTypeChange"
-            />
-          </div>
-        </div>
+    <SubmitTransaction />
 
-        <div v-if="selectedTransactionType === 1" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.TRANSFER`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-2/3">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.RECIPIENT`)"
-                name="transfer-recipient"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
+<!--    <section class="py-5 mb-5 page-section md:py-10">-->
+<!--      <div id="transactionForm" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--        <div class="flex flex-wrap justify-center mb-10">-->
+<!--          <div class="w-full md:w-1/2">-->
+<!--            <InputSelect-->
+<!--              :select-options="selectOptions"-->
+<!--              :label="$t('COMMON.TYPE')"-->
+<!--              :value="transactionType.key"-->
+<!--              name="Transaction Types"-->
+<!--              class="flex-1"-->
+<!--              @input="onTypeChange"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
 
-            <div class="w-full lg:w-1/3 sm:w-1/2 md:w-1/2">
-              <InputNumber
-                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.AMOUNT`)"
-                name="transfer-amount"
-                class="mr-10 my-2"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 1" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.TRANSFER`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-2/3">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.RECIPIENT`)"-->
+<!--                name="transfer-recipient"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
 
-        <div v-if="selectedTransactionType === 2" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_REGISTER_COLLECTION`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-2/3">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.NAME`)"
-                :value="collectionName"
-                name="registerCollection-name"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
+<!--            <div class="w-full lg:w-1/3 sm:w-1/2 md:w-1/2">-->
+<!--              <InputNumber-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.AMOUNT`)"-->
+<!--                name="transfer-amount"-->
+<!--                class="mr-10 my-2"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-            <div class="w-full lg:w-1/3 sm:w-1/2 md:w-1/2">
-              <InputNumber
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.AMOUNT`)"
-                name="registerCollection-amount"
-                class="mr-10 my-2"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.DESCRIPTION`)"
-                name="registerCollection-description"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between">
-            <p class="mb-4 mt-3">{{ $t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.SCHEMA`) }}</p>
-            <v-jsoneditor ref="editor" v-model="properties['json']" :options="jsonEditorOptions"></v-jsoneditor>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full lg:w-2/3">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`)"
-                name="registerCollection-allowedIssuers"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 2" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_REGISTER_COLLECTION`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-2/3">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.NAME`)"-->
+<!--                :value="collectionName"-->
+<!--                name="registerCollection-name"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
 
-        <div v-if="selectedTransactionType === 3" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_CREATE`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-2/3">
-              <InputText
-                ref="collectionIdAsset"
-                :value="collectionIdAsset"
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_CREATE.COLLECTION_ID`)"
-                name="create-collectionId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
+<!--            <div class="w-full lg:w-1/3 sm:w-1/2 md:w-1/2">-->
+<!--              <InputNumber-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.AMOUNT`)"-->
+<!--                name="registerCollection-amount"-->
+<!--                class="mr-10 my-2"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.DESCRIPTION`)"-->
+<!--                name="registerCollection-description"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <p class="mb-4 mt-3">{{ $t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.SCHEMA`) }}</p>-->
+<!--            <v-jsoneditor ref="editor" v-model="properties['json']" :options="jsonEditorOptions"></v-jsoneditor>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full lg:w-2/3">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_REGISTER_COLLECTION.ALLOWED_ISSUERS`)"-->
+<!--                name="registerCollection-allowedIssuers"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-          <div class="flex flex-wrap justify-between mb-4">
-            <p class="mb-4 mt-3">{{ $t(`SUBMIT_TRANSACTIONS.NFT_CREATE.ATTRIBUTES`) }}</p>
-            <v-jsoneditor ref="editor" v-model="properties['json']" :options="jsonEditorOptions"></v-jsoneditor>
-          </div>
+<!--        <div v-if="selectedTransactionType === 3" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_CREATE`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-2/3">-->
+<!--              <InputText-->
+<!--                ref="collectionIdAsset"-->
+<!--                :value="collectionIdAsset"-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_CREATE.COLLECTION_ID`)"-->
+<!--                name="create-collectionId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <p class="mb-4 mt-3">{{ $t(`SUBMIT_TRANSACTIONS.NFT_CREATE.ATTRIBUTES`) }}</p>-->
+<!--            <v-jsoneditor ref="editor" v-model="properties['json']" :options="jsonEditorOptions"></v-jsoneditor>-->
+<!--          </div>-->
 
-        <div v-if="selectedTransactionType === 4" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_BURN`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BURN.NFT_ID`)"
-                name="nft-burn-id"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 5" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_TRANSFER`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_TRANSFER.NFT_IDS`)"
-                name="nft-transfer-ids"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-2/3">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.RECIPIENT`)"
-                name="nft-transfer-recipient"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 4" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_BURN`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BURN.NFT_ID`)"-->
+<!--                name="nft-burn-id"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 6" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_AUCTION`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.NFT_IDS`)"
-                name="nft-auction-ids"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-start">
-            <div class="w-full lg:w-1/4 md:w-1/2">
-              <InputNumber
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.START_AMOUNT`)"
-                name="nft-auction-startingAmount"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-            <div class="w-full lg:w-1/4 md:w-1/2">
-              <InputNumber
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.BLOCK_EXPIRATION`)"
-                name="nft-auction-blockExpiration"
-                class="mr-10 my-2"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 5" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_TRANSFER`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_TRANSFER.NFT_IDS`)"-->
+<!--                name="nft-transfer-ids"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-2/3">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.TRANSFER.RECIPIENT`)"-->
+<!--                name="nft-transfer-recipient"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 7" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_AUCTION_CANCEL`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full lg:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION_CANCEL.AUCTION_ID`)"
-                name="nft-auctionCancel-auctionId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 6" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_AUCTION`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.NFT_IDS`)"-->
+<!--                name="nft-auction-ids"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-start">-->
+<!--            <div class="w-full lg:w-1/4 md:w-1/2">-->
+<!--              <InputNumber-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.START_AMOUNT`)"-->
+<!--                name="nft-auction-startingAmount"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--            <div class="w-full lg:w-1/4 md:w-1/2">-->
+<!--              <InputNumber-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION.BLOCK_EXPIRATION`)"-->
+<!--                name="nft-auction-blockExpiration"-->
+<!--                class="mr-10 my-2"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 8" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_BID`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID.AUCTION_ID`)"
-                name="nft-bid-auctionId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-            <div class="w-full md:w-1/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID.AMOUNT`)"
-                name="nft-bid-amount"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 7" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_AUCTION_CANCEL`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full lg:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_AUCTION_CANCEL.AUCTION_ID`)"-->
+<!--                name="nft-auctionCancel-auctionId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 9" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_BID_CANCEL`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID_CANCEL.BID_ID`)"
-                name="nft-bidCancel-bidId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 8" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_BID`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full md:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID.AUCTION_ID`)"-->
+<!--                name="nft-bid-auctionId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--            <div class="w-full md:w-1/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID.AMOUNT`)"-->
+<!--                name="nft-bid-amount"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 10" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold">
-            {{ $t(`TRANSACTION.TYPES.NFT_ACCEPT_TRADE`) }}
-          </p>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_ACCEPT_TRADE.AUCTION_ID`)"
-                name="nft-acceptTrade-auctionId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-3/4">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.NFT_ACCEPT_TRADE.BID_ID`)"
-                name="nft-acceptTrade-bidId"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"
-                name="vendorField"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-between mb-4">
-            <div class="w-full">
-              <InputText
-                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-                :value="properties['passphrase']"
-                name="passphrase"
-                class="mr-8 my-3"
-                @input="onInputChange"
-              />
-            </div>
-          </div>
-        </div>
+<!--        <div v-if="selectedTransactionType === 9" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_BID_CANCEL`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full md:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_BID_CANCEL.BID_ID`)"-->
+<!--                name="nft-bidCancel-bidId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div v-if="selectedTransactionType === 0" class="mx-5 mb-5 mb-10 sm:mx-10">
-          <p class="mb-2 mt-4 font-bold text-center">
-            {{ "This transaction type is not supported" }}
-          </p>
-        </div>
-      </div>
+<!--        <div v-if="selectedTransactionType === 10" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold">-->
+<!--            {{ $t(`TRANSACTION.TYPES.NFT_ACCEPT_TRADE`) }}-->
+<!--          </p>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full md:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_ACCEPT_TRADE.AUCTION_ID`)"-->
+<!--                name="nft-acceptTrade-auctionId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between">-->
+<!--            <div class="w-full md:w-3/4">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.NFT_ACCEPT_TRADE.BID_ID`)"-->
+<!--                name="nft-acceptTrade-bidId"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.VENDORFIELD`)"-->
+<!--                name="vendorField"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="flex flex-wrap justify-between mb-4">-->
+<!--            <div class="w-full">-->
+<!--              <InputText-->
+<!--                :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"-->
+<!--                :value="properties['passphrase']"-->
+<!--                name="passphrase"-->
+<!--                class="mr-8 my-3"-->
+<!--                @input="onInputChange"-->
+<!--              />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-      <button v-if="selectedTransactionType !== 0 && selectedTransactionType !== -1" class="button-lg" @click="submit">
-        Submit Transaction
-      </button>
+<!--        <div v-if="selectedTransactionType === 0" class="mx-5 mb-5 mb-10 sm:mx-10">-->
+<!--          <p class="mb-2 mt-4 font-bold text-center">-->
+<!--            {{ "This transaction type is not supported" }}-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div v-if="responseSuccess !== null" class="flex flex-wrap justify-center mt-6 mb-8">
-        <div class="w-full md:w-1/2">
-          <h3 class="text-center">Transaction was submitted successfully</h3>
-          <LinkTransaction :id="responseSuccess" :truncate-id="false" class="justify-center" />
-        </div>
-      </div>
-      <div v-if="responseError !== null" class="flex flex-wrap justify-center mt-6 mb-8">
-        <div class="w-full md:w-1/2">
-          <h3 class="text-center text-red">Something went wrong while submitting transactions</h3>
-        </div>
-      </div>
-    </section>
+<!--      <button v-if="selectedTransactionType !== 0 && selectedTransactionType !== -1" class="button-lg" @click="submit">-->
+<!--        Submit Transaction-->
+<!--      </button>-->
+
+<!--      <div v-if="responseSuccess !== null" class="flex flex-wrap justify-center mt-6 mb-8">-->
+<!--        <div class="w-full md:w-1/2">-->
+<!--          <h3 class="text-center">Transaction was submitted successfully</h3>-->
+<!--          <LinkTransaction :id="responseSuccess" :truncate-id="false" class="justify-center" />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div v-if="responseError !== null" class="flex flex-wrap justify-center mt-6 mb-8">-->
+<!--        <div class="w-full md:w-1/2">-->
+<!--          <h3 class="text-center text-red">Something went wrong while submitting transactions</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
   </div>
 </template>
 
@@ -520,6 +522,7 @@ import { ApiService } from "@/services";
 import { ITransactionType } from "@/interfaces";
 import VJsoneditor from "v-jsoneditor";
 import axios from "axios";
+import SubmitTransaction from "@/components/submit/SubmitTransaction.vue";
 
 @Component({
   computed: {
@@ -528,6 +531,7 @@ import axios from "axios";
     ...mapActions("network", ["setPassphrase"]),
   },
   components: {
+    SubmitTransaction,
     VJsoneditor,
   },
 })
