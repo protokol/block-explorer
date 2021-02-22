@@ -33,9 +33,6 @@ import { CoreTransaction, NFTBaseTransactionTypes, NFTExchangeTransactionTypes, 
 import CoreSubmit from "@/components/submit/core/CoreSubmit.vue";
 import NFTSubmit from "@/components/submit/nft/NFTSubmit.vue";
 import { ITransactionType } from "@/interfaces";
-import axios from "axios";
-import { doc } from "prettier";
-import group = doc.builders.group;
 
 @Component({
   components: {
@@ -85,70 +82,10 @@ export default class SubmitTransaction extends Vue {
   }
 
   private async onTypeChange(event: any) {
-    // this.properties = { json: {}, passphrase: "" };
-    // this.responseError = null;
-    // this.responseSuccess = null;
-
     const index: number = this.types.findIndex((transaction) => transaction.key === event.target.value);
     const { type, typeGroup, asset } = this.types[index];
     this.selectedTransactionType = type;
     this.selectedTransactionGroup = typeGroup;
-
-    // this.selectedTransactionType = 0;
-    //
-    // if (type === -1) {
-    //   this.selectedTransactionType = -1;
-    // }
-    // if (typeGroup === 1 && type === 0) {
-    //   this.selectedTransactionType = 1;
-    // }
-    // if (typeGroup === 9000 && type === 0) {
-    //   const schema = axios.get(
-    //     "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/collections/nascar-collection.json",
-    //   );
-    //   this.selectedTransactionType = 2;
-    //   this.properties["json"] = (await schema).data.jsonSchema;
-    //
-    //   this.collectionName = "Nascar driver Collection";
-    //   this.properties["name"] = this.collectionName;
-    // }
-    // if (typeGroup === 9000 && type === 1) {
-    //   const schema = axios.get(
-    //     "https://raw.githubusercontent.com/protokol/examples/develop/packages/hammer/src/data/assets/nascar/driver1.json",
-    //   );
-    //   const collectionId = this.apiService.post("nft/collections/search", {
-    //     name: "Nascar driver Collection",
-    //   });
-    //   this.selectedTransactionType = 3;
-    //
-    //   this.properties["json"] = (await schema).data;
-    //
-    //   this.collectionIdAsset = (await collectionId).data[0].id;
-    //   this.properties["collectionId"] = this.collectionIdAsset;
-    // }
-    // if (typeGroup === 9000 && type === 3) {
-    //   this.selectedTransactionType = 4;
-    // }
-    // if (typeGroup === 9000 && type === 2) {
-    //   this.selectedTransactionType = 5;
-    // }
-    // if (typeGroup === 9001 && type === 0) {
-    //   this.selectedTransactionType = 6;
-    // }
-    // if (typeGroup === 9001 && type === 1) {
-    //   this.selectedTransactionType = 7;
-    // }
-    // if (typeGroup === 9001 && type === 2) {
-    //   this.selectedTransactionType = 8;
-    // }
-    // if (typeGroup === 9001 && type === 3) {
-    //   this.selectedTransactionType = 9;
-    // }
-    // if (typeGroup === 9001 && type === 4) {
-    //   this.selectedTransactionType = 10;
-    // }
-    //
-    // this.properties["passphrase"] = this.$store.getters["network/passphrase"];
   }
 }
 </script>
