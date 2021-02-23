@@ -22,6 +22,8 @@
           :transaction-type="selectedTransactionType"
           :transaction-group="selectedTransactionGroup"
         />
+
+        <NotSupportedSubmit v-else-if="selectedTransactionGroup !== -1" />
       </div>
     </section>
   </Fragment>
@@ -33,9 +35,11 @@ import { CoreTransaction, NFTBaseTransactionTypes, NFTExchangeTransactionTypes, 
 import CoreSubmit from "@/components/submit/core/CoreSubmit.vue";
 import NFTSubmit from "@/components/submit/nft/NFTSubmit.vue";
 import { ITransactionType } from "@/interfaces";
+import NotSupportedSubmit from "@/components/submit/NotSupportedSubmit.vue";
 
 @Component({
   components: {
+    NotSupportedSubmit,
     NFTSubmit,
     CoreSubmit,
   },
