@@ -14,7 +14,7 @@
       <div class="w-full">
         <InputText
           :label="$t(`SUBMIT_TRANSACTIONS.PASSPHRASE`)"
-          :value="passphrase"
+          :value="passphraseState"
           name="passphrase"
           class="mr-8 my-3"
           @input="onInputChange"
@@ -43,6 +43,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { mapActions, mapGetters } from "vuex";
+
 @Component({
   computed: {
     ...mapGetters("ui", ["nightMode"]),
@@ -62,7 +63,7 @@ export default class PassphraseVFSubmit extends Vue {
   private vendorField = "";
 
   public mounted() {
-    this.passphraseState = this.$store.getters["network/passphrase"];
+    this.passphraseState = localStorage.getItem("passphrase");
   }
 
   @Watch("passphrase")
