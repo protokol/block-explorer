@@ -53,11 +53,8 @@
             />
           </ListDividedItem>
           <ListDividedItem :label="''">
-            <button
-              class="align-middle SettingsModal__cancel__button pager-button"
-              @click="resetPassphrase"
-            >
-              {{ $t('MODAL_SETTINGS.RESET_PASSPHRASE') }}
+            <button class="align-middle SettingsModal__cancel__button pager-button" @click="resetPassphrase">
+              {{ $t("MODAL_SETTINGS.RESET_PASSPHRASE") }}
             </button>
           </ListDividedItem>
         </ListDivided>
