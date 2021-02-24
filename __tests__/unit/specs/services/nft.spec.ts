@@ -12,7 +12,7 @@ describe("Services > NFTService", () => {
   });
 
   it("should check the rest call for getting collection", async () => {
-    const data = await NFTService.getCollection("4a1c8509d9ae62368acfd42db5ee755b9af9521ad831ca26f91b1700c71e3273");
+    const data = await NFTService.getCollection("18bd6d507cea27ceee9939c770418135fb7ea5a4648bfecba57c15f6e121bafe");
     expect(data).not.toBeNull();
   });
 
