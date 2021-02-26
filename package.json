@@ -95,8 +95,6 @@
     "minimist": "^1.2.5",
     "miragejs": "^0.1.40",
     "moment-timezone": "^0.5.28",
-    "prettier": "^2.0.5",
-    "prettier-eslint": "^9.0.1",
     "sinon": "^9.0.2",
     "stylus": "^0.54.7",
     "stylus-loader": "^5.0.0",
