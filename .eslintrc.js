@@ -11,7 +11,6 @@ module.exports = {
     "plugin:vue/recommended",
     "@vue/typescript",
     "@vue/prettier",
-    "prettier/@typescript-eslint"
   ],
   rules: {
     "@typescript-eslint/ban-ts-ignore": "off",
