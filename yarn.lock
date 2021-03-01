@@ -3206,7 +3206,7 @@ __metadata:
     vue: ^2.6.11
     vue-chartjs: ^3.5.0
     vue-class-component: ^7.2.3
-    vue-cli-plugin-i18n: ^1.0.1
+    vue-cli-plugin-i18n: ^2.0.0
     vue-cli-plugin-svg-sprite: ^1.0.0
     vue-good-table: ^2.18.1
     vue-i18n: ^8.17.4
@@ -5676,6 +5676,18 @@ __metadata:
   dependencies:
     ms: ^2.1.1
   checksum: 3601a6ce96e4698ed3edf0ee6e67ef0317adfcdae2f66a43b23d1b14e8888b422337429b16dbbcba6801e7bfa6cbb8de3128fbacfb8ae1cd9bd7615ea6baf970
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.3.0":
+  version: 4.3.2
+  resolution: "debug@npm:4.3.2"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 5543570879e2274f6725d4285a034d6e0822d35faefc6f55965933fb440e8c21eb3a0bef934e66f4b6b491f898ee2de37cab980e9d4fd61372136c19d3ce4527
   languageName: node
   linkType: hard
 
@@ -11167,7 +11179,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"ms@npm:^2.1.1":
+"ms@npm:2.1.2, ms@npm:^2.1.1":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
   checksum: 9b65fb709bc30c0c07289dcbdb61ca032acbb9ea5698b55fa62e2cebb04c5953f1876a1f3f7f4bc2e91d4bf4d86003f3e207c3bc6ee2f716f99827e62389cd0e
@@ -16315,11 +16327,11 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"vue-cli-plugin-i18n@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "vue-cli-plugin-i18n@npm:1.0.1"
+"vue-cli-plugin-i18n@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "vue-cli-plugin-i18n@npm:2.0.0"
   dependencies:
-    debug: ^4.1.0
+    debug: ^4.3.0
     deepmerge: ^4.2.0
     dotenv: ^8.2.0
     flat: ^5.0.0
@@ -16327,7 +16339,7 @@ typescript@^3.8.3:
     vue: ^2.6.11
     vue-i18n: ^8.17.0
     vue-i18n-extract: 1.0.2
-  checksum: d7ea10ed23b91651a65e23ba2cfd8f86c8e20e2a6018f47af752a3c369723482d14a2e8bda49a127fcd9a467515df2bd0453c8a2deeb67d44965fef6d3b9fc1a
+  checksum: 044cbf084d924ae4d98789bf9afc1dcf2584be69e7e6345d41e8a3bc371ac7e9f160d8e0aa30b0c62b4f8a86cfd35d4b77170ff7c61467161759a025dcbb9032
   languageName: node
   linkType: hard
 
