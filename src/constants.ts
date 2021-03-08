@@ -1,21 +1,27 @@
 import { ITransactionType } from "@/interfaces";
 import {
   CoreTransaction,
+  EBSITransactionTypes,
+  GuardianTransactionTypes,
   MagistrateTransaction,
-  TypeGroupTransaction,
   MagistrateTransactionEntityAction,
   MagistrateTransactionEntityType,
-  MagistrateTransactionEntitySubType,
+  NameserviceTransactionTypes,
   NFTBaseTransactionTypes,
   NFTExchangeTransactionTypes,
-  GuardianTransactionTypes,
-  EBSITransactionTypes,
+  TypeGroupTransaction,
 } from "@/enums";
 
 export const URI_QRCODE_SCHEME_PREFIX = "ark:";
 
 export const transactionTypes: ITransactionType[] = [
   { key: "ALL", type: -1 },
+  // Nameservice transactions
+  {
+    key: "NAMESERVICE",
+    type: NameserviceTransactionTypes.NAMESERVICE,
+    typeGroup: TypeGroupTransaction.NAMESERVICE,
+  },
   // Ebsi transactions
   {
     key: "NOTARIZATION",

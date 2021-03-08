@@ -37,12 +37,13 @@ describe("Components > Wallet > Delegate", () => {
     });
 
     let divs = wrapper.findAll("div.list-row-border-b");
-    expect(divs).toHaveLength(5);
+    expect(divs).toHaveLength(6);
     expect(divs.at(0).text()).toBe("Username");
-    expect(divs.at(1).text()).toContain("Status");
-    expect(divs.at(2).text()).toContain("Rank");
-    expect(divs.at(3).text()).toContain("Votes");
-    expect(divs.at(4).text()).toBe("Total forged");
+    expect(divs.at(1).text()).toBe("Wallet name");
+    expect(divs.at(2).text()).toContain("Status");
+    expect(divs.at(3).text()).toContain("Rank");
+    expect(divs.at(4).text()).toContain("Votes");
+    expect(divs.at(5).text()).toBe("Total forged");
 
     divs = wrapper.findAll("div.list-row");
     expect(divs).toHaveLength(1);

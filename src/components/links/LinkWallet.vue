@@ -140,6 +140,7 @@
       $t("TRANSACTION.TYPES.GUARDIAN_SET_GROUP_PERMISSIONS")
     }}</span>
     <span v-else-if="isNotarization(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NOTARIZATION") }}</span>
+    <span v-else-if="isNameservice(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.NAMESERVICE") }}</span>
     <span v-else-if="isUndefinedUpdate(type, typeGroup, asset)">{{ $t("TRANSACTION.TYPES.UNDEFINED_UPDATE") }}</span>
     <!-- By default we simply link to a recipient as we don't know this type / typegroup combination -->
     <div v-else>

@@ -155,6 +155,11 @@ export default {
       GUARDIAN_SET_GROUP_PERMISSIONS: "Group Permissions",
       // EBSI types
       NOTARIZATION: "Notarization",
+      // Nameservice types
+      NAMESERVICE: "Nameservice",
+    },
+    NAMESERVICE: {
+      NAME: "Wallet name",
     },
     NOTARIZATION: {
       HASH: "Notarization hash",

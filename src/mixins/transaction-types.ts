@@ -9,6 +9,7 @@ import {
   NFTExchangeTransactionTypes,
   GuardianTransactionTypes,
   EBSITransactionTypes,
+  NameserviceTransactionTypes,
 } from "@/enums";
 
 const isCoreTypeGroup = (typeGroup: number): boolean => {
@@ -245,6 +246,11 @@ export default {
     //Ebsi Types
     isNotarization(type: number, typeGroup: number, asset: Record<string, any>): boolean {
       return typeGroup === TypeGroupTransaction.EBSI && type === EBSITransactionTypes.NOTARIZATION;
+    },
+
+    // Nameservice Types
+    isNameservice(type: number, typeGroup: number, asset: Record<string, any>): boolean {
+      return typeGroup === TypeGroupTransaction.NAMESERVICE && type === NameserviceTransactionTypes.NAMESERVICE;
     },
 
     // Unknown type

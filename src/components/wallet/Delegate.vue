@@ -6,6 +6,11 @@
     </div>
 
     <div class="list-row-border-b">
+      <div>{{ $t("TRANSACTION.NAMESERVICE.NAME") }}</div>
+      <div>{{ walletName }}</div>
+    </div>
+
+    <div class="list-row-border-b">
       <div>{{ $t("WALLET.DELEGATE.STATUS.TITLE") }}</div>
       <div :class="delegateStatus.class">{{ delegateStatus.text }}</div>
     </div>
@@ -77,6 +82,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { IWallet } from "@/interfaces";
 import WalletVoters from "@/components/wallet/Voters.vue";
+import NameserviceService from "@/services/nameservice";
 
 @Component({
   components: {
@@ -85,6 +91,8 @@ import WalletVoters from "@/components/wallet/Voters.vue";
 })
 export default class WalletDelegate extends Vue {
   @Prop({ required: true }) public wallet: IWallet;
+
+  private walletName: null | undefined | string = null;
 
   get delegate() {
     return this.$store.getters["delegates/byPublicKey"](this.wallet.publicKey);
@@ -99,6 +107,10 @@ export default class WalletDelegate extends Vue {
       return { text: this.$t("WALLET.DELEGATE.STATUS.ACTIVE"), class: "text-status-forging" };
     }
     return { text: this.$t("WALLET.DELEGATE.STATUS.STANDBY"), class: "text-status-missed-round" };
+  }
+
+  public async mounted(): Promise<void> {
+    this.walletName = await NameserviceService.getWalletName(this.delegate.address);
   }
 }
 </script>

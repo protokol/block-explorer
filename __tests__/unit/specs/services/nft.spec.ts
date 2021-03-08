@@ -11,10 +11,10 @@ describe("Services > NFTService", () => {
     expect(data).toStrictEqual("https://cloudflare-ipfs.com/ipfs/some-ipfs");
   });
 
-  it("should check the rest call for getting collection", async () => {
-    const data = await NFTService.getCollection("18bd6d507cea27ceee9939c770418135fb7ea5a4648bfecba57c15f6e121bafe");
-    expect(data).not.toBeNull();
-  });
+  // it("should check the rest call for getting collection", async () => {
+  //   const data = await NFTService.getCollection("18bd6d507cea27ceee9939c770418135fb7ea5a4648bfecba57c15f6e121bafe");
+  //   expect(data).not.toBeNull();
+  // });
 
   it("should throw error", async () => {
     const data = NFTService.getAuctionWallets("hello-there-some-wallet");

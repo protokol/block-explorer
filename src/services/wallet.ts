@@ -30,6 +30,11 @@ class WalletService {
     return hydrate(response.data);
   }
 
+  public async findRaw(address: string) {
+    const response = await ApiService.get(`wallets/${address}`);
+    return response.data;
+  }
+
   public async top(page = 1, limit: number = paginationLimit) {
     const response = await ApiService.get("wallets/top", {
       params: {
