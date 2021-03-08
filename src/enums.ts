@@ -47,6 +47,7 @@ export enum TypeGroupTransaction {
   NFT_EXCHANGE = 9001,
   GUARDIAN = 9002,
   EBSI = 9003,
+  NAMESERVICE = 9004,
 }
 
 export enum NFTBaseTransactionTypes {
@@ -76,6 +77,10 @@ export enum GuardianPermissionKind {
 
 export enum EBSITransactionTypes {
   NOTARIZATION = 0,
+}
+
+export enum NameserviceTransactionTypes {
+  NAMESERVICE = 0,
 }
 
 export enum ForgingStatus {

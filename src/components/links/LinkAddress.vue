@@ -30,6 +30,7 @@
       <span v-if="hasDefaultSlot">
         <slot />
       </span>
+      <span v-else-if="walletName">{{ walletName }}</span>
       <span v-else-if="delegate">{{ delegate.username }}</span>
       <span v-else-if="address">
         <span class="hidden md:inline-block">{{ trunc ? truncate(address) : address }}</span>
@@ -43,6 +44,7 @@
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 import { IDelegate } from "@/interfaces";
+import NameserviceService from "@/services/nameservice";
 
 @Component({
   computed: {
@@ -60,6 +62,8 @@ export default class LinkAddress extends Vue {
   private delegate: IDelegate | null | undefined = null;
   private delegates: IDelegate[];
   private knownWallets: { [key: string]: string };
+
+  private walletName: null | undefined | string = null;
 
   get isKnown(): string {
     return this.knownWallets[this.address];
@@ -81,6 +85,7 @@ export default class LinkAddress extends Vue {
   @Watch("address")
   public onAddressChanged() {
     this.determine();
+    void this.findWalletName();
   }
 
   @Watch("publicKey")
@@ -90,6 +95,10 @@ export default class LinkAddress extends Vue {
 
   public mounted(): void {
     this.determine();
+  }
+
+  private async findWalletName(): Promise<void> {
+    this.walletName = await NameserviceService.getWalletName(this.walletAddress);
   }
 
   private determine(): void {

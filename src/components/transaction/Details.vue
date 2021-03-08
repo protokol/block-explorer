@@ -157,6 +157,11 @@
           <div class="mr-4">{{ $t("TRANSACTION.NOTARIZATION.HASH") }}</div>
           <div>{{ transaction.asset.notarization.hash }}</div>
         </div>
+
+        <div v-if="isNameservice(transaction.type, transaction.typeGroup)" class="list-row">
+          <div class="mr-4">{{ $t("TRANSACTION.NAMESERVICE.NAME") }}</div>
+          <div>{{ transaction.asset.nameservice.name }}</div>
+        </div>
       </div>
     </section>
 
@@ -209,7 +214,7 @@
     <section
       v-if="
         transaction.typeGroup === typeGroupTransaction.MAGISTRATE &&
-        transaction.type !== magistrateTransaction.BUSINESS_RESIGNATION
+          transaction.type !== magistrateTransaction.BUSINESS_RESIGNATION
       "
       class="py-5 mb-5 page-section md:py-10"
     >
@@ -228,7 +233,7 @@
     <NFTDetails
       v-if="
         transaction.typeGroup === typeGroupTransaction.NFT_BASE ||
-        transaction.typeGroup === typeGroupTransaction.NFT_EXCHANGE
+          transaction.typeGroup === typeGroupTransaction.NFT_EXCHANGE
       "
       :transaction="transaction"
     />
