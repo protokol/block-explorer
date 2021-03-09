@@ -14,6 +14,11 @@
           <div>{{ collectionName }}</div>
         </div>
 
+        <div v-if="transaction.asset.nftToken.recipientId" class="list-row-border-b">
+          <div class="mr-4">{{ $t(`TRANSACTION.NFT_CREATE.RECIPIENT_ID`) }}</div>
+          <LinkWallet :address="transaction.asset.nftToken.recipientId" :trunc="false" tooltip-placement="left" />
+        </div>
+
         <AREX v-if="collectionName === 'AREX Defense Handguns'" :transaction="transaction" />
         <NascarTeam v-else-if="collectionName === 'Nascar Team'" :transaction="transaction" />
         <NascarHeroCards v-else-if="collectionName === 'Nascar Hero Cards'" :transaction="transaction" />

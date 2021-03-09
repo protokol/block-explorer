@@ -177,6 +177,7 @@ export default {
       TOKEN: "Token",
       COLLECTION_ID: "Collection ID",
       COLLECTION_NAME: "Collection Name",
+      RECIPIENT_ID: "Recipient",
       TOKEN_ATTRIBUTES: "Token Attributes",
       SPECIFIC_COLLECTION: {
         NASCAR_DRIVER: {
