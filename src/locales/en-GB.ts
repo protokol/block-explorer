@@ -170,6 +170,7 @@ export default {
       DESCRIPTION: "Description",
       MAXIMUM_SUPPLY: "Maximum Supply",
       JSON_SCHEMA: "Json Schema",
+      META_DATA: "Json meta data",
       ALLOWED_ISSUERS: "Allowed Issuers",
     },
     NFT_CREATE: {
