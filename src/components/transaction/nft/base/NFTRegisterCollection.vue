@@ -19,7 +19,13 @@
         <div class="list-row-border-b">
           <div>
             <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.JSON_SCHEMA`) }}</div>
-            <vue-json-pretty style="margin-top: 16px;" :data="transaction.asset.nftCollection.jsonSchema" />
+            <vue-json-pretty class="mt-4" :data="transaction.asset.nftCollection.jsonSchema" />
+          </div>
+        </div>
+        <div v-if="transaction.asset.nftCollection.metadata" class="list-row-border-b">
+          <div>
+            <div class="mr-4">{{ $t(`TRANSACTION.NFT_REGISTER_COLLECTION.META_DATA`) }}</div>
+            <vue-json-pretty class="mt-4" :data="transaction.asset.nftCollection.metadata" />
           </div>
         </div>
         <div v-if="transaction.asset.nftCollection.allowedIssuers" class="list-row-border-b">
