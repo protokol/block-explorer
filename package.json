@@ -99,7 +99,7 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^5.0.0",
     "svgo": "^1.3.2",
-    "svgo-loader": "^2.2.1",
+    "svgo-loader": "^3.0.0",
     "tailwindcss": "^1.4.6",
     "ts-jest": "^26.0.0",
     "tslint-config-prettier": "^1.18.0",
