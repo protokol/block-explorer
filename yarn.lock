@@ -1110,6 +1110,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.13.10":
+  version: 7.13.10
+  resolution: "@babel/runtime@npm:7.13.10"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 22014226b96a8c8e8d4e8bcdb011f317d1b32881aef424a669dc6ceaee14993d3609172967853cbf9c25c724c25145d45885b6c9df56ba241c12820776607f1f
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.9.6
   resolution: "@babel/runtime@npm:7.9.6"
@@ -3209,7 +3218,7 @@ __metadata:
     typescript: ^3.8.3
     typescript-language-server: ^0.5.1
     v-jsoneditor: ^1.4.2
-    v-tooltip: 2.0.2
+    v-tooltip: 2.1.3
     vue: ^2.6.11
     vue-chartjs: ^3.5.0
     vue-class-component: ^7.2.3
@@ -10620,6 +10629,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
+  languageName: node
+  linkType: hard
+
 "log-symbols@npm:2.2.0, log-symbols@npm:^2.2.0":
   version: 2.2.0
   resolution: "log-symbols@npm:2.2.0"
@@ -12520,7 +12536,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"popper.js@npm:^1.15.0":
+"popper.js@npm:^1.16.1":
   version: 1.16.1
   resolution: "popper.js@npm:1.16.1"
   checksum: eb53806fb7680e31c7d1db096f95438a40a7cb869f7ee0e27100c0860f11583a0d322606c6073618e7fe8865f834ec36482901b547256d9a0cf2b22434bca75d
@@ -16310,14 +16326,15 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"v-tooltip@npm:2.0.2":
-  version: 2.0.2
-  resolution: "v-tooltip@npm:2.0.2"
+"v-tooltip@npm:2.1.3":
+  version: 2.1.3
+  resolution: "v-tooltip@npm:2.1.3"
   dependencies:
-    lodash: ^4.17.11
-    popper.js: ^1.15.0
-    vue-resize: ^0.4.5
-  checksum: c20162f55833e2b6e528d267929bfc7e16441e7675d84037cb83bfbc478e945b710a7283976282daa5feafd6781ad8672ce6febc3a0ddc28914320ec0ef77e8b
+    "@babel/runtime": ^7.13.10
+    lodash: ^4.17.21
+    popper.js: ^1.16.1
+    vue-resize: ^1.0.1
+  checksum: b80de6333b2c8789fb699dbb8f7688d16f7ef28da2662edcfbed264d9509cada909b72e245fa9feed8ca04edc0a0a5b08f388bb538da1c8db49762c3cf9b3d09
   languageName: node
   linkType: hard
 
@@ -16596,12 +16613,14 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"vue-resize@npm:^0.4.5":
-  version: 0.4.5
-  resolution: "vue-resize@npm:0.4.5"
+"vue-resize@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "vue-resize@npm:1.0.1"
+  dependencies:
+    "@babel/runtime": ^7.13.10
   peerDependencies:
-    vue: ^2.3.0
-  checksum: 2f75cd54fdea433bebfff2f6f312d9e862051801eda858501af14a601116b28bfef19dd6c07d5ad22642f4460be918712c7af5703e374891e0664db874840fa7
+    vue: ^2.6.0
+  checksum: 3d6fb3d13ae9d317ed91d23483ee5c9caabd7704bf3582d1b8d5975b9110543538c9c529103c39a055fe0346aed569656bc8c2d40210aed5a5bbae01507f5650
   languageName: node
   linkType: hard
 
