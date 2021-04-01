@@ -98,7 +98,7 @@
     "sinon": "^10.0.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^5.0.0",
-    "svgo": "^1.3.2",
+    "svgo": "^2.0.0",
     "svgo-loader": "^3.0.0",
     "tailwindcss": "^1.4.6",
     "ts-jest": "^26.0.0",
