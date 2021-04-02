@@ -35,7 +35,7 @@
     "bad-words": "^3.0.3",
     "bignumber.js": "^9.0.0",
     "censorify-it": "^3.0.2",
-    "chart.js": "^2.9.3",
+    "chart.js": "^3.0.0",
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
     "dot-prop": "^6.0.0",
