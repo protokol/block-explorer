@@ -3348,7 +3348,7 @@ __metadata:
     censorify-it: ^3.0.2
     chart.js: ^2.9.3
     connect-history-api-fallback: ^1.6.0
-    core-js: ^3.6.5
+    core-js: ^3.10.2
     cross-env: ^7.0.2
     dot-prop: ^6.0.0
     es6-promise: ^4.2.8
@@ -5375,7 +5375,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.6.4, core-js@npm:^3.6.5":
+"core-js@npm:^3.10.2":
+  version: 3.10.2
+  resolution: "core-js@npm:3.10.2"
+  checksum: 6ff7c525419144998bfbe9c101872fcd350f46c455375e794fe34eb8d086bfdabb95a67da9eb0e98bcfc190f2cf4d7efd43eb726dcdb5f12a46dc5c8a7191f54
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.6.4":
   version: 3.6.5
   resolution: "core-js@npm:3.6.5"
   checksum: 9283348dd5be2f1d07feaf90e2336b3f00a2316e3d3c6d4f789c9a67bdd4d7b08ce1c88dca4e591340130056c6b412b0b74fae039f8e259206f1073f542e4e85
