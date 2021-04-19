@@ -3389,7 +3389,7 @@ __metadata:
     vue-class-component: ^7.2.3
     vue-cli-plugin-i18n: ^2.0.0
     vue-cli-plugin-svg-sprite: ^1.0.0
-    vue-good-table: ^2.18.1
+    vue-good-table: ^2.19.2
     vue-i18n: ^8.17.4
     vue-json-pretty: ^1.6.7
     vue-property-decorator: ^9.1.2
@@ -5890,10 +5890,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.0.0-beta.4":
-  version: 2.13.0
-  resolution: "date-fns@npm:2.13.0"
-  checksum: 5b2799f5927d3254308086775e13e72c5b7eb46b860225a5a7c507921ab376b3249d9b7e14cdaa19fefd5b5e61443df2f6f46c0b5e83e28bb117777705b8646f
+"date-fns@npm:^2.17.0":
+  version: 2.21.1
+  resolution: "date-fns@npm:2.21.1"
+  checksum: 00a2ddea1047c4ce6eaadda76a0ee0782d1cfe65061641bbff94f7a70d2d6ab12dac89e027b39d49710bdb2cf264bc1a4e096b0324c7de79699296a4c19f4a40
   languageName: node
   linkType: hard
 
@@ -10721,13 +10721,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"lodash.filter@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "lodash.filter@npm:4.6.0"
-  checksum: b4f23b12f04c56484871a05016830b601f2c87405b1ddaf5f786d1040991ef081a9864e70b00e495b8fe3fb0d47fd288af240d55ce46a8ab6722168127455872
-  languageName: node
-  linkType: hard
-
 "lodash.find@npm:^4.6.0":
   version: 4.6.0
   resolution: "lodash.find@npm:4.6.0"
@@ -10739,13 +10732,6 @@ fsevents@~2.1.2:
   version: 4.4.0
   resolution: "lodash.flatten@npm:4.4.0"
   checksum: f22a7f6f163256d87345b07c76122e03d03abbf943b6c3aa5e5fafb7d5bce765013aedfc2aae7e649af0907287a2cf85de24237dbdd3ecd485a77d56e070b54c
-  languageName: node
-  linkType: hard
-
-"lodash.foreach@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.foreach@npm:4.5.0"
-  checksum: aa177589a923db147831937b2b74746276247a4c0870c8dfe14bcebb009e9a89b33287589ba0af90a6fa2355b0759cea03ab6d0a25219a25d0d96222de4a831f
   languageName: node
   linkType: hard
 
@@ -16911,19 +16897,14 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"vue-good-table@npm:^2.18.1":
-  version: 2.19.2
-  resolution: "vue-good-table@npm:2.19.2"
+"vue-good-table@npm:^2.19.2":
+  version: 2.21.9
+  resolution: "vue-good-table@npm:2.21.9"
   dependencies:
-    date-fns: ^2.0.0-beta.4
+    date-fns: ^2.17.0
     diacriticless: 1.0.1
-    lodash.assign: ^4.2.0
-    lodash.clonedeep: ^4.5.0
-    lodash.filter: ^4.6.0
-    lodash.foreach: ^4.5.0
     lodash.isequal: ^4.5.0
-    vue-select: ^3.1.0
-  checksum: 73287be578cfd9631418a2c01632d28f31ff63e7d71df69189a10d93603e918625f955e0b91d994be015481f96476080209db4a08cc6f9c12248723bbc5f364b
+  checksum: 54a333b299107c77fb67ff3df10d88be4a1c8ac9c18f6e2d2664e5d694f180c3f2f8202a77436608d1a9489432503e3eaf8217b49e0ebcf0fc3cebfc2969353a
   languageName: node
   linkType: hard
 
@@ -17034,15 +17015,6 @@ typescript@^3.8.3:
   version: 3.1.6
   resolution: "vue-router@npm:3.1.6"
   checksum: 6bb2573827fd1f92c595463a9397d7cd9a4cd1ad77b4112c1ef0a97d78965b1aa93193b60d1ba28d9bfacc37d1e9f41a8891986dd1697addeca0fdcce1507133
-  languageName: node
-  linkType: hard
-
-"vue-select@npm:^3.1.0":
-  version: 3.10.3
-  resolution: "vue-select@npm:3.10.3"
-  peerDependencies:
-    vue: 2.x
-  checksum: 920c8602af0fd46030dbf815c7fc3f76ad96b5413985725ee991fe4eb49438a7a54ab9b3b07cc7a40e9d11c1003fbc3dbdaefa4fe37c675ee1aeb998ef622268
   languageName: node
   linkType: hard
 

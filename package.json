@@ -107,7 +107,7 @@
     "typescript-language-server": "^0.5.1",
     "vue-cli-plugin-i18n": "^2.0.0",
     "vue-cli-plugin-svg-sprite": "^1.0.0",
-    "vue-good-table": "^2.18.1",
+    "vue-good-table": "^2.19.2",
     "vue-template-compiler": "^2.6.11"
   },
   "bugs": {
