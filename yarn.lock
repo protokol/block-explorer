@@ -3367,7 +3367,7 @@ __metadata:
     miragejs: ^0.1.40
     moment: ^2.25.3
     moment-timezone: ^0.5.28
-    node-dotify: ^1.0.2
+    node-dotify: ^1.1.0
     node-emoji: ^1.10.0
     nprogress: ^0.2.0
     portal-vue: ^2.1.7
@@ -11750,12 +11750,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"node-dotify@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "node-dotify@npm:1.0.2"
+"node-dotify@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "node-dotify@npm:1.1.0"
   dependencies:
     bson-objectid: ^1.3.1
-  checksum: 53126d2588b77b7564f3ba4aca1a8f90f0a229fb1258deca15a340eaf3402ef30465c92bb7980ea2ea37d528219e90db4e63a62aac14da4df50c262df3c13a54
+  checksum: 449a165c295529f50a6d7e2598cd33a1a9b40beb148b34e414a7225fa4c2a76afaca213c5ca69603c6115323c29908c15f4af40dad0f79136b570c350ce15ca6
   languageName: node
   linkType: hard
 
