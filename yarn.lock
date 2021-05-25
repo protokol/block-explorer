@@ -1464,6 +1464,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/types@npm:^27.0.1":
+  version: 27.0.1
+  resolution: "@jest/types@npm:27.0.1"
+  dependencies:
+    "@types/istanbul-lib-coverage": ^2.0.0
+    "@types/istanbul-reports": ^3.0.0
+    "@types/node": "*"
+    "@types/yargs": ^16.0.0
+    chalk: ^4.0.0
+  checksum: cc70fdeaacdcb4d3195f82cbdfb44e22ff5b2b7921e4201aabac21342b2bc24b3c31fa9c4e569752f0eb696b6385d034a134f39976aa2e05d5705b865668dbc3
+  languageName: node
+  linkType: hard
+
 "@kazupon/vue-i18n-loader@npm:^0.5.0":
   version: 0.5.0
   resolution: "@kazupon/vue-i18n-loader@npm:0.5.0"
@@ -1808,6 +1821,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/istanbul-reports@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/istanbul-reports@npm:3.0.0"
+  dependencies:
+    "@types/istanbul-lib-report": "*"
+  checksum: 8aee794ea2e8065aa83e0a1017420068d10110f5e67f8473f5751e74462509306c451f79db3856e6848507519bf1d4de7d101daede6539701cc4d74b4646acd9
+  languageName: node
+  linkType: hard
+
 "@types/jest@npm:^24.0.19":
   version: 24.9.1
   resolution: "@types/jest@npm:24.9.1"
@@ -1997,6 +2019,15 @@ __metadata:
   dependencies:
     "@types/yargs-parser": "*"
   checksum: 03117288be47750740fd8bb670cf987360fc49b374348ce0c17efa743dcfdb52aa97ce001c606924fb062fe24800f680d0db78e1e5bc32c5e3a9f0248050d4d7
+  languageName: node
+  linkType: hard
+
+"@types/yargs@npm:^16.0.0":
+  version: 16.0.3
+  resolution: "@types/yargs@npm:16.0.3"
+  dependencies:
+    "@types/yargs-parser": "*"
+  checksum: 84b8f617742b4a86f334838152cbc8d2fae4cc2568a81c4d54a9a9c7a6dc926f4fb21c3cb9d34cad895ab4f020041e28bcfe16348a34d370a2833450750ccd66
   languageName: node
   linkType: hard
 
@@ -3378,7 +3409,7 @@ __metadata:
     svgo: ^2.0.0
     svgo-loader: ^3.0.0
     tailwindcss: ^1.4.6
-    ts-jest: ^26.0.0
+    ts-jest: ^27.0.0
     tslint-config-prettier: ^1.18.0
     typescript: ^3.8.3
     typescript-language-server: ^0.5.1
@@ -4782,6 +4813,13 @@ __metadata:
   version: 2.0.0
   resolution: "ci-info@npm:2.0.0"
   checksum: 553fe83c085fce5e19e20f85b993f24a463e6f805803837a8868607bb68b1300567868694a5dff1beca6c54926a4c0be1cc9ef0c35f810653d590bf64183f6a0
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "ci-info@npm:3.1.1"
+  checksum: 417d2bf17c320d477bc32997d3831bcc1b174d6b48616c2f0463765f042f073bfbfb15e06abdeea55b05ca9c8e054057eb9e0672e4e6031457e87216b2faddda
   languageName: node
   linkType: hard
 
@@ -9053,6 +9091,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"is-ci@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-ci@npm:3.0.0"
+  dependencies:
+    ci-info: ^3.1.1
+  bin:
+    is-ci: bin.js
+  checksum: 1e26d3ba6634ebee83f9d22f260354c5d950eada4d609c30cc2642069f8ba52f3aeb4c9bbf8099aaf04a2f44a1ed7beef2a24485f988753c8c078a57e9b3a2fd
+  languageName: node
+  linkType: hard
+
 "is-color-stop@npm:^1.0.0":
   version: 1.1.0
   resolution: "is-color-stop@npm:1.1.0"
@@ -9962,6 +10011,20 @@ fsevents@~2.1.2:
     slash: ^2.0.0
     source-map: ^0.6.0
   checksum: 884ec3a45cc43eb3488784f23dd9f748e11752a1987639e24d093971e192c84568e92791c4b2834e2b1c21cd25010136549cef0b187b2af747ac3b1bd48cf367
+  languageName: node
+  linkType: hard
+
+"jest-util@npm:^27.0.0":
+  version: 27.0.1
+  resolution: "jest-util@npm:27.0.1"
+  dependencies:
+    "@jest/types": ^27.0.1
+    "@types/node": "*"
+    chalk: ^4.0.0
+    graceful-fs: ^4.2.4
+    is-ci: ^3.0.0
+    picomatch: ^2.2.3
+  checksum: a395978f7f0599508ff4d7738ddb62cdcb24350e8ddded59727300a3892318f984f035534ecfc5c7c4af85f26eea4754796aa41903a552b433d876ff08c9c9f3
   languageName: node
   linkType: hard
 
@@ -10924,7 +10987,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21":
+"lodash@npm:4.x, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
@@ -11210,16 +11273,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"micromatch@npm:4.x, micromatch@npm:^4.0.0, micromatch@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "micromatch@npm:4.0.2"
-  dependencies:
-    braces: ^3.0.1
-    picomatch: ^2.0.5
-  checksum: 0cb0e11d647cbb65e398a0a8a1340a7fb751ae2722346219c435704cfac8b3275a94a6464236fe867f52ad46a24046d3bc4ac11b3d21ddb73bc44e27cf1e4904
-  languageName: node
-  linkType: hard
-
 "micromatch@npm:^3.1.10, micromatch@npm:^3.1.4":
   version: 3.1.10
   resolution: "micromatch@npm:3.1.10"
@@ -11238,6 +11291,16 @@ fsevents@~2.1.2:
     snapdragon: ^0.8.1
     to-regex: ^3.0.2
   checksum: a60e73539a3ac6c6231f11642257a460861302df5986a94fd418d1b64a817409cda778d7023b53541a2091b523eda2c6f7212721e380d0b696284b7ca0a45bda
+  languageName: node
+  linkType: hard
+
+"micromatch@npm:^4.0.0, micromatch@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "micromatch@npm:4.0.2"
+  dependencies:
+    braces: ^3.0.1
+    picomatch: ^2.0.5
+  checksum: 0cb0e11d647cbb65e398a0a8a1340a7fb751ae2722346219c435704cfac8b3275a94a6464236fe867f52ad46a24046d3bc4ac11b3d21ddb73bc44e27cf1e4904
   languageName: node
   linkType: hard
 
@@ -12755,6 +12818,13 @@ fsevents@~2.1.2:
   version: 2.2.2
   resolution: "picomatch@npm:2.2.2"
   checksum: 20fa75e0a58b39d83425b3db68744d5f6f361fd4fd66ec7745d884036d502abba0d553a637703af79939b844164b13e60eea339ccb043d7fbd74c3da2592b864
+  languageName: node
+  linkType: hard
+
+"picomatch@npm:^2.2.3":
+  version: 2.3.0
+  resolution: "picomatch@npm:2.3.0"
+  checksum: 80113a0fb70cfa62730d5aa3fd3d45b76bf3985f8494080ab2de1cc1fa3ba96d77990c7553a81401e16c51c0eb19c27cf5bc94f2196155090f26c8a167968001
   languageName: node
   linkType: hard
 
@@ -16146,26 +16216,26 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^26.0.0":
-  version: 26.0.0
-  resolution: "ts-jest@npm:26.0.0"
+"ts-jest@npm:^27.0.0":
+  version: 27.0.0
+  resolution: "ts-jest@npm:27.0.0"
   dependencies:
     bs-logger: 0.x
     buffer-from: 1.x
     fast-json-stable-stringify: 2.x
+    jest-util: ^27.0.0
     json5: 2.x
-    lodash.memoize: 4.x
+    lodash: 4.x
     make-error: 1.x
-    micromatch: 4.x
     mkdirp: 1.x
     semver: 7.x
-    yargs-parser: 18.x
+    yargs-parser: 20.x
   peerDependencies:
-    jest: ">=26 <27"
-    typescript: ">=3.8 <4.0"
+    jest: ^27.0.0
+    typescript: ">=3.8 <5.0"
   bin:
     ts-jest: cli.js
-  checksum: 17723be82724d664be94cad42f4a3c5141961015968d885d32d122ef32c55c50bffe0ed80bcf3949a0d57c2a14268589c4a4a3be6590f0bb443bca36a13d6940
+  checksum: 880c7bff8894cd539d0ba7c2e8f581ee8d60c87c628ea8068a805e19d5aedccc3e00b04b5bcc9f0a5628e4b96afd5f1b31dc9354221a1390d58e54a7b1fc08cb
   languageName: node
   linkType: hard
 
@@ -17663,13 +17733,10 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:18.x, yargs-parser@npm:^18.1.1":
-  version: 18.1.3
-  resolution: "yargs-parser@npm:18.1.3"
-  dependencies:
-    camelcase: ^5.0.0
-    decamelize: ^1.2.0
-  checksum: 33871721679053cc38165afc6356c06c3e820459589b5db78f315886105070eb90cbb583cd6515fa4231937d60c80262ca2b7c486d5942576802446318a39597
+"yargs-parser@npm:20.x":
+  version: 20.2.7
+  resolution: "yargs-parser@npm:20.2.7"
+  checksum: 124e7f1c24c9609d5d1c343f14b83289634e19bb43770708ebb6a19852647aaa0f89edcbf0e5b18a21bee77f54513ab5051518b2950cda69eb607a7c6251aa4f
   languageName: node
   linkType: hard
 
@@ -17680,6 +17747,16 @@ typescript@^3.8.3:
     camelcase: ^5.0.0
     decamelize: ^1.2.0
   checksum: 82d3b7ab99085d70a5121399ad407d2b98d296538bf7012ac2ce044a61160ca891ea617de6374699d81955d9a61c36a3b2a6a51588e38f710bd211ce2e63c33c
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:^18.1.1":
+  version: 18.1.3
+  resolution: "yargs-parser@npm:18.1.3"
+  dependencies:
+    camelcase: ^5.0.0
+    decamelize: ^1.2.0
+  checksum: 33871721679053cc38165afc6356c06c3e820459589b5db78f315886105070eb90cbb583cd6515fa4231937d60c80262ca2b7c486d5942576802446318a39597
   languageName: node
   linkType: hard
 
