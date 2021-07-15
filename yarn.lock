@@ -3374,7 +3374,7 @@ __metadata:
     qrious: ^4.0.2
     sinon: ^10.0.0
     stylus: ^0.54.7
-    stylus-loader: ^5.0.0
+    stylus-loader: ^6.0.0
     svgo: ^2.0.0
     svgo-loader: ^3.0.0
     tailwindcss: ^1.4.6
@@ -15472,9 +15472,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"stylus-loader@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "stylus-loader@npm:5.0.0"
+"stylus-loader@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "stylus-loader@npm:6.1.0"
   dependencies:
     fast-glob: ^3.2.5
     klona: ^2.0.4
@@ -15482,7 +15482,7 @@ resolve@1.1.7:
   peerDependencies:
     stylus: ">=0.52.4"
     webpack: ^5.0.0
-  checksum: cdf14a8fa8472dcaeb0fb6b267e58e594a38466fa70a42f289cbc6d2eb08c63b626b946025f2532d16c46f166854c9f3b1a17c213047982de3078e856e860fee
+  checksum: 365fc6b45e21a8c01c62f7cbc57b7d0777f137991afe16c1fbc93065a0fc993fcbd9fc5b7914263338a26f0d4953be52ab3766426a23cfbfcba48fae2765b0a1
   languageName: node
   linkType: hard
 
