@@ -1,25 +1,14 @@
-# Ark Explorer 3.0
+# Block Explorer
 
-<p align="center">
-    <img src="/ARKExplorer.png" />
-</p>
-
-> Designed and developed from the ground-up, using lean & fast developmental frameworks (Tailwind CSS & Vue.JS).
-
-[![Build Status](https://badgen.now.sh/github/status/ArkEcosystem/Explorer/develop)](https://github.com/ArkEcosystem/explorer/actions?query=branch%3Adevelop)
-[![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/explorer)](https://codecov.io/gh/arkecosystem/explorer)
-[![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
-
-> Lead Maintainer: [Michel Kraaijeveld](https://github.com/ItsANameToo)
-
-You can access it at [https://explorer.ark.io/](https://explorer.ark.io/).
+![Img](block-explorer.png)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Build Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ArkEcosystem/explorer
+git clone https://github.com/protokol/block-explorer
 ```
 
 ### 2. Install Dependencies
@@ -112,21 +101,10 @@ yarn serve --env.routerMode=history
 $ yarn test
 ```
 
-## Contributing
-
-- If you find any bugs, submit an [issue](../../issues) or open a [pull-request](../../pulls), helping us catch and fix them.
-- Engage with other users and developers on the [ArkEcosystem Slack](https://ark.io/slack/).
-- Join our [gitter](https://gitter.im/ark-developers/Lobby).
-- [Contribute bounties](https://github.com/ArkEcosystem/bounty-program).
-
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to security@ark.io. All security vulnerabilities will be promptly addressed.
-
-## Credits
-
-This project exists thanks to all the people who [contribute](../../contributors).
+If you discover a security vulnerability within this package, please send an e-mail to info@ark.io. All security vulnerabilities will be promptly addressed.
 
 ## License
 
-[MIT](LICENSE) © [ARK Ecosystem](https://ark.io)
+[CC BY-NC-SA 4.0](LICENSE) © [Protokol](https://protokol.com)
