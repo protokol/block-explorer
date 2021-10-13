@@ -2494,17 +2494,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/eslint-config-typescript@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@vue/eslint-config-typescript@npm:5.0.2"
+"@vue/eslint-config-typescript@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@vue/eslint-config-typescript@npm:8.0.0"
   dependencies:
     vue-eslint-parser: ^7.0.0
   peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^2.7.0
-    "@typescript-eslint/parser": ^2.7.0
-    eslint: ^5.0.0 || ^6.0.0
-    eslint-plugin-vue: ^5.2.3 || ^6.0.0
-  checksum: 908373e844b4e128353ce66bb6345ebe2eb772f95705a5b043f9ff05c61e27a8c611cc53c368d23666ba2b7d8c72d10cabf7a5ce37367ba5d8b862acb169cdde
+    "@typescript-eslint/eslint-plugin": ^5.0.0
+    "@typescript-eslint/parser": ^5.0.0
+    eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
+    eslint-plugin-vue: ^7.17.0
+  checksum: 11f0bf914866534dd7b83de57efb0b6c88bd9a9e59f6939305803e3b9d23cdf68d86537d6cbe53d9caf319eadc3348d104929aa8da30fb0fd7cb75823fd93f8f
   languageName: node
   linkType: hard
 
@@ -3392,7 +3392,7 @@ __metadata:
     "@vue/cli-plugin-unit-jest": ^4.3.1
     "@vue/cli-service": ^4.3.1
     "@vue/eslint-config-prettier": ^6.0.0
-    "@vue/eslint-config-typescript": ^5.0.2
+    "@vue/eslint-config-typescript": ^8.0.0
     "@vue/test-utils": ^1.0.2
     "@yarnpkg/pnpify": ^3.0.0
     animate.css: ^4.1.0
