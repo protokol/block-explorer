@@ -3396,7 +3396,7 @@ __metadata:
     "@vue/test-utils": ^1.0.2
     "@yarnpkg/pnpify": ^3.0.0
     animate.css: ^4.1.0
-    axios: ^0.21.0
+    axios: ^0.27.0
     babel-core: 7.0.0-bridge.0
     bad-words: ^3.0.3
     bignumber.js: ^9.0.0
@@ -3665,12 +3665,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.0":
-  version: 0.21.0
-  resolution: "axios@npm:0.21.0"
+"axios@npm:^0.27.0":
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
   dependencies:
-    follow-redirects: ^1.10.0
-  checksum: 4b08ecab39040948c03cae5fa726fdcf8bc299679818179c146e779a922ce887fad9261d82ad57ad1a3aa1fcba3612f14b490fdfa2cd28fa23c190fd48517f5f
+    follow-redirects: ^1.14.9
+    form-data: ^4.0.0
+  checksum: 6eaa903e6990054d999376c0679ff2172c7f7874d9ae66b91456a56570cce29f4a81c98bfb112ef2ef774125ef6fa3d73fd507ac153b2d3df644a5e956f9bf07
   languageName: node
   linkType: hard
 
@@ -5141,7 +5142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.6, combined-stream@npm:~1.0.6":
+"combined-stream@npm:^1.0.6, combined-stream@npm:^1.0.8, combined-stream@npm:~1.0.6":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
@@ -7865,15 +7866,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.10.0":
-  version: 1.13.1
-  resolution: "follow-redirects@npm:1.13.1"
-  peerDependencies:
-    debug: "*"
+"follow-redirects@npm:^1.14.9":
+  version: 1.15.0
+  resolution: "follow-redirects@npm:1.15.0"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: c7c6c905876b939af04a1b27afa70e9c0ab5015d96f5ee49dd80db6952dc8c960b96a229647504468615d8a1a400da9bec9449e2aea9f9c6da6fdca0ba17d4c2
+  checksum: 06e19a010288e3b0dcaf478a4ace2b4df20a5f3ca97c07026d63feda91121e0c0273ad3f293a6e5945ad3607b6d484a23061e79d6160b5406300e5f4357252d6
   languageName: node
   linkType: hard
 
@@ -7904,6 +7903,17 @@ __metadata:
     tapable: ^1.0.0
     worker-rpc: ^0.1.0
   checksum: 8a357eec4a4beead9d9cb64a781e179982c98db1600e040d04e7b2b0e3b0e2f5c872a86152112927bd391d803a445595ff507aeb0cc0c7d7cdba9e253a2bf531
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: ecbe8f41bcf5c415f38e39058b34598a9261bb74a3d54b633d0b5dd8b7cf9a30b0626cd06ae8e79874a2ca88c222041142a7893e5afdd35fdfc3272264d03d44
   languageName: node
   linkType: hard
 
