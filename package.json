@@ -31,7 +31,7 @@
     "@protokol/nft-exchange-crypto": "^1.0.0-beta",
     "@types/nprogress": "^0.2.0",
     "animate.css": "^4.1.0",
-    "axios": "^0.21.0",
+    "axios": "^0.27.0",
     "bad-words": "^3.0.3",
     "bignumber.js": "^9.0.0",
     "censorify-it": "^3.0.2",
