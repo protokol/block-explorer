@@ -63,7 +63,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
     "@kazupon/vue-i18n-loader": "^0.5.0",
-    "@types/jest": "^27.0.0",
+    "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.150",
     "@types/node-emoji": "^1.8.1",
     "@types/prettier": "^2.0.0",
@@ -101,7 +101,7 @@
     "svgo": "^2.0.0",
     "svgo-loader": "^3.0.0",
     "tailwindcss": "^1.4.6",
-    "ts-jest": "^26.0.0",
+    "ts-jest": "^29.0.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3",
     "typescript-language-server": "^0.6.0",
