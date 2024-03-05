@@ -5,6 +5,13 @@ __metadata:
   version: 4
   cacheKey: 7
 
+"@adobe/css-tools@npm:~4.3.3":
+  version: 4.3.3
+  resolution: "@adobe/css-tools@npm:4.3.3"
+  checksum: a95a044d53cd85dc87d47a89ba6990853159c446bd54447d6ba3c9f44bbc1a7a31028261b7f85ce79680dc18cbe7f8df6649d7303e197009678f253f0a0e0185
+  languageName: node
+  linkType: hard
+
 "@arcanis/slice-ansi@npm:^1.0.2":
   version: 1.0.2
   resolution: "@arcanis/slice-ansi@npm:1.0.2"
@@ -3428,7 +3435,7 @@ __metadata:
     portal-vue: ^2.1.7
     qrious: ^4.0.2
     sinon: ^11.0.0
-    stylus: ^0.54.7
+    stylus: ^0.63.0
     stylus-loader: ^5.0.0
     svgo: ^2.0.0
     svgo-loader: ^3.0.0
@@ -5621,15 +5628,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-parse@npm:~2.0.0":
-  version: 2.0.0
-  resolution: "css-parse@npm:2.0.0"
-  dependencies:
-    css: ^2.0.0
-  checksum: 498ef14dbb9b5da4a8e49ef23861ed46cb5a5abc8a52d42e6f85d704d6978d29c5e94b6ce9ca2e5c577e8d93273eac9b60a6fcc474fbe288412a45a79d2008ea
-  languageName: node
-  linkType: hard
-
 "css-select-base-adapter@npm:^0.1.1":
   version: 0.1.1
   resolution: "css-select-base-adapter@npm:0.1.1"
@@ -5732,7 +5730,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css@npm:^2.0.0, css@npm:^2.1.0":
+"css@npm:^2.1.0":
   version: 2.2.4
   resolution: "css@npm:2.2.4"
   dependencies:
@@ -6020,12 +6018,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:~3.1.0":
-  version: 3.1.0
-  resolution: "debug@npm:3.1.0"
+"debug@npm:^4.3.2":
+  version: 4.3.4
+  resolution: "debug@npm:4.3.4"
   dependencies:
-    ms: 2.0.0
-  checksum: 1295acd5e0531761255661d325cd0a80ac8c5f6de8942a53bb23c2197ccb97526972de662ed0e5d9393be83f3428a298a6e7185ecb02f0da6282019cd2ffb4a8
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 7d71c93be25ed05e85840ec12df1a6d1848adbf8bc66948017ad4120fed17d7889e305adec560c18d70710e6de0c55548fbed170f4355045bbbbbd2afd1532a2
   languageName: node
   linkType: hard
 
@@ -11685,7 +11686,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:0.x, mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:~0.5.1, mkdirp@npm:~0.5.x":
+"mkdirp@npm:0.x, mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:~0.5.1":
   version: 0.5.5
   resolution: "mkdirp@npm:0.5.5"
   dependencies:
@@ -14721,7 +14722,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:^2.0.2, safer-buffer@npm:^2.1.0, safer-buffer@npm:^2.1.2, safer-buffer@npm:~2.1.0":
+"safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:^2.0.2, safer-buffer@npm:^2.1.0, safer-buffer@npm:~2.1.0":
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: 549ba83f5b314b59898efe3422120ce1ca7987a6eae5925a5fa5db930dc414d4a9dde0a5594f89638cd6ea60b6840ea961872908933ac2428d1726489db46fa5
@@ -14751,6 +14752,13 @@ resolve@1.1.7:
   version: 1.2.4
   resolution: "sax@npm:1.2.4"
   checksum: 9d7668d69105e89e2c1a4b2fdc12c72e1a2f78b825f7b4a8a2ea5cdfebf70920bd17715bed55264c3b3959616a0695f8ad2d098bf6944fbd0953ee9c695dceef
+  languageName: node
+  linkType: hard
+
+"sax@npm:~1.3.0":
+  version: 1.3.0
+  resolution: "sax@npm:1.3.0"
+  checksum: 5c4f723c742c3b805578ba192a2aa4560643d2899f2a6933a32c7eb3dfd9c48f2cd6a056924a23d45143fce431cf7dcbcc641723bf864a45f12f244127522eae
   languageName: node
   linkType: hard
 
@@ -15696,21 +15704,18 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"stylus@npm:^0.54.7":
-  version: 0.54.7
-  resolution: "stylus@npm:0.54.7"
+"stylus@npm:^0.63.0":
+  version: 0.63.0
+  resolution: "stylus@npm:0.63.0"
   dependencies:
-    css-parse: ~2.0.0
-    debug: ~3.1.0
-    glob: ^7.1.3
-    mkdirp: ~0.5.x
-    safer-buffer: ^2.1.2
-    sax: ~1.2.4
-    semver: ^6.0.0
+    "@adobe/css-tools": ~4.3.3
+    debug: ^4.3.2
+    glob: ^7.1.6
+    sax: ~1.3.0
     source-map: ^0.7.3
   bin:
-    stylus: ./bin/stylus
-  checksum: eb903f9ecc0dbe1bbb3a7089c7ed5025fefff5c7ff507d6a780d277eba567382c8cb709c4f2ffbb0bf2b41c498fea2d50fd492e5bc168a65667c5922fb5424d6
+    stylus: bin/stylus
+  checksum: 571f9c2b6743cb9dcf9c5c18b1b50d60a9f6e0e23889926d831564c7970a8921420963e2d98b5df3754b68f3a7be9d3b300b73c77892eb18cdd46f911da9fd58
   languageName: node
   linkType: hard
 
