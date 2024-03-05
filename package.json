@@ -96,7 +96,7 @@
     "miragejs": "^0.1.40",
     "moment-timezone": "^0.5.28",
     "sinon": "^11.0.0",
-    "stylus": "^0.54.7",
+    "stylus": "^0.63.0",
     "stylus-loader": "^5.0.0",
     "svgo": "^2.0.0",
     "svgo-loader": "^3.0.0",
