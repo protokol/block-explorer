@@ -3421,7 +3421,7 @@ __metadata:
     minimist: ^1.2.5
     miragejs: ^0.1.40
     moment: ^2.25.3
-    moment-timezone: ^0.5.28
+    moment-timezone: ^0.6.0
     node-dotify: ^1.0.2
     node-emoji: ^1.10.0
     nprogress: ^0.2.0
@@ -11712,12 +11712,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"moment-timezone@npm:^0.5.28":
-  version: 0.5.28
-  resolution: "moment-timezone@npm:0.5.28"
+"moment-timezone@npm:^0.6.0":
+  version: 0.6.3
+  resolution: "moment-timezone@npm:0.6.3"
   dependencies:
-    moment: ">= 2.9.0"
-  checksum: 13f33e997556a89d082792b40a6ae2b8b3d02d1d55b152d1902a3da06453c690ed7c74cbedfa3aff602cbc66e3853736efbc793bf03eee7cd54a942da8f9a562
+    moment: ^2.29.4
+  checksum: fec56c6532a6f1e1cfe6916de0933f2e929bc91f15c59da8b9c7aad403e6dc742c3bcaa08cf0ae1ddf85b443894a56640593a6d6f5b3095b9e0bad6356ee52ae
   languageName: node
   linkType: hard
 
@@ -11728,10 +11728,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"moment@npm:>= 2.9.0, moment@npm:^2.10.2, moment@npm:^2.25.3":
+"moment@npm:^2.10.2, moment@npm:^2.25.3":
   version: 2.25.3
   resolution: "moment@npm:2.25.3"
   checksum: 416971ff3c663c850d56095cbfb01a2c153ecc7f3511772c1ff7e09a7be0105e135e8227aba0b82dd058efa8747271906cebe3f75cf4a1c4b17ed1b568003103
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.29.4":
+  version: 2.30.1
+  resolution: "moment@npm:2.30.1"
+  checksum: 74c146f9ea946b7f0fc480c305ea71198acabb435e0359817d2535927480275234bbc24fc82febc0b156e980e8b5d2614c4002ce700905f2412fbe257701a2e6
   languageName: node
   linkType: hard
 
